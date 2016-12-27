@@ -1,15 +1,13 @@
 {
   "name": "naomoe",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Toyama Nao Saimoe Tournament",
   "author": "i@kingfree.moe",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
-    "unit": "karma start test/unit/karma.conf.js --single-run",
-    "e2e": "node test/e2e/runner.js",
-    "test": "npm run unit && npm run e2e",
+    "start": "node server.js",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
