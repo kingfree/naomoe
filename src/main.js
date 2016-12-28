@@ -1,10 +1,19 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import VueMaterial from 'vue-material'
+import '../node_modules/vue-material/dist/vue-material.css'
+import '../node_modules/font-awesome/css/font-awesome.css'
 
-/* eslint-disable no-new */
-new Vue({
+Vue.use(VueMaterial)
+
+Vue.material.registerTheme({
+  default: {
+    primary: 'pink',
+    accent: 'green'
+  }
+})
+
+var app = new Vue({
   el: '#app',
   template: '<App/>',
   components: { App }

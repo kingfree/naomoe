@@ -12,6 +12,7 @@ module.exports = {
   ],
   // add your custom rules here
   'rules': {
+    "no-unused-vars": ["off", { "vars": "all", "args": "after-used" }],
     "space-before-function-paren": ["error", "never"],
     // allow paren-less arrow functions
     'arrow-parens': 0,

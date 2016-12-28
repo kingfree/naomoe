@@ -1,6 +1,6 @@
 {
   "name": "naomoe",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Toyama Nao Saimoe Tournament",
   "author": "i@kingfree.moe",
   "private": true,
@@ -12,7 +12,10 @@
   },
   "dependencies": {
     "express": "^4.14.0",
-    "vue": "^2.1.0"
+    "font-awesome": "^4.7.0",
+    "lodash": "^4.17.3",
+    "vue": "^2.1.0",
+    "vue-material": "^0.5.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.0",
