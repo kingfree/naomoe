@@ -1,5 +1,5 @@
 <template>
-  <div id="my-header" class="app-viewport">
+  <div id="header-component" class="app-viewport">
     <md-toolbar>
 
       <md-button class="md-icon-button" @click="$refs.sidenav.toggle()">
@@ -57,6 +57,10 @@
           <md-icon class="fa fa-address-book"></md-icon>
           <span>比赛管理</span>
         </md-list-item>
+        <md-list-item @click="$router.push('about')">
+          <md-icon class="fa fa-info"></md-icon>
+          <span>关于闹萌</span>
+        </md-list-item>
       </md-list>
 
     </md-sidenav>
@@ -65,7 +69,7 @@
 
 <script>
 export default {
-  name: 'my-header',
+  name: 'header-component',
   data() {
     return {
       msg: 'Tōyama Nao Saimoe Tournament'
@@ -79,4 +83,5 @@ export default {
 .fa {
   display: inherit;
 }
+
 </style>

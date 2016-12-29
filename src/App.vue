@@ -1,19 +1,19 @@
 <template>
+
   <div id="app">
-    <my-header></my-header>
-    <chara-list></chara-list>
+    <header-component/>
+    <router-view class="view"></router-view>
   </div>
+
 </template>
 
 <script>
-import MyHeader from './components/MyHeader'
-import CharaList from './components/CharaList'
+import HeaderComponent from './components/header'
 
 export default {
   name: 'app',
   components: {
-    MyHeader,
-    CharaList
+    HeaderComponent
   }
 }
 </script>

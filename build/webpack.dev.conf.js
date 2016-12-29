@@ -17,6 +17,15 @@ module.exports = merge(baseWebpackConfig, {
   // eval-source-map is faster for development
   devtool: '#eval-source-map',
   plugins: [
+    new webpack.ProvidePlugin({
+      $              : "jquery",
+      jQuery         : "jquery",
+      "window.jQuery": "jquery",
+      "root.jQuery"  : "jquery",
+      semantic     : 'semantic-ui-css',
+      Semantic     : 'semantic-ui-css',
+      'semantic-ui': 'semantic-ui-css'
+    }),
     new webpack.DefinePlugin({
       'process.env': config.dev.env
     }),
