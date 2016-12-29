@@ -1,23 +1,15 @@
-var path = require('path')
-var config = require('./config')
-var utils = require('./utils')
-var projectRoot = path.resolve(__dirname, '../')
+const path = require('path')
+const webpack = require('webpack')
+const projectRoot = path.resolve(__dirname, '../')
 
-var env = process.env.NODE_ENV
-// check env & config/index.js to decide whether to enable CSS source maps for the
-// various preprocessor loaders added to vue-loader at the end of this file
-var cssSourceMapDev = (env === 'development' && config.dev.cssSourceMap)
-var cssSourceMapProd = (env === 'production' && config.build.productionSourceMap)
-var useCssSourceMap = cssSourceMapDev || cssSourceMapProd
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: {
-    app: './client/main.js'
-  },
+  entry: ['webpack-hot-middleware/client', './client/main.js'],
   output: {
-    path: config.build.assetsRoot,
-    publicPath: process.env.NODE_ENV === 'production' ? config.build.assetsPublicPath : config.dev.assetsPublicPath,
-    filename: '[name].js'
+    path: path.resolve(__dirname, '../dist/'),
+    publicPath: '/',
+    filename: 'build/build.js'
   },
   resolve: {
     extensions: ['', '.js', '.vue', '.json'],
@@ -25,14 +17,14 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.common.js',
       'client': path.resolve(__dirname, '../client'),
-      'assets': path.resolve(__dirname, '../client/assets'),
-      'components': path.resolve(__dirname, '../client/components'),
+      'components': path.resolve(__dirname, '../clients/components'),
+      'assets': path.resolve(__dirname, '../clients/assets'),
       'jquery': path.resolve(__dirname, '../node_modules/jquery/dist/jquery.min.js'),
       'semantic': path.resolve(__dirname, '../semantic/dist/semantic.min.js')
     }
   },
   resolveLoader: {
-    fallback: [path.join(__dirname, '../node_modules')]
+    root: path.join(__dirname, 'node_modules'),
   },
   module: {
     preLoaders: [
@@ -86,11 +78,21 @@ module.exports = {
     formatter: require('eslint-friendly-formatter')
   },
   vue: {
-    loaders: utils.cssLoaders({ sourceMap: useCssSourceMap }),
-    postcss: [
-      require('autoprefixer')({
-        browsers: ['last 2 versions']
-      })
-    ]
-  }
+    loaders: {
+      'sass': 'vue-style!css!sass'
+    }
+  },
+  plugins: [
+    // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin(),
+    // https://github.com/ampedandwired/html-webpack-plugin
+    new HtmlWebpackPlugin({
+      filename: path.resolve(__dirname, '../dist/index.html'),
+      template: path.resolve(__dirname, '../view/index.html'),
+      inject: true
+    })
+  ],
+  devtool: '#eval'
 }

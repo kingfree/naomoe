@@ -78,7 +78,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     })
-  ]
+  ],
+  devtool: '#source-map'
 })
 
 if (config.build.productionGzip) {
