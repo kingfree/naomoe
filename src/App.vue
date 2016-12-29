@@ -14,6 +14,8 @@ export default {
   name: 'app',
   components: {
     HeaderComponent
+  },
+  methods: {
   }
 }
 </script>

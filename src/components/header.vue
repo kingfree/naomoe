@@ -1,7 +1,7 @@
 <template>
   <div id="header-component" class="app-viewport">
     <div class="ui top labeled icon pink inverted fixed menu">
-      <router-link class="item" to="/index">
+      <router-link class="item" to="/home">
         <img src="../assets/logo.png" class="icon" style="width: 24px; height: 24px;">
         闹萌
       </router-link>

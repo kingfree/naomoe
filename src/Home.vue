@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="home">
     <chara-list/>
   </div>
 </template>

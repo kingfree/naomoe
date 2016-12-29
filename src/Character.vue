@@ -7,6 +7,7 @@
 export default {
   data() {
     return {
+      title: '角色',
       msg: 'Tōyama Nao Saimoe Tournament',
       characters: [1]
     }
