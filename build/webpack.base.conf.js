@@ -27,8 +27,7 @@ module.exports = {
       'src': path.resolve(__dirname, '../src'),
       'assets': path.resolve(__dirname, '../src/assets'),
       'components': path.resolve(__dirname, '../src/components'),
-      'jquery': path.resolve(__dirname, '../node_modules/jquery/dist/jquery.min.js'),
-      'semantic': path.resolve(__dirname, '../node_modules/semantic-ui-css/semantic.min.js')
+      'jquery': path.resolve(__dirname, '../node_modules/jquery/dist/jquery.min.js')
     }
   },
   resolveLoader: {

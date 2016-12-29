@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div>this is template body</div>
     <chara-list/>
   </div>
 </template>
