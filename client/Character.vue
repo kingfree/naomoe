@@ -40,11 +40,11 @@ export default {
     loadCharacterList: function() {
       let $this = this
       api.get('/character/list')
-        .then(function(response) {
-          console.log(response.data)
-          let body = response.data
-          if (body.code === 0) {
-            $this.characters = body.data
+        .then(function(res) {
+          if (res.status === 200) {
+            $this.characters = res.data.characters
+          } else {
+            console.log(res)
           }
         })
         .catch(function(error) {

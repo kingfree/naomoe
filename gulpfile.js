@@ -8,12 +8,12 @@ gulp.task('nodemon', function (cb) {
   var called = false;
   return nodemon({
 
-      // Nodemon the dev server
-      script: 'app.js',
+    // Nodemon the dev server
+    script: 'app.js',
 
-      // Watch core server file(s) that require restart on change
-      watch: ['app.js', 'server/**/*.*']
-    })
+    // Watch core server file(s) that require restart on change
+    watch: ['app.js', 'server/**/*.*']
+  })
     .on('start', function onStart() {
 
       // Ensure only one call
@@ -39,7 +39,12 @@ gulp.task('browser-sync', ['nodemon'], function () {
   browserSync.init({
 
     // Watch the following files, inject changes or refresh
-    files: ['public/assets/js/**/*.*', 'public/assets/css/**/*.*', 'public/assets/images/**/*.*'],
+    files: [
+      'dist/assets/js/**/*.*',
+      'dist/assets/css/**/*.*',
+      'dist/assets/images/**/*.*',
+      'static/**/*.*'
+    ],
 
     // Proxy our Hapi app
     proxy: 'http://localhost:3000',
@@ -47,7 +52,8 @@ gulp.task('browser-sync', ['nodemon'], function () {
     port: 4000,
     reloadDelay: 500,
     injectChanges: true,
-    open: false
+    open: false,
+    notify: false
   });
   console.log('Initiate BrowserSync');
 });

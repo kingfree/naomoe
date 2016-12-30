@@ -19,7 +19,7 @@ import Character from './Character'
 //   }
 // })
 
-Vue.use(VueRouter)
+Vue.use(VueRouter, 'localhost:3000')
 
 const router = new VueRouter({
   mode: 'history',
