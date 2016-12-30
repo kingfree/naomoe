@@ -1,6 +1,6 @@
 {
   "name": "naomoe",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Toyama Nao Saimoe Tournament",
   "author": "i@kingfree.moe",
   "private": true,
@@ -12,12 +12,19 @@
   "dependencies": {
     "babel-runtime": "^6.9.2",
     "config": "^1.24.0",
+    "good": "^7.1.0",
+    "good-console": "^6.2.0",
     "hapi": "^16.0.1",
+    "hapi-auth-jwt2": "^7.2.4",
+    "hapi-postgres-connection": "^6.1.0",
     "inert": "^4.0.0",
+    "joi": "^10.1.0",
     "jquery": "^3.1.1",
     "lodash": "^4.17.3",
     "moment": "^2.17.1",
+    "require-directory": "^2.1.1",
     "semantic-ui": "^2.2.7",
+    "sequelize": "^3.28.0",
     "vue": "^2.1.0",
     "vue-resource": "^1.0.3",
     "vue-router": "^2.1.1"

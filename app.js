@@ -2,66 +2,84 @@
 
 const Hapi = require('hapi');
 const Inert = require('inert');
+const path = require('path');
 const h2o2 = require('h2o2');
+const settings = require('config');
 
-const server = new Hapi.Server();
+const routes = require('./routes');
+const models = require('./models');
+
+const server = new Hapi.Server({
+  connections: {
+    routes: {
+      cors: settings.cors
+    }
+  }
+});
 server.connection({
-  port: 3000
+  port: settings.port,
+  host: settings.host
 });
 
+var initDb = function (cb) {
+  var sequelize = models.sequelize;
+
+  //Test if we're in a sqlite memory database. we may need to run migrations.
+  if (sequelize.getDialect() === 'sqlite' &&
+    (!sequelize.options.storage || sequelize.options.storage === ':memory:')) {
+    sequelize.getMigrator({
+      path: process.cwd() + '/migrations',
+    }).migrate().success(function () {
+      // The migrations have been executed!
+      cb();
+    });
+  } else {
+    cb();
+  }
+};
+
+var setup = function (done) {
+
 // Register webpack HMR, fallback to development environment
-if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+  if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
 
-  const WebpackConfig = require('./build/webpack.dev.conf'); // Webpack config
-  const HapiWebpackDevMiddleware = require('hapi-webpack-dev-middleware');
-  const HapiWebpackHotMiddleware = require('hapi-webpack-hot-middleware');
+    const WebpackConfig = require('./build/webpack.dev.conf'); // Webpack config
+    const HapiWebpackDevMiddleware = require('hapi-webpack-dev-middleware');
+    const HapiWebpackHotMiddleware = require('hapi-webpack-hot-middleware');
 
-  server.register([{
-    register: HapiWebpackDevMiddleware,
-    options: {
-      config: WebpackConfig,
+    server.register([{
+      register: HapiWebpackDevMiddleware,
       options: {
-        noInfo: true,
-        publicPath: WebpackConfig.output.publicPath,
-        stats: {
-          colors: true
+        config: WebpackConfig,
+        options: {
+          noInfo: true,
+          publicPath: WebpackConfig.output.publicPath,
+          stats: {
+            colors: true
+          }
         }
       }
-    }
-  }, {
-    register: HapiWebpackHotMiddleware
-  }, {
-    register: h2o2
-  }], function (err) {
-    if (err) {
-      throw err;
-    }
-  });
+    }, {
+      register: HapiWebpackHotMiddleware
+    }, {
+      register: h2o2
+    }], function (err) {
+      if (err) {
+        throw err;
+      }
+    });
 
-}
-
-server.register([Inert], function (err) {
-
-  if (err) {
-    throw err;
   }
-
-  // Example api call
-  server.route({
-    method: 'GET',
-    path: '/character/list',
-    handler: function (request, reply) {
-      reply({
-        characters: [
-          {name: '新子憧', title: '天才麻将少女'},
-          {name: '九条可怜', title: '黄金拼图'},
-          {name: '由比滨结衣', title: '我的青春恋爱物语果然有问题'},
-          {name: '桐崎千棘', title: '伪恋'},
-          {name: '中川花音', title: '只有神知道的世界'}
-        ]
-      })
+  //Register all plugins
+  server.register([Inert], function (err) {
+    if (err) {
+      throw err; // something bad happened loading a plugin
     }
   });
+
+  // Add the server routes
+  server.route(routes);
+
 
   if (process.env.NODE_ENV !== 'production') {
     server.route({
@@ -121,14 +139,22 @@ server.register([Inert], function (err) {
     });
   }
 
-});
+  initDb(function () {
+    done();
+  });
+};
 
-server.start((err) => {
+var start = function () {
+  server.start(function () {
+    server.log('info', 'Server running at: ' + server.info.uri);
+  });
+};
 
-  if (err) {
-    throw err;
-  }
-  console.log('Server running at:', server.info.uri);
-});
+// If someone runs: "node server.js" then automatically start the server
+if (path.basename(process.argv[1], '.js') == path.basename(__filename, '.js')) {
+  setup(function () {
+    start();
+  });
+}
 
 module.exports = server;

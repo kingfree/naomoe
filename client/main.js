@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueResource from 'vue-resource'
 // import VueMaterial from 'vue-material'
 
 // import '../node_modules/vue-material/dist/vue-material.css'
@@ -19,6 +20,7 @@ import Character from './Character'
 //   }
 // })
 
+Vue.use(VueResource)
 Vue.use(VueRouter, 'localhost:3000')
 
 const router = new VueRouter({

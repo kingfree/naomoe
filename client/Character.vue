@@ -1,23 +1,83 @@
 <template>
   <div id="character">
-    <button class="ui btn" @click="loadCharacterList">刷新</button>
-    <table class="ui very basic collapsing celled table">
+    <form class="ui form">
+      <div class="field">
+        <label>日文</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" name="name_j" placeholder="角色" v-model=nowChara.name_j>
+          </div>
+          <div class="field">
+            <input type="text" name="title_j" placeholder="作品" v-model=nowChara.title_j>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>中文</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" name="name_c" placeholder="角色" v-model=nowChara.name_c>
+          </div>
+          <div class="field">
+            <input type="text" name="title_c" placeholder="作品" v-model=nowChara.title_c>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label>英文</label>
+        <div class="two fields">
+          <div class="field">
+            <input type="text" name="name_e" placeholder="角色" v-model=nowChara.name_e>
+          </div>
+          <div class="field">
+            <input type="text" name="title_e" placeholder="作品" v-model=nowChara.title_e>
+          </div>
+        </div>
+      </div>
+      <button class="ui green button" @click="addChara">{{ addButton }}</button>
+    </form>
+    <table class="ui celled striped table">
       <thead>
-      <tr><th>角色</th>
-        <th>投票数</th>
-      </tr></thead>
+      <tr>
+        <th>ID</th>
+        <th>头像</th>
+        <th>中文</th>
+        <th>日文</th>
+        <th>英文</th>
+      </tr>
+      </thead>
       <tbody>
       <tr v-for="chara in characters">
+        <td>{{ chara.id }}</td>
         <td>
-          <h4 class="ui image header">
+
+        </td>
+        <td>
+          <h4 class="ui image header chinese">
             <div class="content">
-              {{ chara.name }}
-              <div class="sub header">{{ chara.title }}
+              {{ chara.name_c }}
+              <div class="sub header">{{ chara.title_c }}
               </div>
             </div>
-          </h4></td>
+          </h4>
+        </td>
         <td>
-          {{ chara.votes || 0 }}
+          <h4 class="ui image header japanese">
+            <div class="content">
+              {{ chara.name_j }}
+              <div class="sub header">{{ chara.title_j }}
+              </div>
+            </div>
+          </h4>
+        </td>
+        <td>
+          <h4 class="ui image header english">
+            <div class="content">
+              {{ chara.name_e }}
+              <div class="sub header">{{ chara.title_e }}
+              </div>
+            </div>
+          </h4>
         </td>
       </tr>
       </tbody>
@@ -26,34 +86,74 @@
 </template>
 
 <script>
-import api from './libs/api'
+import $ from 'jquery'
 
 export default {
   data() {
     return {
-      title: '角色',
-      msg: 'Tōyama Nao Saimoe Tournament',
+      addButton: '添加',
+      nowChara: {
+        id: null,
+        name_c: '',
+        title_c: '',
+        name_j: '',
+        title_j: '',
+        name_e: '',
+        title_e: ''
+      },
       characters: []
     }
   },
+  watch: {
+    'nowChara.name_j': function(newName, oldName) {
+      if (!this.nowChara.name_c || this.nowChara.name_c === oldName) {
+        this.nowChara.name_c = newName
+      }
+      if (!this.nowChara.name_e || this.nowChara.name_e === oldName) {
+        this.nowChara.name_e = newName
+      }
+    },
+    'nowChara.title_j': function(newTitle, oldTitle) {
+      if (!this.nowChara.title_c || this.nowChara.title_c === oldTitle) {
+        this.nowChara.title_c = newTitle
+      }
+      if (!this.nowChara.title_e || this.nowChara.title_e === oldTitle) {
+        this.nowChara.title_e = newTitle
+      }
+    }
+  },
+  created: function() {
+    this.loadCharacterList()
+  },
   methods: {
+    addChara: function() {
+      let self = this
+      $.post('/character/add', self.nowChara, function(data) {
+        self.characters.push(data)
+      }).fail(function() {
+        console.error('error')
+      })
+      return false
+    },
     loadCharacterList: function() {
-      let $this = this
-      api.get('/character/list')
-        .then(function(res) {
-          if (res.status === 200) {
-            $this.characters = res.data.characters
-          } else {
-            console.log(res)
-          }
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
+      let self = this
+      $.get('/character/list', function(data) {
+        self.characters = data
+      })
     }
   }
 }
 
 </script>
 <style>
+.chinese * {
+  font-family: "Microsoft YaHei UI", "PingFang SC";
+}
+.japanese * {
+  font-family: "Meiryo UI", "Yu Gothc UI", "MS PGothic";
+}
+.english * {
+  font-family: "Seqoe UI", Helvetica;
+}
+
 </style>
