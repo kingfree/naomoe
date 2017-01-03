@@ -1,4 +1,5 @@
 'use strict';
+require("babel-register");
 
 const Hapi = require('hapi');
 const Inert = require('inert');
@@ -19,6 +20,17 @@ const server = new Hapi.Server({
 server.connection({
   port: settings.port,
   host: settings.host
+});
+
+server.ext('onPreResponse', function (request, reply) {
+  const response = request.response;
+  if (!response.isBoom) {
+    return reply.continue()
+  }
+  return reply({
+    code: response.output ? response.output.statusCode : 2,
+    info: response.message ? response.message.replace('Uncaught error: ', 'Error: ') : 'Unknown Error'
+  })
 });
 
 var initDb = function (cb) {

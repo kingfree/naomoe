@@ -1,5 +1,5 @@
 .DS_Store
-*.log
+*.log*
 *.out
 node_modules/
 dist/

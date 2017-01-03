@@ -1,7 +1,7 @@
 var controllers = require('./controllers');
 
 var routes = [].concat(
-  controllers.characters
+  controllers.character
 );
 
 module.exports = routes;

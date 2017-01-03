@@ -7,6 +7,7 @@ import VueResource from 'vue-resource'
 // import '../node_modules/font-awesome/css/font-awesome.css'
 import '../semantic/dist/semantic.css'
 import 'semantic'
+import 'jquery'
 
 import App from './App'
 import Home from './Home'

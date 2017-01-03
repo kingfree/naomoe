@@ -1,6 +1,6 @@
 {
-  "port":3000,
-  "database" : {
+  "port": 3000,
+  "database": {
     "username": "postgres",
     "password": "root",
     "database": "naomoe",
