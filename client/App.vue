@@ -2,19 +2,7 @@
   <div id="app" class="ui material">
     <header-component/>
     <div class="ui container">
-      <div class="row">
-        <div class="ui floating positive message" :class="{ hidden: !success.title }">
-          <i class="close icon"></i>
-          <div class="header">{{ success.title || '' }}</div>
-          <p>{{ success.content || '' }}</p>
-        </div>
-        <div class="ui floating negative message" :class="{ hidden: !error.title }">
-          <i class="close icon"></i>
-          <div class="header">{{ error.title || '' }}</div>
-          <p>{{ error.content || '' }}</p>
-        </div>
-        <router-view class="view"></router-view>
-      </div>
+      <router-view class="view"></router-view>
     </div>
   </div>
 </template>

@@ -1,79 +1,5 @@
 <template>
   <div id="character">
-
-    <div class="ui small hidden modal" id="errorModal">
-      <div class="ui attached message"
-           :class="{ negative: message.type === 'error',
-                     positive: message.type === 'success',
-                     hidden: !message.title }">
-        <i class="close icon" @click="cleanError"></i>
-        <div class="header">
-          {{ message.title || '错误' }}
-        </div>
-        <p>{{ message.text || '' }}</p>
-      </div>
-    </div>
-
-    <div class="ui small hidden modal" id="delModal">
-      <div class="ui icon header">
-        <i class="archive icon"></i>
-        确定删除角色 {{ nowChara.name || '' }} ？
-      </div>
-      <div class="content">
-        <p>{{ nowChara.name }}@{{ nowChara.title }}</p>
-        <p>删除操作不可恢复，确定删除？</p>
-      </div>
-      <div class="actions">
-        <button class="ui cancel button">
-          <i class="close icon"></i>
-          取消
-        </button>
-        <button class="ui red ok button">
-          <i class="checkmark icon"></i>
-          删除
-        </button>
-      </div>
-    </div>
-
-    <div class="ui hidden modal" id="charaModel">
-      <div class="header">
-        {{ nowChara.id ? '编辑角色 ' + (nowChara.name || '') : '创建角色' }}
-      </div>
-      <form class="ui form content">
-        <div class="field" v-for="input in inputs">
-          <label>{{ input.label }}</label>
-          <div class="two fields">
-            <div class="six wide field">
-              <input type="text" placeholder="角色" v-model=nowChara[input.name]>
-            </div>
-            <div class="seven wide field">
-              <input type="text" placeholder="作品" v-model=nowChara[input.title]>
-            </div>
-          </div>
-        </div>
-        <div class="field">
-          <label>简介</label>
-          <textarea rows=3 v-model=nowChara.bio></textarea>
-        </div>
-      </form>
-      <div class="ui attached message"
-           :class="{ negative: message.type === 'error',
-                     positive: message.type === 'success',
-                     hidden: !message.title }">
-        <i class="close icon" @click="cleanError"></i>
-        <div class="header">
-          {{ message.title || '错误' }}
-        </div>
-        <p>{{ message.text || '' }}</p>
-      </div>
-      <div class="actions">
-        <button class="ui button" @click="closeModal">取消</button>
-        <button class="ui button" :class="{ blue: !nowChara.id, green: nowChara.id }"
-                @click="addChara">{{ nowChara.id ? '修改' : '创建' }}
-        </button>
-      </div>
-    </div>
-
     <table class="ui celled striped table">
       <thead>
       <tr>
@@ -124,12 +50,89 @@
           {{ chara.bio }}
         </td>
         <td>
-          <button class="ui icon green button" @click="openModal(chara)"><i class="edit icon"></i></button>
-          <button class="ui icon red button" @click="delChara(chara, index)"><i class="delete icon"></i></button>
+          <button class="ui icon green button"
+                  @click="openModal(chara)"><i class="edit icon"></i></button>
+          <button class="ui icon red button"
+                  @click="delChara(chara, index)"><i class="delete icon"></i></button>
         </td>
       </tr>
       </tbody>
     </table>
+
+
+    <div class="ui small modal" id="errorModal">
+      <div class="ui attached message"
+           :class="{ negative: message.type === 'error',
+                     positive: message.type === 'success',
+                     hidden: !message.title }">
+        <i class="close icon" @click="cleanError"></i>
+        <div class="header">
+          {{ message.title || '错误' }}
+        </div>
+        <p>{{ message.text || '' }}</p>
+      </div>
+    </div>
+
+    <div class="ui small modal" id="delModal">
+      <div class="ui icon header">
+        <i class="archive icon"></i>
+        确定删除角色 {{ nowChara.name || '' }} ？
+      </div>
+      <div class="content">
+        <p>{{ nowChara.name }}@{{ nowChara.title }}</p>
+        <p>删除操作不可恢复，确定删除？</p>
+      </div>
+      <div class="actions">
+        <button class="ui cancel button">
+          <i class="close icon"></i>
+          取消
+        </button>
+        <button class="ui red ok button">
+          <i class="checkmark icon"></i>
+          删除
+        </button>
+      </div>
+    </div>
+
+    <div class="ui modal" id="charaModel">
+      <div class="header">
+        {{ nowChara.id ? '编辑角色 ' + (nowChara.name || '') : '创建角色' }}
+      </div>
+      <form class="ui form content">
+        <div class="field" v-for="input in inputs">
+          <label>{{ input.label }}</label>
+          <div class="two fields">
+            <div class="six wide field">
+              <input type="text" :name="input.name" placeholder="角色" v-model="nowChara[input.name]">
+            </div>
+            <div class="seven wide field">
+              <input type="text" :name="input.title" placeholder="作品" v-model="nowChara[input.title]">
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label>简介</label>
+          <textarea rows=3 name="bio" v-model=nowChara.bio></textarea>
+        </div>
+      </form>
+      <div class="ui attached message"
+           :class="{ negative: message.type === 'error',
+                     positive: message.type === 'success',
+                     hidden: !message.title }">
+        <i class="close icon" @click="cleanError"></i>
+        <div class="header">
+          {{ message.title || '错误' }}
+        </div>
+        <p>{{ message.text || '' }}</p>
+      </div>
+      <div class="actions">
+        <button class="ui cancel button" @click="closeModal">取消</button>
+        <button class="ui submit button" :class="{ blue: !nowChara.id, green: nowChara.id }"
+                @click="addChara">{{ nowChara.id ? '修改' : '创建' }}
+        </button>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -205,6 +208,19 @@ export default {
     },
     addChara: function() {
       let self = this
+      $('#charaModal.form').form({
+        inline: true,
+        on: 'blur',
+        fields: {
+          name_j: {
+            identifier: 'name_j',
+            rules: [{type: 'empty', prompt: '请填写角色名'}]
+          },
+          name_c: 'empty',
+          title_c: 'empty',
+          title_j: 'empty'
+        }
+      })
       if (this.nowChara.id) {
         this.editChara(this.nowChara)
       } else {
