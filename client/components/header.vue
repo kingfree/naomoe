@@ -12,7 +12,7 @@
       </div>
       <div v-if="admin" class="right menu">
         <router-link class="item" to="/character"><i class="users icon"></i>角色</router-link>
-        <router-link class="item" to="/contest"><i class="law icon"></i>比赛</router-link>
+        <router-link class="item" to="/competition"><i class="law icon"></i>比赛</router-link>
         <router-link class="item" to="/admin"><i class="desktop icon"></i>后台</router-link>
         <router-link class="item" to="/logout"><i class="sign out icon"></i>退出</router-link>
       </div>

@@ -10,11 +10,14 @@ module.exports = function (sequelize, DataTypes) {
     bio: DataTypes.TEXT
   }, {
     getterMethods: {
-      name: function () {
-        return this.name_c;
+      name: function() {
+        return this.name_c
       },
-      title: function () {
-        return this.title_c;
+      title: function() {
+        return this.title_c
+      },
+      text: function() {
+        return this.name + '@' + this.title
       }
     },
     classMethods: {
