@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{config('admin.title')}} | {{ trans('admin::lang.login') }}</title>
+  <title>{{config('admin.title')}} | 登录</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -25,11 +25,11 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="{{ Admin::url('/') }}"><b>{{config('admin.name')}}</b></a>
+    <a href="/"><b>naomoe</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">{{ trans('admin::lang.login') }}</p>
+    <p class="login-box-msg">登录</p>
 
     <form action="{{ Admin::url('auth/login') }}" method="post">
       <div class="form-group has-feedback {!! !$errors->has('username') ?: 'has-error' !!}">
@@ -40,7 +40,7 @@
           @endforeach
         @endif
 
-        <input type="input" class="form-control" placeholder="{{ trans('admin::lang.username') }}" name="username" value="{{ old('username') }}">
+        <input type="input" class="form-control" placeholder="用户名" name="username" value="{{ old('username') }}">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback {!! !$errors->has('password') ?: 'has-error' !!}">
@@ -51,7 +51,7 @@
           @endforeach
         @endif
 
-        <input type="password" class="form-control" placeholder="{{ trans('admin::lang.password') }}" name="password" value="{{ old('username') }}">
+        <input type="password" class="form-control" placeholder="密码" name="password" value="{{ old('username') }}">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
@@ -59,7 +59,7 @@
         <!-- /.col -->
         <div class="col-xs-4 col-md-offset-4">
           <input type="hidden" name="_token" value="{{ csrf_token() }}">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('admin::lang.login') }}</button>
+          <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
         </div>
         <!-- /.col -->
       </div>

@@ -61,6 +61,17 @@
                                 </a>
                             </div>
                         </div>
+
+                        <hr>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="{{ url('/auth/weibo') }}" class="btn btn-weibo"><i class="fa fa-weibo"></i> 微博</a>
+                                <a href="{{ url('/auth/qq') }}" class="btn btn-qq"><i class="fa fa-qq"></i> QQ</a>
+                                <a href="{{ url('/auth/weixin') }}" class="btn btn-weixin"><i class="fa fa-weixin"></i> 微信</a>
+                                <a href="{{ url('/auth/baidu') }}" class="btn btn-baidu"><i class="fa fa-baidu"></i> 贴吧</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>

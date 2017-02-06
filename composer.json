@@ -6,10 +6,12 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
+        "doctrine/dbal": "^2.5",
         "encore/laravel-admin": "1.4.x-dev",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "predis/predis": "^1.1",
+        "socialiteproviders/weibo": "^3.0",
         "zgldh/qiniu-laravel-storage": "^0.6.2"
     },
     "require-dev": {
