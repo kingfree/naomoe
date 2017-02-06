@@ -58,7 +58,7 @@ class AuthController extends Controller
             return $authUser;
         }
         return User::create([
-            'name' => $user->name,
+            'name' => $user->name || $user->nickname,
             'email' => $user->email,
             'provider' => $provider,
             'provider_id' => $user->id,
