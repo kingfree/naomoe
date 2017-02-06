@@ -8,12 +8,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Response;
-use Laravel\Socialite\Facades\Socialite;
 use App\User;
-use Illuminate\Support\Facades\Auth;
+use Auth;
+use Response;
+use Socialite;
 
 class AuthController extends Controller
 {

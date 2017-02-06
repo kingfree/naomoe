@@ -38,7 +38,7 @@ return [
     'weibo' => [
         'client_id' => env('WEIBO_KEY'),
         'client_secret' => env('WEIBO_SECRET'),
-        'redirect' => env('APP_URL') . env('WEIBO_REDIRECT_URI'),
+        'redirect' => env('WEIBO_REDIRECT_URI'),
     ],
 
 ];
