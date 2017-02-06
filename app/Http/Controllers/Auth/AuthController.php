@@ -17,6 +17,8 @@ use Socialite;
 class AuthController extends Controller
 {
 
+    protected $redirectTo = '/home';
+
     /**
      * Redirect the user to the OAuth Provider.
      *
