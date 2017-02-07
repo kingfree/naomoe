@@ -75,8 +75,10 @@ class UserController extends Controller
 
             $grid->id('ID')->sortable();
 
+            $grid->avatar('头像')->image(null, 32, 32);
             $grid->name('用户名');
             $grid->email('邮箱');
+            $grid->provider('登录方式');
 
             $grid->created_at('创建时间');
             $grid->updated_at('修改时间');
@@ -97,6 +99,9 @@ class UserController extends Controller
             $form->text('name', '用户名');
             $form->text('email', '邮箱');
             $form->password('password', '密码');
+            $form->image('avatar', '头像');
+
+            $form->display('provider', '登录方式');
 
             $form->display('created_at', '创建时间');
             $form->display('updated_at', '修改时间');

@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="{{ asset("/packages/admin/font-awesome/css/font-awesome.min.css") }}">
 
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset("/packages/admin/AdminLTE/dist/css/skins/" . config('admin.skin') .".min.css") }}">
+    <link rel="stylesheet" href="{{ asset("/packages/admin/AdminLTE/dist/css/skins/" . config('admin.skin') ."-light.min.css") }}">
 
     {!! Admin::css() !!}
     <link rel="stylesheet" href="{{ asset("/packages/admin/nestable/nestable.css") }}">
