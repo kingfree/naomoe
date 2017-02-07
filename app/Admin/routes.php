@@ -9,6 +9,9 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
+
+    $router->get('/api/characters', 'APIController@characters');
+
     $router->resource('users', UserController::class);
     $router->resource('characters', CharacterController::class);
     $router->resource('pools', PoolController::class);

@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Character;
 use App\Pool;
 
 use Encore\Admin\Form;
@@ -74,9 +75,19 @@ class PoolController extends Controller
         return Admin::grid(Pool::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-
-            $grid->created_at();
-            $grid->updated_at();
+            $grid->title('标题');
+            $grid->characters('角色列表')->value(function ($characters) {
+                $characters = array_map(function ($character) {
+                    return $character['name'];
+                }, $characters);
+                return join('&nbsp;', $characters);
+            });
+            $grid->description('描述');
+            $grid->created_by('创建人')->value(function ($user) {
+                return $user ? '@' . $user['name'] : '';
+            });
+            $grid->created_at('创建时间');
+            $grid->updated_at('修改时间');
         });
     }
 
@@ -90,9 +101,12 @@ class PoolController extends Controller
         return Admin::form(Pool::class, function (Form $form) {
 
             $form->display('id', 'ID');
-
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
+            $form->text('title', '标题');
+            // TODO: 多选列表无法载入已保存的信息
+            $form->multipleSelect('characters', '角色列表')->options(function ($ids) {
+                return ($this->characters->pluck('text', 'id'));
+            })->ajax('/admin/api/characters');
+            $form->textarea('description', '描述');
         });
     }
 }

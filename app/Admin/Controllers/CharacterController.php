@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\Tools\PutIntoPool;
 use App\Character;
 
 use Encore\Admin\Form;
@@ -104,6 +105,12 @@ class CharacterController extends Controller
                         ->orWhere('description', 'like', "%{$this->input}%");
                 }, '搜索');
             });
+
+            /* $grid->tools(function ($tools) {
+                $tools->batch(function ($batch) {
+                    $batch->add('添加进角色池', new PutIntoPool(1));
+                });
+            }); */
         });
     }
 

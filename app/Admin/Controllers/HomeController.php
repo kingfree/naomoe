@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Character;
 use App\Http\Controllers\Controller;
 use App\User;
 use Encore\Admin\Facades\Admin;
@@ -26,12 +27,12 @@ class HomeController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('Dashboard');
-            $content->description('Description...');
+            $content->header('闹萌');
+            $content->description('后台');
 
             $content->row(function ($row) {
-                $row->column(3, new InfoBox('注册用户', 'users', 'aqua', '/admin/users', User::count()));
-                $row->column(3, new InfoBox('New Orders', 'shopping-cart', 'green', '/admin/orders', '150%'));
+                $row->column(3, new InfoBox('用户', 'users', 'aqua', '/admin/users', User::count()));
+                $row->column(3, new InfoBox('角色', 'android', 'green', '/admin/characters', Character::count()));
                 $row->column(3, new InfoBox('Articles', 'book', 'yellow', '/admin/articles', '2786'));
                 $row->column(3, new InfoBox('Documents', 'file', 'red', '/admin/files', '698726'));
             });
