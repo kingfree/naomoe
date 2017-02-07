@@ -10,5 +10,7 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
     $router->resource('users', UserController::class);
+    $router->resource('characters', CharacterController::class);
+    $router->resource('pools', PoolController::class);
 
 });
