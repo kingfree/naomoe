@@ -15,5 +15,11 @@ Route::group([
     $router->resource('users', UserController::class);
     $router->resource('characters', CharacterController::class);
     $router->resource('pools', PoolController::class);
+    $router->resource('groups', GroupController::class);
+    $router->resource('competitions', CompetitionController::class);
+    $router->resource('options', OptionController::class);
+    $router->resource('pages', PageController::class);
+    $router->resource('votes', PoteController::class);
+    $router->resource('votelogs', VoteLogController::class);
 
 });
