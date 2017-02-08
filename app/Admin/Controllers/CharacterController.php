@@ -77,15 +77,15 @@ class CharacterController extends Controller
             $grid->id('ID')->sortable();
 
             $grid->avatar('头像')->image();
-            $grid->name('角色')->sortable();
-            $grid->work('作品')->sortable();
+            $grid->name('角色')->sortable()->editable();
+            $grid->work('作品')->sortable()->editable();
             $grid->column('日文')->display(function () {
                 if (!$this->names || !$this->works) return '';
-                return $this->names->ja . '@' . $this->works->ja;
+                return $this->names['ja'] . '<br>@' . $this->works['ja'];
             });
             $grid->column('英文')->display(function () {
                 if (!$this->names || !$this->works) return '';
-                return $this->names->en . '@' . $this->works->en;
+                return $this->names['en'] . '<br>@' . $this->works['en'];
             });
 
             $grid->description('描述');

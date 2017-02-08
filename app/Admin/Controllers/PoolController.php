@@ -102,9 +102,12 @@ class PoolController extends Controller
 
             $form->display('id', 'ID');
             $form->text('title', '标题');
-            // TODO: 多选列表无法载入已保存的信息
             $form->multipleSelect('characters', '角色列表')->options(function ($ids) {
-                return ($this->characters->pluck('text', 'id'));
+                $script = <<<JS
+$('.characters').select2().val({$this->characters->pluck('id')}).trigger("change");
+JS;
+                Admin::script($script);
+                return Character::find($ids)->merge($this->characters)->pluck('text', 'id');
             })->ajax('/admin/api/characters');
             $form->textarea('description', '描述');
         });
