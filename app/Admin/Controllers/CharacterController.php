@@ -127,14 +127,16 @@ class CharacterController extends Controller
 
             $form->image('avatar', '头像');
 
-            $form->text('name', '角色名（中文）');
-            $form->text('work', '作品名（中文）');
-
-            $form->text('names->ja', '角色名（日文）');
-            $form->text('works->ja', '作品名（日文）');
-
-            $form->text('names->en', '角色名（英文）');
-            $form->text('works->en', '作品名（英文）');
+            $form->text('name', '角色名');
+            $form->embeds('names', '其他角色名', function ($form) {
+                $form->text('ja', '日文');
+                $form->text('en', '英文');
+            });
+            $form->text('work', '作品名');
+            $form->embeds('works', '其他作品名', function ($form) {
+                $form->text('ja', '日文');
+                $form->text('en', '英文');
+            });
 
             $form->textarea('description', '描述');
             $form->json('info', '额外信息');

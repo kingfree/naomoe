@@ -3,7 +3,9 @@
 namespace App\Admin\Controllers;
 
 use App\Character;
+use App\Competition;
 use App\Http\Controllers\Controller;
+use App\Page;
 use App\User;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Column;
@@ -33,8 +35,8 @@ class HomeController extends Controller
             $content->row(function ($row) {
                 $row->column(3, new InfoBox('用户', 'users', 'aqua', '/admin/users', User::count()));
                 $row->column(3, new InfoBox('角色', 'android', 'green', '/admin/characters', Character::count()));
-                $row->column(3, new InfoBox('Articles', 'book', 'yellow', '/admin/articles', '2786'));
-                $row->column(3, new InfoBox('Documents', 'file', 'red', '/admin/files', '698726'));
+                $row->column(3, new InfoBox('比赛', 'book', 'red', '/admin/competitions', Competition::count()));
+                $row->column(3, new InfoBox('页面', 'file', 'yellow', '/admin/pages', Page::count()));
             });
 
             $content->row(function (Row $row) {

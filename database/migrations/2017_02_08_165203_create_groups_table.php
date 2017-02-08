@@ -15,11 +15,12 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('competition_id')->unsigned()->nullable();
             $table->integer('order')->default(1);
             $table->string('title');
-            $table->integer('allow')->unsigned();
-            $table->integer('voted')->unsigned();
-            $table->integer('valid')->unsigned();
+            $table->integer('allow')->unsigned()->default(0);
+            $table->integer('voted')->unsigned()->default(0);
+            $table->integer('valid')->unsigned()->default(0);
             $table->json('info')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

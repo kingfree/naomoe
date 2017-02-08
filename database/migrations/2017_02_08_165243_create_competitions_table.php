@@ -18,8 +18,8 @@ class CreateCompetitionsTable extends Migration
             $table->string('title');
             $table->dateTime('start_at');
             $table->dateTime('end_at');
-            $table->integer('voted')->unsigned();
-            $table->integer('valid')->unsigned();
+            $table->integer('voted')->unsigned()->default(0);
+            $table->integer('valid')->unsigned()->default(0);
             $table->json('info')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

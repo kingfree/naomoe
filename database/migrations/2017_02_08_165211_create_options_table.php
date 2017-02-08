@@ -17,8 +17,8 @@ class CreateOptionsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('group_id')->unsigned();
-            $table->integer('voted')->unsigned();
-            $table->integer('valid')->unsigned();
+            $table->integer('voted')->unsigned()->default(0);
+            $table->integer('valid')->unsigned()->default(0);
             $table->text('description')->nullable();
             $table->timestamps();
         });
