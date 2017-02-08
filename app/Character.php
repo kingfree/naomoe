@@ -11,6 +11,7 @@ class Character extends Model
         'works' => 'json',
         'info' => 'json',
     ];
+
     protected $appends = ['text'];
 
     public function pools()
@@ -18,6 +19,11 @@ class Character extends Model
         return $this->belongsToMany(Pool::class,
             'pool_characters', 'character_id', 'pool_id')
             ->withTimestamps();
+    }
+
+    public function options()
+    {
+        return $this->hasMany(Option::class);
     }
 
     public function getTextAttribute()
