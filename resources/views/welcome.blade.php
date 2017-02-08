@@ -74,6 +74,7 @@
                     <a href="{{ url('/login') }}">登录</a>
                     <a href="{{ url('/register') }}">注册</a>
                 @endif
+                <a href="/admin">后台</a>
             </div>
 
             <div class="content">
@@ -85,9 +86,8 @@
                     <a href="/vote">投票</a>
                     <a href="/schedule">赛程</a>
                     <a href="/discuss">讨论</a>
-                    @if (Admin::user())
-                      <a href="/admin">后台</a>
-                    @endif
+                    <a href="/stock">闹股</a>
+                    <a href="//tieba.toyama.moe">贴吧</a>
                     <a href="//git.kingfree.moe/kingfree/naomoe" target="_blank">源码</a>
                 </div>
             </div>
