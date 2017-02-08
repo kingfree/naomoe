@@ -15,7 +15,9 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type')->default('blank');
+            $table->string('title');
+            $table->text('content');
+            $table->string('type')->default('common');
             $table->integer('competition_id')->unsigned()->nullable();
             $table->foreign('competition_id')->references('id')->on('competitions');
             $table->integer('user_id')->unsigned()->nullable();

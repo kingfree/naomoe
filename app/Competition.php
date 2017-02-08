@@ -12,7 +12,7 @@ class Competition extends Model
 
     public function groups()
     {
-        return $this->hasMany(Group::class);
+        return $this->hasMany(Group::class)->orderBy('order');
     }
 
     public function options()

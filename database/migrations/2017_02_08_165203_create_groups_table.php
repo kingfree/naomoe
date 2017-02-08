@@ -15,6 +15,7 @@ class CreateGroupsTable extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('order')->default(1);
             $table->string('title');
             $table->integer('allow')->unsigned();
             $table->integer('voted')->unsigned();

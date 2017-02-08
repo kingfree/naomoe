@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Vote extends Model
 {
+    protected $casts = [
+        'info' => 'json',
+    ];
+
     public function option()
     {
         return $this->belongsTo(Option::class);
