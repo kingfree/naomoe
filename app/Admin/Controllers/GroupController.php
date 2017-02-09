@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Competition;
+use App\Group;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +12,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class CompetitionController extends Controller
+class GroupController extends Controller
 {
     use ModelForm;
 
@@ -24,8 +25,8 @@ class CompetitionController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('比赛');
-            $content->description('每天的比赛列表');
+            $content->header('分组');
+            $content->description('可以限定一个分组内最多投票的数量');
 
             $content->body($this->grid());
         });
@@ -41,7 +42,7 @@ class CompetitionController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('修改比赛');
+            $content->header('编辑分组');
             $content->description('');
 
             $content->body($this->form()->edit($id));
@@ -57,7 +58,7 @@ class CompetitionController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('创建比赛');
+            $content->header('创建分组');
             $content->description('');
 
             $content->body($this->form());
@@ -71,18 +72,17 @@ class CompetitionController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(Competition::class, function (Grid $grid) {
+        return Admin::grid(Group::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
+            $grid->column('competition', '所属比赛')->display(function () {
+                return '<a href="'
+                    . route('competitions', ['id' => $this->competition->id])
+                    . '">' . $this->competition->title . '</a>';
+            });
 
-            $grid->column('title', '比赛名称')->sortable();
-            $grid->column('voted', '投票')->display(function () {
-                return $this->valid . '/' . $this->voted;
-            })->sortable();
-            $grid->description('描述');
-            $grid->start_at('比赛时间')->display(function () {
-                return $this->start_at . ' -- ' . $this->end_at;
-            })->sortable();
+            $grid->created_at();
+            $grid->updated_at();
         });
     }
 
@@ -93,17 +93,20 @@ class CompetitionController extends Controller
      */
     protected function form()
     {
-        return Admin::form(Competition::class, function (Form $form) {
+        return Admin::form(Group::class, function (Form $form) {
 
             $form->display('id', 'ID');
+            $form->text('title', '分组名')->rules('required');
+            $form->select('competition', '所属比赛')
+                ->options(Competition::all()->pluck('title', 'id'));
 
-            $form->text('title', '比赛名称')->rules('required');
-            $form->datetimeRange('start_at', 'end_at', '比赛时间');
-            $form->display('voted', '已投票')->default(0);
-            $form->display('valid', '有效票')->default(0);
-            $form->textarea('description', '比赛描述');
-            $form->json('info', '其他信息');
+            $form->number('allow', '允许投票数')->default(1);
+            $form->hasMany('options', '选项', function (Form\NestedForm $form) {
+                $form->text('title', '选项');
+            });
 
+            $form->display('created_at', '创建时间');
+            $form->display('updated_at', '更新时间');
         });
     }
 }

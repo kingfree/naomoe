@@ -75,19 +75,19 @@ class PoolController extends Controller
         return Admin::grid(Pool::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-            $grid->title('标题');
+            $grid->title('标题')->sortable();
             $grid->characters('角色列表')->value(function ($characters) {
                 $characters = array_map(function ($character) {
                     return $character['name'];
                 }, $characters);
                 return join('&nbsp;', $characters);
             });
-            $grid->description('描述');
-            $grid->created_by('创建人')->value(function ($user) {
-                return $user ? '@' . $user['name'] : '';
-            });
-            $grid->created_at('创建时间');
-            $grid->updated_at('修改时间');
+            $grid->description('描述')->sortable();
+//            $grid->created_by('创建人')->value(function ($user) {
+//                return $user ? '@' . $user['name'] : '';
+//            });
+            $grid->created_at('创建时间')->sortable();
+            $grid->updated_at('修改时间')->sortable();
         });
     }
 

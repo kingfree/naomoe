@@ -127,8 +127,8 @@ class CharacterController extends Controller
 
             $form->image('avatar', '头像');
 
-            $form->text('name', '角色名');
-            $form->text('work', '作品名');
+            $form->text('name', '角色名')->rules('required');
+            $form->text('work', '作品名')->rules('required');
 
             $form->embeds('names', '其他角色名', function ($form) {
                 $form->text('ja', '日文');

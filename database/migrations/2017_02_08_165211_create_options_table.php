@@ -16,7 +16,10 @@ class CreateOptionsTable extends Migration
         Schema::create('options', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
+            $table->integer('character_id')->unsigned();
+            $table->foreign('character_id')->references('id')->on('characters');
             $table->integer('group_id')->unsigned();
+            $table->foreign('group_id')->references('id')->on('groups');
             $table->integer('voted')->unsigned()->default(0);
             $table->integer('valid')->unsigned()->default(0);
             $table->text('description')->nullable();

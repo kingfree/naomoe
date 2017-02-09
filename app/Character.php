@@ -19,12 +19,12 @@ class Character extends Model
     protected $appends = ['text'];
 
     const SOURCES = [
-                    '动画' => 'TV动画',
-                    'OVA' => 'OVA',
-                    '剧场版' => '剧场版动画',
-                    '广播剧' => '广播剧',
-                    '其他' => '其他',
-                ];
+        '动画' => 'TV动画',
+        'OVA' => 'OVA',
+        '剧场版' => '剧场版动画',
+        '广播剧' => '广播剧',
+        '其他' => '其他',
+    ];
 
     public function pools()
     {
