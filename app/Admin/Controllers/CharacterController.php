@@ -77,22 +77,22 @@ class CharacterController extends Controller
             $grid->id('ID')->sortable();
 
             $grid->avatar('头像')->image();
-            $grid->name('角色')->sortable()->editable();
-            $grid->work('作品')->sortable()->editable();
-            $grid->column('日文')->display(function () {
-                if (!$this->names || !$this->works) return '';
-                return $this->names['ja'] . '<br>@' . $this->works['ja'];
-            });
-            $grid->column('英文')->display(function () {
-                if (!$this->names || !$this->works) return '';
-                return $this->names['en'] . '<br>@' . $this->works['en'];
-            });
-
+            $grid->name('角色')->display(function () {
+                return join('<br>', array_merge([$this->name], array_values($this->names)));
+            })->sortable();
+            $grid->work('作品')->display(function () {
+                return join('<br>', array_merge([$this->work], array_values($this->works)));
+            })->sortable();
+            $grid->column('info->source', '来源')->display(function () {
+                $roles = $this->info['source'] ?? [];
+                $roles = array_map(function ($role) {
+                    return "<span class='label label-success'>{$role}</span>";
+                }, $roles);
+                return join('<br>', $roles);
+            })->sortable();
             $grid->description('描述');
 
-            $grid->column('时间')->display(function () {
-                return '创建于' . $this->created_at . '<br>' . '修改于' . $this->updated_at;
-            });
+            $grid->updated_at('修改时间')->sortable();
 
             $grid->filter(function ($filter) {
                 $filter->disableIdFilter();
@@ -128,21 +128,31 @@ class CharacterController extends Controller
             $form->image('avatar', '头像');
 
             $form->text('name', '角色名');
+            $form->text('work', '作品名');
+
             $form->embeds('names', '其他角色名', function ($form) {
                 $form->text('ja', '日文');
                 $form->text('en', '英文');
             });
-            $form->text('work', '作品名');
+
             $form->embeds('works', '其他作品名', function ($form) {
                 $form->text('ja', '日文');
                 $form->text('en', '英文');
             });
 
+            $form->embeds('info', '额外信息', function ($form) {
+                $form->checkbox('source', '来源')->options(Character::SOURCES)->default('动画');
+            });
             $form->textarea('description', '描述');
-            $form->json('info', '额外信息');
+            //$form->json('info', '额外信息');
 
             $form->display('created_at', '创建时间');
             $form->display('updated_at', '修改时间');
+
+//            $form->saving(function (Form $form) {
+//                $form->info = json_decode($form->info);
+//            });
+
         });
     }
 }
