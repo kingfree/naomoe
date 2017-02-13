@@ -102,12 +102,12 @@ class PoolController extends Controller
 
             $form->display('id', 'ID');
             $form->text('title', '标题');
-            $form->multipleSelect('characters', '角色列表')->options(function ($ids) {
+            $form->multipleSelect('characters', '角色')->options(function ($ids) {
                 $script = <<<JS
 $('.characters').select2().val({$this->characters->pluck('id')}).trigger("change");
 JS;
                 Admin::script($script);
-                return Character::find($ids)->merge($this->characters)->pluck('text', 'id');
+                return $this->characters->merge(Character::find($ids) ?? [])->pluck('text', 'id');
             })->ajax('/admin/api/characters');
             $form->textarea('description', '描述');
         });

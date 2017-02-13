@@ -4,9 +4,13 @@ namespace App\Admin\Controllers;
 
 use App\Character;
 use App\Competition;
+use App\Group;
 use App\Http\Controllers\Controller;
+use App\Option;
 use App\Page;
+use App\Pool;
 use App\User;
+use App\VoteLog;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Column;
 use Encore\Admin\Layout\Content;
@@ -33,13 +37,21 @@ class HomeController extends Controller
             $content->description('后台');
 
             $content->row(function ($row) {
-                $row->column(3, new InfoBox('用户', 'users', 'aqua', '/admin/users', User::count()));
-                $row->column(3, new InfoBox('角色', 'android', 'green', '/admin/characters', Character::count()));
-                $row->column(3, new InfoBox('比赛', 'book', 'red', '/admin/competitions', Competition::count()));
-                $row->column(3, new InfoBox('页面', 'file', 'yellow', '/admin/pages', Page::count()));
+                $row->column(3, new InfoBox('注册用户', 'user ', 'aqua', '/admin/users', User::count()));
+                $row->column(3, new InfoBox('角色', 'user-md ', 'green', '/admin/characters', Character::count()));
+                $row->column(3, new InfoBox('分组', 'users ', 'yellow', '/admin/pages', Group::count()));
+                $row->column(3, new InfoBox('比赛', 'compass ', 'red', '/admin/competitions', Competition::count()));
+            });
+
+            $content->row(function ($row) {
+                $row->column(3, new InfoBox('投票项', 'check-square-o', 'fuchsia', '/admin/options', Option::count()));
+                $row->column(3, new InfoBox('角色池', 'database', 'purple', '/admin/pools', Pool::count()));
+                $row->column(3, new InfoBox('投票记录', 'list', 'maroon', '/admin/votelogs',  VoteLog::count()));
+                $row->column(3, new InfoBox('页面', 'file ', 'teal', '/admin/pages', Page::count()));
             });
 
             $content->row(function (Row $row) {
+                return;
 
                 $row->column(6, function (Column $column) {
 
@@ -104,16 +116,6 @@ class HomeController extends Controller
 
             });
 
-            $headers = ['Id', 'Email', 'Name', 'Company', 'Last Login', 'Status'];
-            $rows = [
-                [1, 'labore21@yahoo.com', 'Ms. Clotilde Gibson', 'Goodwin-Watsica', '1997-08-13 13:59:21', 'open'],
-                [2, 'omnis.in@hotmail.com', 'Allie Kuhic', 'Murphy, Koepp and Morar', '1988-07-19 03:19:08', 'blocked'],
-                [3, 'quia65@hotmail.com', 'Prof. Drew Heller', 'Kihn LLC', '1978-06-19 11:12:57', 'blocked'],
-                [4, 'xet@yahoo.com', 'William Koss', 'Becker-Raynor', '1988-09-07 23:57:45', 'open'],
-                [5, 'ipsa.aut@gmail.com', 'Ms. Antonietta Kozey Jr.', 'Braun Ltd', '2013-10-16 10:00:01', 'open'],
-            ];
-
-            $content->row((new Box('Table', new Table($headers, $rows)))->style('info')->solid());
         });
     }
 }
