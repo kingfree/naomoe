@@ -24,8 +24,8 @@ class OptionController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('投票项');
+            $content->description('可以投票的选项列表');
 
             $content->body($this->grid());
         });
@@ -41,8 +41,8 @@ class OptionController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('编辑投票项');
+            $content->description('');
 
             $content->body($this->form()->edit($id));
         });
@@ -57,8 +57,8 @@ class OptionController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('创建投票项');
+            $content->description('');
 
             $content->body($this->form());
         });

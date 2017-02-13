@@ -24,8 +24,8 @@ class VoteLogController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('投票记录');
+            $content->description('用户每次投票的记录，可以标记多重');
 
             $content->body($this->grid());
         });
@@ -41,8 +41,8 @@ class VoteLogController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('编辑投票记录');
+            $content->description('');
 
             $content->body($this->form()->edit($id));
         });
@@ -57,8 +57,8 @@ class VoteLogController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('创建投票记录');
+            $content->description('');
 
             $content->body($this->form());
         });
@@ -72,6 +72,11 @@ class VoteLogController extends Controller
     protected function grid()
     {
         return Admin::grid(VoteLog::class, function (Grid $grid) {
+            $grid->disableCreation();
+            $grid->actions(function ($actions) {
+                $actions->disableDelete();
+                $actions->disableEdit();
+            });
 
             $grid->id('ID')->sortable();
 

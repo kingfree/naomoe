@@ -25,8 +25,8 @@ class PoolController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('角色池');
+            $content->description('角色组成的临时组，用于生成分组和比赛');
 
             $content->body($this->grid());
         });
@@ -42,8 +42,8 @@ class PoolController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('编辑角色池');
+            $content->description('');
 
             $content->body($this->form()->edit($id));
         });
@@ -58,8 +58,8 @@ class PoolController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('创建角色池');
+            $content->description('');
 
             $content->body($this->form());
         });

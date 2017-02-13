@@ -21,7 +21,7 @@ class Character extends Model
     const SOURCES = [
         '动画' => 'TV动画',
         'OVA' => 'OVA',
-        '剧场版' => '剧场版动画',
+        '剧场版动画' => '剧场版动画',
         '广播剧' => '广播剧',
         '其他' => '其他',
     ];

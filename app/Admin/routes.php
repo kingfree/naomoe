@@ -19,7 +19,7 @@ Route::group([
     $router->resource('competitions', CompetitionController::class);
     $router->resource('options', OptionController::class);
     $router->resource('pages', PageController::class);
-    $router->resource('votes', PoteController::class);
+    $router->resource('votes', VoteController::class);
     $router->resource('votelogs', VoteLogController::class);
 
 });

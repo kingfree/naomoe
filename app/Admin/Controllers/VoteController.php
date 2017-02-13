@@ -24,8 +24,8 @@ class VoteController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('投票');
+            $content->description('用户对某个选项的单独投票记录');
 
             $content->body($this->grid());
         });
@@ -41,10 +41,10 @@ class VoteController extends Controller
     {
         return Admin::content(function (Content $content) use ($id) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('创建投票');
+            $content->description('投票……怎么创建啊');
 
-            $content->body($this->form()->edit($id));
+            // $content->body($this->form()->edit($id));
         });
     }
 
@@ -57,10 +57,10 @@ class VoteController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
-            $content->description('description');
+            $content->header('编辑投票');
+            $content->description('投票也不能编辑');
 
-            $content->body($this->form());
+            // $content->body($this->form());
         });
     }
 
@@ -72,6 +72,11 @@ class VoteController extends Controller
     protected function grid()
     {
         return Admin::grid(Vote::class, function (Grid $grid) {
+            $grid->disableCreation();
+            $grid->actions(function ($actions) {
+                $actions->disableDelete();
+                $actions->disableEdit();
+            });
 
             $grid->id('ID')->sortable();
 
