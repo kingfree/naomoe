@@ -39,19 +39,19 @@ class HomeController extends Controller
             $content->row(function ($row) {
                 $row->column(3, new InfoBox('注册用户', 'user ', 'aqua', '/admin/users', User::count()));
                 $row->column(3, new InfoBox('角色', 'user-md ', 'green', '/admin/characters', Character::count()));
-                $row->column(3, new InfoBox('分组', 'users ', 'yellow', '/admin/pages', Group::count()));
+                $row->column(3, new InfoBox('分组', 'users ', 'yellow', '/admin/groups', Group::count()));
                 $row->column(3, new InfoBox('比赛', 'compass ', 'red', '/admin/competitions', Competition::count()));
             });
 
             $content->row(function ($row) {
                 $row->column(3, new InfoBox('投票项', 'check-square-o', 'fuchsia', '/admin/options', Option::count()));
                 $row->column(3, new InfoBox('角色池', 'database', 'purple', '/admin/pools', Pool::count()));
-                $row->column(3, new InfoBox('投票记录', 'list', 'maroon', '/admin/votelogs',  VoteLog::count()));
+                $row->column(3, new InfoBox('投票记录', 'list', 'maroon', '/admin/votelogs', VoteLog::count()));
                 $row->column(3, new InfoBox('页面', 'file ', 'teal', '/admin/pages', Page::count()));
             });
 
             $content->row(function (Row $row) {
-                return;
+                if (1) return;
 
                 $row->column(6, function (Column $column) {
 
@@ -76,10 +76,10 @@ class HomeController extends Controller
                     $bar = new Bar(
                         ["January", "February", "March", "April", "May", "June", "July"],
                         [
-                            ['First', [40,56,67,23,10,45,78]],
-                            ['Second', [93,23,12,23,75,21,88]],
-                            ['Third', [33,82,34,56,87,12,56]],
-                            ['Forth', [34,25,67,12,48,91,16]],
+                            ['First', [40, 56, 67, 23, 10, 45, 78]],
+                            ['Second', [93, 23, 12, 23, 75, 21, 88]],
+                            ['Third', [33, 82, 34, 56, 87, 12, 56]],
+                            ['Forth', [34, 25, 67, 12, 48, 91, 16]],
                         ]
                     );
                     $collapse->add('Bar', $bar);
