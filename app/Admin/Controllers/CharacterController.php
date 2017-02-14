@@ -131,7 +131,7 @@ class CharacterController extends Controller
             $form->text('work', '作品名')->rules('required');
 
             $form->embeds('names', '其他角色名', function ($form) {
-                $form->text('ja', '日文');
+                $form->text('ja', '日文 ');
                 $form->text('en', '英文');
             });
 

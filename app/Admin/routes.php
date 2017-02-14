@@ -16,6 +16,9 @@ Route::group([
     $router->get('/export/{type}', 'APIController@downloadExcel')->name('export');
     $router->post('/import', 'APIController@importExcel')->name('import');
 
+    $router->get('/generate/{id}', 'APIController@generateGroup')->name('generate');
+    $router->post('/generate', 'APIController@doGenerateGroup')->name('doGenerate');
+
     $router->resource('users', UserController::class);
     $router->resource('characters', CharacterController::class);
     $router->resource('pools', PoolController::class);

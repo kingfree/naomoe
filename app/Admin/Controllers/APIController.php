@@ -3,8 +3,11 @@
 namespace App\Admin\Controllers;
 
 use App\Character;
+use App\Group;
 use App\Http\Controllers\Controller;
+use App\Option;
 use App\Pool;
+use Encore\Admin\Widgets\Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\MessageBag;
@@ -22,6 +25,79 @@ class APIController extends Controller
             ->orWhere('work', 'like', "%$q%")
             ->orWhere('works', 'like', "%$q%")
             ->paginate(null);
+    }
+
+    public function generateGroup($id)
+    {
+        $pool = Pool::find($id);
+        return view('admin.tools.generate')
+            ->withPool($pool);
+    }
+
+    public function doGenerateGroup()
+    {
+        $id = Input::get('id');
+        $title = Input::get('title');
+        $number = intval(Input::get('number'));
+        $allow = Input::get('allow');
+
+        $pool = Pool::find($id);
+        $characters = $pool->characters()->inRandomOrder()->get();
+
+        if ($number <= 1) {
+            $charas = $characters;
+
+            $group = new Group;
+            $group->title = $title;
+            $group->allow = $allow;
+            $group->description = '来自角色池 ' . $pool->title;
+            $group->save();
+            foreach ($charas as $chara) {
+                $option = new Option;
+                $option->group_id = $group->id;
+                $option->character_id = $chara->id;
+                $option->title = $chara->text;
+                $option->description = $chara->names['ja'];
+                $option->save();
+            }
+        } else {
+            $total = count($characters);
+            $every = floor($total / $number);
+            $chunked = array_chunk($characters->toArray(), $every);
+            $index = 1;
+            $groups = [];
+            foreach ($chunked as $charas) {
+                if ($index > $number) {
+                    $n = count($charas);
+                    for ($i = 0; $i < $n; $i++) {
+                        $chara = $charas[$i];
+                        $group = $groups[$i];
+                        $option = new Option;
+                        $option->group_id = $group->id;
+                        $option->character_id = $chara['id'];
+                        $option->title = $chara['name'] . '@' . $chara['work'];
+                        $option->description = $chara['names']['ja'];
+                        $option->save();
+                    }
+                    break;
+                }
+                $group = new Group;
+                $group->title = $title . '-' . $index++;
+                $group->allow = $allow;
+                $group->description = '来自角色池 ' . $pool->title;
+                $group->save();
+                $groups[] = $group;
+                foreach ($charas as $chara) {
+                    $option = new Option;
+                    $option->group_id = $group->id;
+                    $option->character_id = $chara['id'];
+                    $option->title = $chara['name'] . '@' . $chara['work'];
+                    $option->description = $chara['names']['ja'];
+                    $option->save();
+                }
+            }
+        }
+        return redirect()->route('groups.index');
     }
 
     public function importExport()
@@ -74,7 +150,7 @@ class APIController extends Controller
                     }
                 }
                 $success = new MessageBag([
-                    'title'   => '导入Excel',
+                    'title' => '导入Excel',
                     'message' => '导入了' . $number . '个角色！',
                 ]);
                 session()->flash('success', '导入了' . $number . '个角色！');

@@ -76,13 +76,21 @@ class GroupController extends Controller
 
             $grid->id('ID')->sortable();
             $grid->column('competition', '所属比赛')->display(function () {
+                if (!$this->competition_id) return '';
                 return '<a href="'
                     . route('competitions', ['id' => $this->competition->id])
                     . '">' . $this->competition->title . '</a>';
             });
+            $grid->options('选项列表')->value(function ($options) {
+                $options = array_map(function ($character) {
+                    return '<span class="label label-default">' . $character['title'] . '</span>';
+                }, $options);
+                return join(' ', $options);
+            });
+            $grid->column('选项数量')->value(function () {
+                return count($this->options);
+            });
 
-            $grid->created_at();
-            $grid->updated_at();
         });
     }
 
@@ -101,12 +109,10 @@ class GroupController extends Controller
                 ->options(Competition::all()->pluck('title', 'id'));
 
             $form->number('allow', '允许投票数')->default(1);
-            $form->hasMany('options', '选项', function (Form\NestedForm $form) {
-                $form->text('title', '选项');
+            $form->hasMany('options', '选项', function (Form\NestedForm $nest) {
+                $nest->text('title', '选项');
             });
 
-            $form->display('created_at', '创建时间');
-            $form->display('updated_at', '更新时间');
         });
     }
 }

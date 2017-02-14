@@ -82,9 +82,9 @@ class PoolController extends Controller
             $grid->title('标题')->sortable();
             $grid->characters('角色列表')->value(function ($characters) {
                 $characters = array_map(function ($character) {
-                    return $character['name'];
+                    return '<span class="label label-default">' . $character['name'] . '</span>';
                 }, $characters);
-                return join('&nbsp;', $characters);
+                return join(' ', $characters);
             });
             $grid->description('描述')->sortable();
 //            $grid->created_by('创建人')->value(function ($user) {
@@ -92,6 +92,20 @@ class PoolController extends Controller
 //            });
             $grid->created_at('创建时间')->sortable();
             $grid->updated_at('修改时间')->sortable();
+
+
+            $grid->filter(function ($filter) {
+                $filter->disableIdFilter();
+
+                $filter->where(function ($query) {
+                    $query->where('title', 'like', "%{$this->input}%")
+                        ->orWhere('description', 'like', "%{$this->input}%");
+                }, '搜索');
+            });
+
+            $grid->actions(function ($actions) {
+                $actions->prepend('<a href="' . route('generate', ['id' => $actions->getKey()]) . '" title="生成分组"><i class="fa fa-paper-plane"></i></a>');
+            });
         });
     }
 
