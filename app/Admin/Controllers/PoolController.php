@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\Tools\ImportExcel;
 use App\Character;
 use App\Pool;
 
@@ -73,6 +74,9 @@ class PoolController extends Controller
     protected function grid()
     {
         return Admin::grid(Pool::class, function (Grid $grid) {
+            $grid->tools(function ($tools) {
+                $tools->append(new ImportExcel());
+            });
 
             $grid->id('ID')->sortable();
             $grid->title('标题')->sortable();
@@ -107,7 +111,12 @@ class PoolController extends Controller
 $('.characters').select2().val({$this->characters->pluck('id')}).trigger("change");
 JS;
                 Admin::script($script);
-                return $this->characters->merge(Character::find($ids) ?? [])->pluck('text', 'id');
+                $charas = Character::find($ids);
+                if ($charas) {
+                    return $this->characters->pluck('text', 'id');
+                } else {
+                    return $charas->pluck('text', 'id');
+                }
             })->ajax('/admin/api/characters');
             $form->textarea('description', '描述');
         });

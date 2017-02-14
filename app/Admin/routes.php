@@ -12,6 +12,10 @@ Route::group([
 
     $router->get('/api/characters', 'APIController@characters');
 
+    $router->get('/import-export', 'APIController@importExport')->name('import-export');
+    $router->get('/export/{type}', 'APIController@downloadExcel')->name('export');
+    $router->post('/import', 'APIController@importExcel')->name('import');
+
     $router->resource('users', UserController::class);
     $router->resource('characters', CharacterController::class);
     $router->resource('pools', PoolController::class);
