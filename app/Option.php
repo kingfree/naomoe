@@ -41,7 +41,7 @@ class Option extends Model
     public function getAvatarAttribute()
     {
         if ($this->info && $this->info['avatar']) return $this->info['avatar'];
-        return $this->character->avatar;
+        return $this->character->avatar ?? '../../images/default.png';
     }
 
 }

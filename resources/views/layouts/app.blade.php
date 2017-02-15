@@ -8,14 +8,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') - {{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title') - {{ config('app.name', 'naomoe') }}</title>
     <link type="image/png" rel="shortcut icon" href="/favicon.png">
 
     <!-- Styles -->
-    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
-    <script src="/semantic-ui/semantic.min.js"></script>
     <script>
         window.Laravel = {
             "csrfToken": "{{ csrf_token() }}"
@@ -23,9 +22,9 @@
     </script>
 </head>
 <body>
-    <div id="app">
-        <div id="header-component" class="app-viewport">
-            <div class="ui top pink inverted fixed menu">
+<div id="app">
+    <div id="header-component" class="app-viewport">
+        <div class="ui top pink inverted fixed menu">
                 <a class="item" href="/home">
                     {{ config('app.name', 'naomoe') }}
                 </a>
@@ -37,37 +36,43 @@
                 </div>
                 <div class="right menu">
                     @if (Admin::user())
-                    <a class="item" href="/admin"><i class="desktop icon"></i>后台</a>
+                        <a class="item" href="/admin"><i class="desktop icon"></i>后台</a>
                     @endif
                     @if (Auth::check())
-                            <div class="ui dropdown item">
-                                {{ Auth::user()->name }} <i class="dropdown icon"></i>
-                                <div class="menu">
-                                    <a class="item" href="{{ url('/logout') }}"
-                                       onclick="event.preventDefault();
+                        <div class="ui dropdown item">
+                            {{ Auth::user()->name }} <i class="dropdown icon"></i>
+                            <div class="menu">
+                                <a class="item" href="{{ url('/logout') }}"
+                                   onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        退出
-                                    </a>
+                                    退出
+                                </a>
 
-                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </div>
+                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                      style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
                             </div>
-                        @else
-                            <a class="item" href="/login"><i class="sign in icon"></i>登录</a>
-                            <a class="item" href="/register"><i class="user plus icon"></i>注册</a>
-                        @endif
-                </div>
+                        </div>
+                    @else
+                        <a class="item" href="/login"><i class="sign in icon"></i>登录</a>
+                        <a class="item" href="/register"><i class="user plus icon"></i>注册</a>
+                    @endif
             </div>
         </div>
+    </div>
 
+    <div class="ui container">
         <div class="view">
             @yield('content')
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ mix('/js/app.js') }}"></script>
+    @include('layouts.footer')
+    @yield('footer')
+</div>
+
+<!-- Scripts -->
+<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
