@@ -12,77 +12,62 @@
     <link type="image/png" rel="shortcut icon" href="/favicon.png">
 
     <!-- Styles -->
-    <link href="/css/app.css" rel="stylesheet">
-
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
     <!-- Scripts -->
+    <script src="/semantic-ui/semantic.min.js"></script>
     <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
+        window.Laravel = {
+            "csrfToken": "{{ csrf_token() }}"
+        };
     </script>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">伸缩侧边栏</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
+        <div id="header-component" class="app-viewport">
+            <div class="ui top pink inverted fixed menu">
+                <a class="item" href="/home">
+                    {{ config('app.name', 'naomoe') }}
+                </a>
+                <div class="labeled icon menu">
+                    <a class="item" href="/vote"><i class="gamepad icon"></i>投票</a>
+                    <a class="item" href="/schedule"><i class="calendar icon"></i>赛程</a>
+                    <a class="item" href="/discuss"><i class="comments icon"></i>讨论</a>
+                    <a class="item" href="/stock"><i class="payment icon"></i>闹股</a>
                 </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">登录</a></li>
-                            <li><a href="{{ url('/register') }}">注册</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ url('/logout') }}"
-                                            onclick="event.preventDefault();
+                <div class="right menu">
+                    @if (Admin::user())
+                    <a class="item" href="/admin"><i class="desktop icon"></i>后台</a>
+                    @endif
+                    @if (Auth::check())
+                            <div class="ui dropdown item">
+                                {{ Auth::user()->name }} <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <a class="item" href="{{ url('/logout') }}"
+                                       onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            退出
-                                        </a>
+                                        退出
+                                    </a>
 
-                                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
+                                    <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </div>
+                            </div>
+                        @else
+                            <a class="item" href="/login"><i class="sign in icon"></i>登录</a>
+                            <a class="item" href="/register"><i class="user plus icon"></i>注册</a>
                         @endif
-                    </ul>
                 </div>
             </div>
-        </nav>
+        </div>
 
-        @yield('content')
+        <div class="view">
+            @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
-    <script src="/js/app.js"></script>
+    <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

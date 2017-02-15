@@ -17,7 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/vote', 'VoteController@index')->name('vote');
+Route::get('/schedule', 'ScheduleController@index')->name('schedule');
+Route::get('/discuss', 'DiscussController@index')->name('discuss');
+//Route::get('/stock', 'StockController@index')->name('stock');
 
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');

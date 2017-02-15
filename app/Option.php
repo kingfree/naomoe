@@ -31,10 +31,17 @@ class Option extends Model
         return $this->hasMany(Vote::class);
     }
 
-    protected $appends = ['text'];
+    protected $appends = ['text', 'avatar'];
+
     public function getTextAttribute()
     {
         return $this->title;
+    }
+
+    public function getAvatarAttribute()
+    {
+        if ($this->info && $this->info['avatar']) return $this->info['avatar'];
+        return $this->character->avatar;
     }
 
 }
