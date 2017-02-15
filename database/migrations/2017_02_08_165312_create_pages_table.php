@@ -19,9 +19,9 @@ class CreatePagesTable extends Migration
             $table->text('content');
             $table->string('type')->default('common');
             $table->integer('competition_id')->unsigned()->nullable();
-            $table->foreign('competition_id')->references('id')->on('competitions');
+            $table->foreign('competition_id')->references('id')->on('competitions')->onDelete('cascade');
             $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('admin_users');
+            $table->foreign('user_id')->references('id')->on('admin_users')->onDelete('cascade');
             $table->json('info')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();

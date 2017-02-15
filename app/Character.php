@@ -16,8 +16,6 @@ class Character extends Model
         'name', 'names', 'work', 'works', 'avatar', 'info', 'description'
     ];
 
-    protected $appends = ['text'];
-
     const SOURCES = [
         '动画' => 'TV动画',
         'OVA' => 'OVA',
@@ -38,6 +36,7 @@ class Character extends Model
         return $this->hasMany(Option::class);
     }
 
+    protected $appends = ['text'];
     public function getTextAttribute()
     {
         return $this->name . '@' . $this->work;

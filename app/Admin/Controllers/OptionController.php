@@ -113,12 +113,17 @@ class OptionController extends Controller
             $form->text('title', '投票项标题');
 
             $form->select('character_id', '关联角色')->options(function ($id) {
-                $user = Character::find($id);
-                if ($user) {
-                    return [$user->id => $user->text];
+                $chara = Character::find($id);
+                if ($chara) {
+                    return [$chara->id => $chara->text];
                 }
             })->ajax('/admin/api/characters');
-            $form->select('group_id', '关联分组')->options(Group::all()->pluck('text', 'id'));
+            $form->select('group_id', '关联分组')->options(function ($id) {
+                $group = Group::find($id);
+                if ($group) {
+                    return [$group->id => $group->title];
+                }
+            })->ajax('/admin/api/groups');
 
             $form->number('voted', '已投票');
             $form->number('valid', ' 有效票');

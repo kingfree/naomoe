@@ -17,9 +17,9 @@ class CreateOptionsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->integer('character_id')->unsigned();
-            $table->foreign('character_id')->references('id')->on('characters');
+            $table->foreign('character_id')->references('id')->on('characters')->onDelete('cascade');
             $table->integer('group_id')->unsigned();
-            $table->foreign('group_id')->references('id')->on('groups');
+            $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->integer('voted')->unsigned()->default(0);
             $table->integer('valid')->unsigned()->default(0);
             $table->text('description')->nullable();

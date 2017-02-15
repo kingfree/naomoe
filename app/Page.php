@@ -28,4 +28,10 @@ class Page extends Model
     public function created_by() {
         return $this->belongsTo(Administrator::class, 'user_id');
     }
+
+    protected $appends = ['text'];
+    public function getTextAttribute()
+    {
+        return $this->title;
+    }
 }

@@ -9,6 +9,7 @@ class Group extends Model
     protected $casts = [
         'info' => 'json',
     ];
+    protected $fillable = ['competition_id', 'title', 'allow', 'created_at', 'updated_at'];
 
     public function competition()
     {
@@ -18,5 +19,11 @@ class Group extends Model
     public function options()
     {
         return $this->hasMany(Option::class);
+    }
+
+    protected $appends = ['text'];
+    public function getTextAttribute()
+    {
+        return $this->title;
     }
 }

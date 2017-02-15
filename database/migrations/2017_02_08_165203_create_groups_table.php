@@ -16,7 +16,7 @@ class CreateGroupsTable extends Migration
         Schema::create('groups', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('competition_id')->unsigned()->nullable();
-            $table->foreign('competition_id')->references('id')->on('competitions');
+            $table->foreign('competition_id')->references('id')->on('competitions')->onDelete('cascade');
             $table->integer('order')->default(1);
             $table->string('title');
             $table->integer('allow')->unsigned()->default(0);

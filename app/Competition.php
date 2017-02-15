@@ -24,4 +24,10 @@ class Competition extends Model
     {
         return $this->hasMany(Page::class);
     }
+
+    protected $appends = ['text'];
+    public function getTextAttribute()
+    {
+        return $this->title;
+    }
 }

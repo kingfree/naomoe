@@ -18,7 +18,7 @@ class CreatePoolsTable extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->integer('user_id')->unsigned()->nullable();
-            $table->foreign('user_id')->references('id')->on('admin_users');
+            $table->foreign('user_id')->references('id')->on('admin_users')->onDelete('cascade');
             $table->timestamps();
         });
     }

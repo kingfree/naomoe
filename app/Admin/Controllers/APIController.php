@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Character;
+use App\Competition;
 use App\Group;
 use App\Http\Controllers\Controller;
 use App\Option;
@@ -24,6 +25,30 @@ class APIController extends Controller
             ->orWhere('names', 'like', "%$q%")
             ->orWhere('work', 'like', "%$q%")
             ->orWhere('works', 'like', "%$q%")
+            ->paginate(null);
+    }
+
+    public function groups(Request $request)
+    {
+        $q = $request->get('q');
+
+        return Group::where('title', 'like', "%$q%")
+            ->paginate(null);
+    }
+
+    public function competitions(Request $request)
+    {
+        $q = $request->get('q');
+
+        return Competition::where('title', 'like', "%$q%")
+            ->paginate(null);
+    }
+
+    public function options(Request $request)
+    {
+        $q = $request->get('q');
+
+        return Option::where('title', 'like', "%$q%")
             ->paginate(null);
     }
 

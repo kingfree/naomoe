@@ -76,6 +76,12 @@ class CompetitionController extends Controller
             $grid->id('ID')->sortable();
 
             $grid->column('title', '比赛名称')->sortable();
+            $grid->groups('包含分组')->value(function ($characters) {
+                $characters = array_map(function ($character) {
+                    return '<span class="label label-default">' . $character['title'] . '</span>';
+                }, $characters);
+                return join(' ', $characters);
+            });
             $grid->column('voted', '投票')->display(function () {
                 return $this->valid . '/' . $this->voted;
             })->sortable();

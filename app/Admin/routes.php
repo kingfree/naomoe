@@ -11,6 +11,9 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
     $router->get('/api/characters', 'APIController@characters');
+    $router->get('/api/groups', 'APIController@groups');
+    $router->get('/api/competitions', 'APIController@competitions');
+    $router->get('/api/options', 'APIController@options');
 
     $router->get('/import-export', 'APIController@importExport')->name('import-export');
     $router->get('/export/{type}', 'APIController@downloadExcel')->name('export');
