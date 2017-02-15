@@ -20,16 +20,15 @@
   box-shadow: 0 0 1px 1px #e03997, 0 3px 1px 0 #E03997, 0 2px 3px 0 #D4D4D5 !important;
 }
 
-.voting.segment {
-  position: fixed;
+.voting {
+  position: fixed !important;
   bottom: 0;
   z-index: 9999;
-  width: 100%;
-  height: $footer-height;
   margin: 0;
+  width: 100%;
 }
 
-footer {
+.footer {
   width: 100%;
   height: $footer-height;
 }

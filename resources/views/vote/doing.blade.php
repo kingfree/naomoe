@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="ui piled segment">
-        <h2 class="ui header">
+        <h2 class="ui header competition" data-id="{{ $competition->id }}">
             <i class="{{ $competition->info['icon'] ?? 'upload' }} icon"></i>
             <div class="content">
                 {{ $competition->title }}
@@ -20,7 +20,8 @@
                     </div>
                     <div class="ui stackable {{ $group->info['columns'] ?? 'seven' }} column grid link doing cards">
                         @foreach($group->options as $option)
-                            <div class="card option" data-id="{{ $option->id }}" data-allow="{{ $group->allow }}" data-group="{{ $group->id }}">
+                            <div class="card option" data-id="{{ $option->id }}" data-allow="{{ $group->allow }}"
+                                 data-group="{{ $group->id }}">
                                 <div class="image">
                                     <img src="{{ config('admin.upload.host') . $option->avatar }}">
                                 </div>
@@ -39,25 +40,27 @@
 @endsection
 
 @section('footer')
-    <footer></footer>
-    <div class="voting ui material tall stacked clearing stackable segment grid">
-        <div class="fourteen wide column">
+    <div class="footer"></div>
+    <div class="voting ui material">
+        <div class="ui stackable segments">
             @foreach($competition->groups as $group)
-                <div class="ui horizontal list">
-                    <div class="item">{{ $group->title }}</div>
-                    @foreach($group->options as $option)
-                        <div class="item hidden" data-id="{{ $option->id }}">
-                            <img class="ui avatar image" src="{{ config('admin.upload.host') . $option->avatar }}">
-                            <div class="content">
-                                <div class="header">{{ $option->character->name }}</div>
+                <div class="ui segment">
+                    <div class="ui horizontal stackable list">
+                        <div class="item">{{ $group->title }}</div>
+                        @foreach($group->options as $option)
+                            <div class="item hidden" data-id="{{ $option->id }}">
+                                <img class="ui avatar image" src="{{ config('admin.upload.host') . $option->avatar }}">
+                                <div class="content">
+                                    <div class="header">{{ $option->character->name }}</div>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 </div>
             @endforeach
-        </div>
-        <div class="two wide column">
-            <button class="ui right floated pink submit button">投票</button>
+            <div class="ui pink segment">
+                <button class="ui pink submit button">投票</button>
+            </div>
         </div>
     </div>
 @endsection

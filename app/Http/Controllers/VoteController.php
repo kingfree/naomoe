@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Competition;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 
 class VoteController extends Controller
 {
@@ -16,13 +18,34 @@ class VoteController extends Controller
             ->where('end_at', '>=', $now)
             ->first();
         if ($competition) {
-            return view('vote.doing')->withCompetition($competition);
+            return redirect()->route('doing', ['id' => $competition->id]);
         }
-        $competition = Competition::where('end_at', '>', $now)
-            ->where('start_at', $today)
-            ->first();
-        if ($competition) {
-            return view('vote.after')->withCompetition($competition);
-        }
+    }
+
+    public function willdo($id)
+    {
+        return view('vote.before')->withCompetition(Competition::find($id));
+    }
+
+    public function doing($id)
+    {
+        return view('vote.doing')->withCompetition(Competition::find($id));
+    }
+
+    public function did($id)
+    {
+        return view('vote.after')->withCompetition(Competition::find($id));
+    }
+
+    public function vote()
+    {
+        $info = [
+            'ip' => request()->getClientIp(),
+            'header' => request()->header(),
+            'body' => request()->all()
+        ];
+        $compId = Input::get('competition_id');
+        $votes = Input::get('votes');
+        // TODO
     }
 }

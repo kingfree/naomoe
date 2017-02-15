@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/vote', 'VoteController@index')->name('vote');
+Route::get('/vote/{id}', 'VoteController@willdo')->name('before');
+Route::get('/voting/{id}', 'VoteController@doing')->name('doing');
+Route::get('/voted/{id}', 'VoteController@willdo')->name('after');
+Route::post('/vote', 'VoteController@vote')->name('doVote');
 Route::get('/schedule', 'ScheduleController@index')->name('schedule');
 Route::get('/discuss', 'DiscussController@index')->name('discuss');
 //Route::get('/stock', 'StockController@index')->name('stock');

@@ -1,4 +1,4 @@
-if (window.location.href.includes('/vote')) {
+if (window.location.href.includes('/voting')) {
 
     $('.doing .option').on('click', function () {
         $(this).transition('pulse');
@@ -16,9 +16,27 @@ if (window.location.href.includes('/vote')) {
         }
 
         $(this).toggleClass('selected');
-        show = $(this).hasClass('selected');
-        $('.voting .item[data-id="' + id + '"]').toggleClass('hidden', !show);
-        $('.group[data-id=' + groupId + '] .sub.header').text((len + 1) + ' / ' + allow);
+        $('.voting .item[data-id="' + id + '"]').toggleClass('hidden', show);
+        $('.group[data-id=' + groupId + '] .sub.header').text((len + (show ? -1 : +1)) + ' / ' + allow);
+
+        $('.footer').height($('.voting').height());
+    });
+
+    $('.voting .submit').on('click', function (event) {
+        event.preventDefault();
+        var compId = $('.competition').data('id');
+        var votes = [];
+        $('.option.selected').each(function (i, e) {
+            votes.push($(e).data('id'));
+        });
+        axios.post('/vote', {
+            competition_id: compId,
+            votes: votes
+        }).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
     });
 
 }
