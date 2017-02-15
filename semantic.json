@@ -1,0 +1,22 @@
+{
+  "base": "semantic/",
+  "paths": {
+    "source": {
+      "config": "src/theme.config",
+      "definitions": "src/definitions/",
+      "site": "src/site/",
+      "themes": "src/themes/"
+    },
+    "output": {
+      "packaged": "../public/semantic-ui/",
+      "uncompressed": "../public/semantic-ui/components/",
+      "compressed": "../public/semantic-ui/components/",
+      "themes": "../public/semantic-ui/themes/"
+    },
+    "clean": "../public/semantic-ui/"
+  },
+  "permission": false,
+  "autoInstall": false,
+  "rtl": false,
+  "version": "2.2.7"
+}
