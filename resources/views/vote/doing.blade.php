@@ -20,7 +20,8 @@
                     </div>
                     <div class="ui stackable {{ $group->infos()['columns'] ?? 'seven' }} column grid link doing cards">
                         @foreach($group->options as $option)
-                            <div class="card option" data-id="{{ $option->id }}" data-allow="{{ $group->allow }}"
+                            <div class="card option {{ $log->voted($option->id) ? 'selected' : '' }}"
+                                 data-id="{{ $option->id }}" data-allow="{{ $group->allow }}"
                                  data-group="{{ $group->id }}">
                                 <div class="image">
                                     <img src="{{ config('admin.upload.host') . $option->avatar }}">
@@ -73,7 +74,7 @@
                             <div class="header">{{ $group->title }}</div>
                         </div>
                         @foreach($group->options as $option)
-                            <div class="item hidden" data-id="{{ $option->id }}">
+                            <div class="item {{ $log->voted($option->id) ? '' : 'hidden' }}" data-id="{{ $option->id }}">
                                 <img class="ui avatar image" src="{{ config('admin.upload.host') . $option->avatar }}">
                                 <div class="content">{{ $option->character->lname }}</div>
                             </div>
@@ -82,7 +83,7 @@
                 </div>
             @endforeach
             <div class="ui pink segment">
-                <button class="ui pink submit button">@lang('vote.vote')</button>
+                <button class="ui pink submit button {{ $log->id ? 'disabled' : '' }}">@lang('vote.vote')</button>
                 @lang('vote.noneed')
             </div>
         </div>

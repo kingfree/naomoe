@@ -46,4 +46,17 @@ class VoteLog extends Model
         return json_decode($this->body, true) ?? [];
     }
 
+    public function voted($id)
+    {
+        foreach ($this->votes as $vote) {
+            if ($vote->option_id === $id) return true;
+        }
+        return false;
+    }
+
+    public function votedGroup($gid)
+    {
+
+    }
+
 }

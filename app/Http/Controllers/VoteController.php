@@ -39,7 +39,18 @@ class VoteController extends Controller
 
         $comp = Competition::find($id);
         if (!$comp->inTime()) return redirect()->route('did', ['id' => $id]);
-        return view('vote.doing')->withCompetition($comp);
+
+        $user = Auth::user();
+        if ($user) {
+            $log = VoteLog::firstOrNew([
+                'user_id' => $user->id,
+                //'competition_id' => $comp->id
+            ]);
+        } else {
+            $log = new VoteLog;
+        }
+
+        return view('vote.doing')->withCompetition($comp)->withLog($log);
     }
 
     public function did($id)
