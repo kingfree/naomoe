@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Page extends Model
 {
-    protected $casts = [
-        'info' => 'json',
-    ];
+//    protected $casts = [
+//        'info' => 'json',
+//    ];
 
     public static function boot() {
         parent::boot();
@@ -27,6 +27,11 @@ class Page extends Model
 
     public function created_by() {
         return $this->belongsTo(Administrator::class, 'user_id');
+    }
+
+    public function infos()
+    {
+        return json_decode($this->info, true) ?? [];
     }
 
     protected $appends = ['text'];

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Option extends Model
 {
-    protected $casts = [
-        'info' => 'json',
-    ];
+//    protected $casts = [
+//        'info' => 'json',
+//    ];
     protected $fillable = ['character_id', 'group_id', 'title', 'valid', 'voted', 'created_at', 'updated_at'];
 
     public function character()
@@ -31,6 +31,20 @@ class Option extends Model
         return $this->hasMany(Vote::class);
     }
 
+    public function infos()
+    {
+        return json_decode($this->info, true) ?? [];
+    }
+
+    public function avatar()
+    {
+        $avatar = array_get($this->infos(), 'avatar', null);
+        if ($avatar) return $avatar;
+        $avatar = $this->group->avatar();
+        if ($avatar) return $avatar;
+        return $this->character->avatar ?? '../../images/default.png';
+    }
+
     protected $appends = ['text', 'avatar'];
 
     public function getTextAttribute()
@@ -40,9 +54,7 @@ class Option extends Model
 
     public function getAvatarAttribute()
     {
-        if ($this->info && $this->info['avatar']) return $this->info['avatar'];
-        if ($this->group->avatar()) return $this->group->avatar();
-        return $this->character->avatar ?? '../../images/default.png';
+        return $this->avatar();
     }
 
 }

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Competition extends Model
 {
-    protected $casts = [
-        'info' => 'json',
-    ];
+//    protected $casts = [
+//        'info' => 'json',
+//    ];
 
     public function groups()
     {
@@ -23,6 +23,11 @@ class Competition extends Model
     public function pages()
     {
         return $this->hasMany(Page::class);
+    }
+
+    public function infos()
+    {
+        return json_decode($this->info, true) ?? [];
     }
 
     protected $appends = ['text'];

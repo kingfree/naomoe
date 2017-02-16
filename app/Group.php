@@ -18,7 +18,7 @@ class Group extends Model
 
     public function options()
     {
-        return $this->hasMany(Option::class);
+        return $this->hasMany(Option::class)->orderBy('character_id');
     }
 
     public function infos()
@@ -28,7 +28,6 @@ class Group extends Model
 
     public function avatar()
     {
-        //dump($this->infos());
         return array_get($this->infos(), 'avatar', null);
     }
 

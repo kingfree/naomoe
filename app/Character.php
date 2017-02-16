@@ -10,7 +10,7 @@ class Character extends Model
     protected $casts = [
         'names' => 'json',
         'works' => 'json',
-        'info' => 'json',
+        //'info' => 'json',
     ];
 
     protected $fillable = [
@@ -45,6 +45,11 @@ class Character extends Model
         return $this->hasMany(Option::class);
     }
 
+    public function infos()
+    {
+        return json_decode($this->info, true) ?? [];
+    }
+
     protected $appends = ['text', 'lname', 'lwork', 'source'];
 
     public function getTextAttribute()
@@ -72,7 +77,7 @@ class Character extends Model
 
     public function getSourceAttribute()
     {
-        $sources = $this->info ? ($this->info['source'] ?? []) : [];
+        $sources = $this->infos()['source'] ?? [];
         if (App::getLocale() === 'ja') return array_map(function ($e) {
             return self::SOURCES_ja[$e];
         }, $sources);
