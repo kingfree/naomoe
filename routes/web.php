@@ -17,6 +17,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/lang/{lang}', 'LanguageController@index')->name('language');
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/vote', 'VoteController@index')->name('vote');
 Route::get('/vote/{id}', 'VoteController@willdo')->name('before');

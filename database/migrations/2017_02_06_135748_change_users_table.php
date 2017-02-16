@@ -19,7 +19,7 @@ class ChangeUsersTable extends Migration
           $table->string('password')->nullable()->change();
           $table->string('avatar')->nullable();
           $table->string('provider')->nullable();
-          $table->string('provider_id')->unique();
+          $table->string('provider_id')->nullable();
         });
     }
 

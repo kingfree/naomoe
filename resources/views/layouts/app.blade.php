@@ -26,39 +26,39 @@
 <div id="app">
     <div id="header-component" class="app-viewport">
         <div class="ui top pink inverted fixed menu">
-                <a class="item" href="/">
-                    {{ config('app.name', 'naomoe') }}
-                </a>
-                <div class="labeled icon menu">
-                    <a class="item" href="/vote"><i class="gamepad icon"></i>投票</a>
-                    <a class="item" href="/schedule"><i class="calendar icon"></i>赛程</a>
-                    <a class="item" href="/discuss"><i class="comments icon"></i>讨论</a>
-                    <a class="item" href="/stock"><i class="payment icon"></i>闹股</a>
-                </div>
-                <div class="right menu">
-                    @if (Admin::user())
-                        <a class="item" href="/admin"><i class="desktop icon"></i>后台</a>
-                    @endif
-                    @if (Auth::check())
-                        <div class="ui dropdown item">
-                            {{ Auth::user()->name }} <i class="dropdown icon"></i>
-                            <div class="menu">
-                                <a class="item" href="{{ url('/logout') }}"
-                                   onclick="event.preventDefault();
+            <a class="item" href="/">
+                {{ config('app.name', 'naomoe') }}
+            </a>
+            <div class="labeled icon menu">
+                <a class="item" href="/vote"><i class="gamepad icon"></i>@lang('投票')</a>
+                <a class="item" href="/schedule"><i class="calendar icon"></i>@lang('赛程')</a>
+                <a class="item" href="/discuss"><i class="comments icon"></i>@lang('讨论')</a>
+                <a class="item" href="/stock"><i class="payment icon"></i>闹股</a>
+            </div>
+            <div class="right menu">
+                @if (Admin::user())
+                    <a class="item" href="/admin"><i class="desktop icon"></i>后台</a>
+                @endif
+                @if (Auth::check())
+                    <div class="ui dropdown item">
+                        {{ Auth::user()->name }} <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <a class="item" href="{{ url('/logout') }}"
+                               onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                    退出
-                                </a>
+                                退出
+                            </a>
 
-                                <form id="logout-form" action="{{ url('/logout') }}" method="POST"
-                                      style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </div>
+                            <form id="logout-form" action="{{ url('/logout') }}" method="POST"
+                                  style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
                         </div>
-                    @else
-                        <a class="item" href="/login"><i class="sign in icon"></i>登录</a>
-                        <a class="item" href="/register"><i class="user plus icon"></i>注册</a>
-                    @endif
+                    </div>
+                @else
+                    <a class="item" href="/login"><i class="sign in icon"></i>登录</a>
+                    <a class="item" href="/register"><i class="user plus icon"></i>注册</a>
+                @endif
             </div>
         </div>
     </div>
