@@ -17,6 +17,7 @@ class Page extends Model
 
         static::saving(function($table)  {
             $table->user_id = Admin::user()->id;
+            if (!is_string($table->info)) $table->info = json_encode($table->info);
         });
     }
 

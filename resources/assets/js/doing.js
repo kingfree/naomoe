@@ -35,14 +35,36 @@ if (window.location.href.includes('/voting')) {
                 competition_id: compId,
                 votes: votes
             }).then(function (response) {
-                console.log(response);
-            }).catch(function (error) {
-                console.log(error);
+                if (response.data.code === 0) {
+                    swal({
+                        title: response.data.info,
+                        timer: 1000,
+                        type: "success"
+                    }, function () {
+                        window.location.href = '/vote';
+                    });
+                } else {
+                    swal({
+                        title: response.data.info,
+                        timer: 1000,
+                        type: "error"
+                    });
+                }
             })
         };
         var showAlert = function (cb) {
             var text = '';
-            $('.voting .item').not('.hidden').each(function (i, e) {
+            var selected = $('.option.selected');
+            if (!selected.length) {
+                swal({
+                    title: messages.select_one,
+                    timer: 1000,
+                    type: "warning"
+                });
+                return false;
+            }
+            var votes = $('.voting .item').not('.hidden');
+            votes.each(function (i, e) {
                 text += $(e).html();
             });
             swal({
@@ -54,19 +76,12 @@ if (window.location.href.includes('/voting')) {
                 confirmButtonColor: "#c71f7e",
                 confirmButtonText: messages.confirmButtonText,
                 cancelButtonText: messages.cancelButtonText,
-                closeOnConfirm: false
+                closeOnConfirm: false,
+                showLoaderOnConfirm: true
             }, function (isConfirm) {
                 if (isConfirm) cb();
                 return true;
             });
-        };
-
-        var showError = function (cb) {
-
-        };
-
-        var showSuccess = function (cb) {
-
         };
 
         axios.post('/amiok', {}).then(function (response) {

@@ -45,6 +45,15 @@ class Character extends Model
         return $this->hasMany(Option::class);
     }
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($table) {
+            if (!is_string($table->info)) $table->info = json_encode($table->info);
+        });
+    }
+
     public function infos()
     {
         return json_decode($this->info, true) ?? [];

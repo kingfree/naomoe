@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Competition;
 use App\Option;
 use App\User;
+use App\Vote;
 use App\VoteLog;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -36,7 +37,9 @@ class VoteController extends Controller
     {
         language();
 
-        return view('vote.doing')->withCompetition(Competition::find($id));
+        $comp = Competition::find($id);
+        if (!$comp->inTime()) return redirect()->route('did', ['id' => $id]);
+        return view('vote.doing')->withCompetition($comp);
     }
 
     public function did($id)
@@ -69,38 +72,50 @@ class VoteController extends Controller
     {
         language();
 
-        $info = [
-            'ip' => request()->getClientIp(),
-            'header' => request()->header(),
-            'body' => request()->all()
-        ];
-        $info['header']['cookie'] = [];
-        $info['header']['x-xsrf-token'] = [];
-        $info['header']['x-csrf-token'] = [];
+        $ip = request()->getClientIp();
+        $header = request()->header();
+        $body = request()->all();
+        $header['cookie'] = [];
+        $header['x-xsrf-token'] = [];
+        $header['x-csrf-token'] = [];
 
         $compId = Input::get('competition_id');
 
         $comp = Competition::find($compId);
-        if (!$comp) return response('Competition Not Found', 404);
-        dump($comp);
-        dump($info);
+        if (!$comp || !$comp->inTime()) return response()->json(['code' => 404, 'info' => __('vote.no_competition')]);
         $voteIds = Input::get('votes');
         $votes = Option::find($voteIds);
-        dd($votes);
+        if (!$votes || !count($votes)) return response()->json(['code' => 404, 'info' => __('vote.no_votes')]);
 
         $user = Auth::user();
+        if (!$user) return response()->json(['code' => 403, 'info' => __('vote.not_login')]);
+        $voted = VoteLog::where('user_id', $user->id)->where('competition_id', $compId)->first();
+        if ($voted) return response()->json(['code' => 403, 'info' => __('vote.already_voted')]);
+
         $log = new VoteLog;
-
+        $log->competition_id = $compId;
+        $log->user_id = $user->id;
+        $log->header = $header;
+        $log->body = $body;
+        $log->ip = $ip;
         $log->save();
-
-        if (!$user) {
-            return response('Not Login', 403);
+        foreach ($votes as $option) {
+            $vote = Vote::find([
+                'user_id' => $user->id,
+                'option_id' => $option->id
+            ])->first();
+            if (!$vote) {
+                $vote = Vote::create([
+                    'vote_log_id' => $log->id,
+                    'user_id' => $user->id,
+                    'option_id' => $option->id
+                ]);
+                $option->voted++;
+                $option->valid++;
+                $option->save();
+            }
         }
 
-        if ($user->voted($compId)) {
-            return response()->json(['code' => 301, 'info' => __('vote.already_voted')]);
-        } else {
-
-        }
+        return response()->json(['code' => 0, 'info' => __('vote.success')]);
     }
 }

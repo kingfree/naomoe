@@ -9,6 +9,7 @@ class Option extends Model
 //    protected $casts = [
 //        'info' => 'json',
 //    ];
+
     protected $fillable = ['character_id', 'group_id', 'title', 'valid', 'voted', 'created_at', 'updated_at'];
 
     public function character()
@@ -29,6 +30,15 @@ class Option extends Model
     public function votes()
     {
         return $this->hasMany(Vote::class);
+    }
+
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($table) {
+            if (!is_string($table->info)) $table->info = json_encode($table->info);
+        });
     }
 
     public function infos()

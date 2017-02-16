@@ -44,7 +44,8 @@
         var messages = {
             title: "{{__('vote.confirm_title')}}",
             confirmButtonText: "{{__('vote.confirm')}}",
-            cancelButtonText: "{{__('vote.cancel')}}"
+            cancelButtonText: "{{__('vote.cancel')}}",
+            select_one: "{{__('vote.select_one')}}"
         };
     </script>
 

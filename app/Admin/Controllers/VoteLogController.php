@@ -2,6 +2,8 @@
 
 namespace App\Admin\Controllers;
 
+use App\Competition;
+use App\User;
 use App\VoteLog;
 
 use Encore\Admin\Form;
@@ -74,11 +76,21 @@ class VoteLogController extends Controller
         return Admin::grid(VoteLog::class, function (Grid $grid) {
             $grid->disableCreation();
             $grid->actions(function ($actions) {
-                $actions->disableDelete();
+                //$actions->disableDelete();
                 $actions->disableEdit();
             });
 
             $grid->id('ID')->sortable();
+            $grid->column('user_id', '用户')->display(function ($id) {
+                return User::find($id)->name;
+            })->sortable();
+            $grid->column('competition_id', '比赛')->display(function ($id) {
+                return Competition::find($id)->title;
+            })->sortable();
+            $grid->column('ip', 'IP');
+            $grid->column('header', '请求头部');
+            $grid->column('body', '请求体');
+            $grid->valid('有效票')->switch();
 
             $grid->created_at();
             $grid->updated_at();

@@ -16,30 +16,34 @@ class VoteLog extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function competition()
+    {
+        return $this->belongsTo(Competition::class);
+    }
+
     public function votes()
     {
         return $this->hasMany(Vote::class);
     }
 
-    public function request()
+    public static function boot()
     {
-        return json_decode($this->request, true) ?? [];
-    }
-
-    public function response()
-    {
-        return json_decode($this->response, true) ?? [];
-    }
-
-    public static function boot() {
         parent::boot();
 
-//        static::creating(function($log)  {
-//            $req = $log->request();
-//            $header = array_get($req, 'header');
-//            $body = array_get($req, 'body');
-//            $comp = array_get($body, 'competition_id');
-//            $votes = array_get($body, 'votes');
-//        });
+        static::saving(function ($table) {
+            if (!is_string($table->header)) $table->header = json_encode($table->header);
+            if (!is_string($table->body)) $table->body = json_encode($table->body);
+        });
     }
+
+    public function header()
+    {
+        return json_decode($this->header, true) ?? [];
+    }
+
+    public function body()
+    {
+        return json_decode($this->body, true) ?? [];
+    }
+
 }

@@ -22,6 +22,7 @@ class CreateOptionsTable extends Migration
             $table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
             $table->integer('voted')->unsigned()->default(0);
             $table->integer('valid')->unsigned()->default(0);
+            $table->json('info');
             $table->text('description')->nullable();
             $table->timestamps();
         });
