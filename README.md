@@ -7,6 +7,7 @@ vim .env
 
 ```
 composer install
+npm install
 php artisan key:generate
 php artisan admin:install
 php artisan migrate
