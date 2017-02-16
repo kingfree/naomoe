@@ -12,3 +12,7 @@ php artisan admin:install
 php artisan migrate
 php artisan storage:link
 ```
+
+```
+npm rebuild node-sass 
+```

@@ -26,20 +26,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">电子邮件</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">密码</label>
 
@@ -70,16 +56,6 @@
                             </div>
                         </div>
 
-                        <hr>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <a href="{{ url('/auth/weibo') }}" class="btn btn-weibo"><i class="fa fa-weibo"></i> 微博</a>
-                                <a href="{{ url('/auth/qq') }}" class="btn btn-qq"><i class="fa fa-qq"></i> QQ</a>
-                                <a href="{{ url('/auth/weixin') }}" class="btn btn-weixin"><i class="fa fa-weixin"></i> 微信</a>
-                                <a href="{{ url('/auth/baidu') }}" class="btn btn-baidu"><i class="fa fa-baidu"></i> 贴吧</a>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>

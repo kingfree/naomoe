@@ -38,7 +38,13 @@ return [
     'weibo' => [
         'client_id' => env('WEIBO_KEY'),
         'client_secret' => env('WEIBO_SECRET'),
-        'redirect' => env('WEIBO_REDIRECT_URI'),
+        'redirect' => env('APP_URL') . env('WEIBO_REDIRECT_URI'),
+    ],
+
+    'twitter' => [
+        'client_id' => env('TWITTER_KEY'),
+        'client_secret' => env("TWITTER_SECRET"),
+        'redirect' => env('APP_URL') . env('TWITTER_REDIRECT_URI'),
     ],
 
 ];

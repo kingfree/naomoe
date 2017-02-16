@@ -12,6 +12,7 @@
     <link type="image/png" rel="shortcut icon" href="/favicon.png">
 
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/packages/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
@@ -25,7 +26,7 @@
 <div id="app">
     <div id="header-component" class="app-viewport">
         <div class="ui top pink inverted fixed menu">
-                <a class="item" href="/home">
+                <a class="item" href="/">
                     {{ config('app.name', 'naomoe') }}
                 </a>
                 <div class="labeled icon menu">
