@@ -22,21 +22,61 @@ if (window.location.href.includes('/voting')) {
         $('.footer').height($('.voting').height());
     });
 
+
     $('.voting .submit').on('click', function (event) {
         event.preventDefault();
-        var compId = $('.competition').data('id');
-        var votes = [];
-        $('.option.selected').each(function (i, e) {
-            votes.push($(e).data('id'));
-        });
-        axios.post('/vote', {
-            competition_id: compId,
-            votes: votes
-        }).then(function (response) {
-            console.log(response);
+        var vote = function () {
+            var compId = $('.competition').data('id');
+            var votes = [];
+            $('.option.selected').each(function (i, e) {
+                votes.push($(e).data('id'));
+            });
+            axios.post('/vote', {
+                competition_id: compId,
+                votes: votes
+            }).then(function (response) {
+                console.log(response);
+            }).catch(function (error) {
+                console.log(error);
+            })
+        };
+        var showAlert = function (cb) {
+            var text = '';
+            $('.voting .item').not('.hidden').each(function (i, e) {
+                text += $(e).html();
+            });
+            swal({
+                title: messages.title,
+                text: '<div class="ui mini horizontal list">' + text + '</div>',
+                html: true,
+                type: null,
+                showCancelButton: true,
+                confirmButtonColor: "#c71f7e",
+                confirmButtonText: messages.confirmButtonText,
+                cancelButtonText: messages.cancelButtonText,
+                closeOnConfirm: false
+            }, function (isConfirm) {
+                if (isConfirm) cb();
+                return true;
+            });
+        };
+
+        var showError = function (cb) {
+
+        };
+
+        var showSuccess = function (cb) {
+
+        };
+
+        axios.post('/amiok', {}).then(function (response) {
+            showAlert(vote);
         }).catch(function (error) {
-            console.log(error);
+            axios.post('/create', {}).then(function (response) {
+                showAlert(vote);
+            });
         });
+        return false;
     });
 
 }

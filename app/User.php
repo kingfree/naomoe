@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -36,5 +37,16 @@ class User extends Authenticatable
     public function vote_logs()
     {
         return $this->hasMany(VoteLog::class);
+    }
+
+    public static function tryToGetUser()
+    {
+        $user = Auth::user();
+        if ($user) return $user;
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+        ]);
     }
 }

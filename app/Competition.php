@@ -30,6 +30,11 @@ class Competition extends Model
         return json_decode($this->info, true) ?? [];
     }
 
+    public function icon()
+    {
+        return $this->infos()['icon'] ?? 'upload';
+    }
+
     protected $appends = ['text'];
     public function getTextAttribute()
     {

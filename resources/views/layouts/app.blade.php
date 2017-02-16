@@ -14,6 +14,7 @@
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="/packages/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="/packages/sweetalert/dist/sweetalert.css">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
@@ -74,6 +75,7 @@
 </div>
 
 <!-- Scripts -->
+<script src="/packages/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>
