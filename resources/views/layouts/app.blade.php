@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ language() }}">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title') - {{ config('app.name', 'naomoe') }}</title>
+    <title>@yield('title') - @lang('welcome.naomoe')</title>
     <link type="image/png" rel="shortcut icon" href="/favicon.png">
 
     <!-- Styles -->
@@ -26,18 +26,18 @@
 <div id="app">
     <div id="header-component" class="app-viewport">
         <div class="ui top pink inverted fixed menu">
-            <a class="item" href="/">
-                {{ config('app.name', 'naomoe') }}
-            </a>
+            <a class="item" href="/">@lang('welcome.naomoe')</a>
             <div class="labeled icon menu">
-                <a class="item" href="/vote"><i class="gamepad icon"></i>@lang('投票')</a>
-                <a class="item" href="/schedule"><i class="calendar icon"></i>@lang('赛程')</a>
-                <a class="item" href="/discuss"><i class="comments icon"></i>@lang('讨论')</a>
-                <a class="item" href="/stock"><i class="payment icon"></i>闹股</a>
+                <a class="item" href="/vote"><i class="gamepad icon"></i>@lang('welcome.votes')</a>
+                <a class="item" href="/schedule"><i class="calendar icon"></i>@lang('welcome.schedule')</a>
+                <a class="item" href="/discuss"><i class="comments icon"></i>@lang('welcome.discuss')</a>
+                @if (Route::has('stotk'))
+                    <a class="item" href="/stock"><i class="payment icon"></i>@lang('welcome.stock')</a>
+                @endif
             </div>
             <div class="right menu">
                 @if (Admin::user())
-                    <a class="item" href="/admin"><i class="desktop icon"></i>后台</a>
+                    <a class="item" href="/admin"><i class="desktop icon"></i>@lang('welcome.admin')</a>
                 @endif
                 @if (Auth::check())
                     <div class="ui dropdown item">
@@ -56,8 +56,8 @@
                         </div>
                     </div>
                 @else
-                    <a class="item" href="/login"><i class="sign in icon"></i>登录</a>
-                    <a class="item" href="/register"><i class="user plus icon"></i>注册</a>
+                    <a class="item" href="/login"><i class="sign in icon"></i>@lang('welcome.login')</a>
+                    <a class="item" href="/register"><i class="user plus icon"></i>@lang('welcome.register')</a>
                 @endif
             </div>
         </div>

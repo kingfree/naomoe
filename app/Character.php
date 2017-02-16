@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App;
 
 class Character extends Model
 {
@@ -24,6 +25,14 @@ class Character extends Model
         '其他' => '其他',
     ];
 
+    const SOURCES_ja = [
+        '动画' => 'テレビアニメ',
+        'OVA' => 'OVA',
+        '剧场版动画' => '劇場版アニメ',
+        '广播剧' => 'ラジオ番組',
+        '其他' => 'その他',
+    ];
+
     public function pools()
     {
         return $this->belongsToMany(Pool::class,
@@ -36,9 +45,37 @@ class Character extends Model
         return $this->hasMany(Option::class);
     }
 
-    protected $appends = ['text'];
+    protected $appends = ['text', 'lname', 'lwork', 'source'];
+
     public function getTextAttribute()
     {
         return $this->name . '@' . $this->work;
+    }
+
+    public function getLnameAttribute()
+    {
+        if ($this->names) {
+            $name = array_get($this->names, App::getLocale(), $this->name);
+            if (!empty($name)) return $name;
+        }
+        return $this->name;
+    }
+
+    public function getLworkAttribute()
+    {
+        if ($this->works) {
+            $work = array_get($this->works, App::getLocale(), $this->work);
+            if (!empty($work)) return $work;
+        }
+        return $this->work;
+    }
+
+    public function getSourceAttribute()
+    {
+        $sources = $this->info ? ($this->info['source'] ?? []) : [];
+        if (App::getLocale() === 'ja') return array_map(function ($e) {
+            return self::SOURCES_ja[$e];
+        }, $sources);
+        return $sources;
     }
 }

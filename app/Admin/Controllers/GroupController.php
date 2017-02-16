@@ -76,6 +76,9 @@ class GroupController extends Controller
         return Admin::grid(Group::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
+            $grid->column('info', '头像')->value(function ($info) {
+                return json_decode($info, true)['avatar'];
+            })->image();
             $grid->column('title', '分组')->sortable();
             $grid->column('competition_id', '所属比赛')->display(function ($id) {
                 if (!$id) return '';
@@ -103,15 +106,15 @@ class GroupController extends Controller
     protected function form()
     {
         return Admin::form(Group::class, function (Form $form) {
-
-            $form->display('id', 'ID');
+            $form->text('title', '分组名');
+            $form->number('order', '顺序');
             $form->select('competition_id', '关联比赛')->options(function ($id) {
                 $competition = Competition::find($id);
                 if ($competition) {
                     return [$competition->id => $competition->title];
                 }
             })->ajax('/admin/api/competitions');
-
+            $form->json('info', '其他信息');
             $form->number('allow', '允许投票数')->default(1);
             $form->hasMany('options', '选项', function (Form\NestedForm $nest) {
                 $nest->text('title', '选项');

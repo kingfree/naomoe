@@ -1,3 +1,4 @@
+//noinspection JSAnnotator
 const { mix } = require('laravel-mix');
 
 /*

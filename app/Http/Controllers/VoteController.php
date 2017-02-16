@@ -24,16 +24,22 @@ class VoteController extends Controller
 
     public function willdo($id)
     {
+        language();
+
         return view('vote.before')->withCompetition(Competition::find($id));
     }
 
     public function doing($id)
     {
+        language();
+
         return view('vote.doing')->withCompetition(Competition::find($id));
     }
 
     public function did($id)
     {
+        language();
+
         return view('vote.after')->withCompetition(Competition::find($id));
     }
 

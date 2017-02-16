@@ -156,17 +156,17 @@ class APIController extends Controller
                         $chara->name = $val['人物'];
                         $chara->names = [
                             'ja' => $val['日文'],
-                            'en' => $val['罗马音']
+                            'en' => array_get($val, '罗马音', '')
                         ];
                         $chara->work = $val['出处'];
                         $chara->works = [
-                            'ja' => '',
+                            'ja' => array_get($val, '作品日文名', '') ,
                             'en' => ''
                         ];
                         $chara->info = [
-                            'source' => [$val['来源']],
-                            '编号' => $val['编号'] ?? null,
-                            '有图' => $val['是否有图'] ?? null
+                            'source' => [array_get($val, '来源', '动画')],
+                            '编号' => array_get($val, '编号', ''),
+                            '有图' => array_get($val, '是否有图', '')
                         ];
                         $chara->description = $val['简介'];
                         $chara->save();

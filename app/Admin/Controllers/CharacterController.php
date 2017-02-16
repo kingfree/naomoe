@@ -131,7 +131,7 @@ class CharacterController extends Controller
             $form->text('work', '作品名')->rules('required');
 
             $form->embeds('names', '其他角色名', function ($form) {
-                $form->text('ja', '日文 ');
+                $form->text('ja', '日文');
                 $form->text('en', '英文');
             });
 
@@ -140,14 +140,14 @@ class CharacterController extends Controller
                 $form->text('en', '英文');
             });
 
-            $form->embeds('info', '额外信息', function ($form) {
-                $form->checkbox('source', '来源')->options(Character::SOURCES)->default('动画');
-            });
+//            $form->embeds('info', '额外信息', function ($form) {
+//                $form->checkbox('source', '来源')->options(Character::SOURCES)->default('动画');
+//            });
             $form->textarea('description', '描述');
-            //$form->json('info', '额外信息');
+            $form->json('info', '额外信息');
 
-            $form->display('created_at', '创建时间');
-            $form->display('updated_at', '修改时间');
+//            $form->display('created_at', '创建时间');
+//            $form->display('updated_at', '修改时间');
 
 //            $form->saving(function (Form $form) {
 //                $form->info = json_decode($form->info);

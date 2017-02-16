@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '投票')
+@section('title', __('welcome.votes'))
 
 @section('content')
     <div class="ui piled segment">
@@ -26,8 +26,8 @@
                                     <img src="{{ config('admin.upload.host') . $option->avatar }}">
                                 </div>
                                 <div class="content">
-                                    <div class="header">{{ $option->character->name }}</div>
-                                    <div class="meta">{{ $option->character->work }}</div>
+                                    <div class="header">{{ $option->character->lname }}</div>
+                                    <div class="meta">{{ $option->character->lwork }}</div>
                                     <div class="description">{{ $option->character->description }}</div>
                                 </div>
                             </div>
@@ -51,7 +51,7 @@
                             <div class="item hidden" data-id="{{ $option->id }}">
                                 <img class="ui avatar image" src="{{ config('admin.upload.host') . $option->avatar }}">
                                 <div class="content">
-                                    <div class="header">{{ $option->character->name }}</div>
+                                    <div class="header">{{ $option->character->lname }}</div>
                                 </div>
                             </div>
                         @endforeach
@@ -59,7 +59,8 @@
                 </div>
             @endforeach
             <div class="ui pink segment">
-                <button class="ui pink submit button">投票</button>
+                <button class="ui pink submit button">@lang('vote.vote')</button>
+                @lang('vote.noneed')
             </div>
         </div>
     </div>

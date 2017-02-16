@@ -6,10 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Group extends Model
 {
-    protected $casts = [
-        'info' => 'json',
-    ];
-    protected $fillable = ['competition_id', 'title', 'allow', 'created_at', 'updated_at'];
+//    protected $casts = [
+//        'info' => 'json',
+//    ];
+    protected $fillable = ['competition_id', 'title', 'allow', 'info', 'created_at', 'updated_at'];
 
     public function competition()
     {
@@ -19,6 +19,17 @@ class Group extends Model
     public function options()
     {
         return $this->hasMany(Option::class);
+    }
+
+    public function infos()
+    {
+        return json_decode($this->info, true) ?? [];
+    }
+
+    public function avatar()
+    {
+        //dump($this->infos());
+        return array_get($this->infos(), 'avatar', null);
     }
 
     protected $appends = ['text'];
