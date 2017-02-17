@@ -18,6 +18,11 @@ class Competition extends Model
         return $this->hasMany(Group::class)->orderBy('order');
     }
 
+    public function votelogs()
+    {
+        return $this->hasMany(VoteLog::class)->orderBy('created_at');
+    }
+
     public function options()
     {
         return $this->hasManyThrough(Option::class, Group::class);

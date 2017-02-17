@@ -11,6 +11,9 @@ class VoteLog extends Model
 //        'response' => 'json',
 //    ];
 
+    protected $fillable = ['competition_id', 'user_id', 'valid', 'info', 'created_at', 'updated_at'];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -33,6 +36,7 @@ class VoteLog extends Model
         static::saving(function ($table) {
             if (!is_string($table->header)) $table->header = json_encode($table->header);
             if (!is_string($table->body)) $table->body = json_encode($table->body);
+            if (!is_string($table->votes)) $table->votes = json_encode($table->votes);
         });
     }
 
@@ -48,8 +52,8 @@ class VoteLog extends Model
 
     public function voted($id)
     {
-        foreach ($this->votes as $vote) {
-            if ($vote->option_id === $id) return true;
+        foreach (json_decode($this->votes) as $vote) {
+            if ($vote === $id) return true;
         }
         return false;
     }

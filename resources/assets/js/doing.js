@@ -4,7 +4,7 @@ if (window.location.href.includes('/voting')) {
 
     } else {
 
-        $('.doing .option').on('click', function () {
+        $('.doing .option').on('touchstart click', function () {
             $(this).transition('pulse');
 
             var id = $(this).data('id');
@@ -27,7 +27,7 @@ if (window.location.href.includes('/voting')) {
         });
 
 
-        $('.voting .submit').on('click', function (event) {
+        $('.voting .submit').on('touchstart click', function (event) {
             event.preventDefault();
             var vote = function () {
                 var compId = $('.competition').data('id');
@@ -54,6 +54,12 @@ if (window.location.href.includes('/voting')) {
                             type: "error"
                         });
                     }
+                }).catch(function (error) {
+                    swal({
+                        title: messages.failed,
+                        timer: 1000,
+                        type: "error"
+                    });
                 })
             };
             var showAlert = function (cb) {

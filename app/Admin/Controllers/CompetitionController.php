@@ -89,6 +89,10 @@ class CompetitionController extends Controller
             $grid->start_at('比赛时间')->display(function () {
                 return $this->start_at . ' -- ' . $this->end_at;
             })->sortable();
+
+            $grid->actions(function ($actions) {
+                $actions->prepend('<a href="' . route('calculate', ['id' => $actions->getKey()]) . '" title="记票"><i class="fa fa-paper-plane"></i></a>');
+            });
         });
     }
 

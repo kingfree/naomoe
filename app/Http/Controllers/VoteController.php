@@ -102,6 +102,8 @@ class VoteController extends Controller
         if (!$user) return response()->json(['code' => 403, 'info' => __('vote.not_login')]);
         $voted = VoteLog::where('user_id', $user->id)->where('competition_id', $compId)->first();
         if ($voted) return response()->json(['code' => 403, 'info' => __('vote.already_voted')]);
+        $voted = VoteLog::where('ip', $ip)->where('competition_id', $compId)->first();
+        if ($voted) return response()->json(['code' => 403, 'info' => __('vote.already_voted')]);
 
         $log = new VoteLog;
         $log->competition_id = $compId;
@@ -109,23 +111,8 @@ class VoteController extends Controller
         $log->header = $header;
         $log->body = $body;
         $log->ip = $ip;
+        $log->votes = $votes->pluck('id');
         $log->save();
-        foreach ($votes as $option) {
-            $vote = Vote::find([
-                'user_id' => $user->id,
-                'option_id' => $option->id
-            ])->first();
-            if (!$vote) {
-                $vote = Vote::create([
-                    'vote_log_id' => $log->id,
-                    'user_id' => $user->id,
-                    'option_id' => $option->id
-                ]);
-                $option->voted++;
-                $option->valid++;
-                $option->save();
-            }
-        }
 
         return response()->json(['code' => 0, 'info' => __('vote.success')]);
     }

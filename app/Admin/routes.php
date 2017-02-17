@@ -19,8 +19,10 @@ Route::group([
     $router->get('/export/{type}', 'APIController@downloadExcel')->name('export');
     $router->post('/import', 'APIController@importExcel')->name('import');
 
-    $router->get('/generate/{id}', 'APIController@generateGroup')->name('generate');
-    $router->post('/generate', 'APIController@doGenerateGroup')->name('doGenerate');
+    $router->get('/generate/{id}', 'APIController@generateGroup')->name('generation');
+    $router->post('/generate', 'APIController@doGenerateGroup')->name('generate');
+
+    $router->get('/calc/{id}', 'APIController@calculate')->name('calculate');
 
     $router->resource('users', UserController::class);
     $router->resource('characters', CharacterController::class);
@@ -33,3 +35,6 @@ Route::group([
     $router->resource('votelogs', VoteLogController::class);
 
 });
+
+app('view')->prependNamespace('admin', resource_path('views/admin'));
+app('translator')->addNamespace('admin', resource_path('lang/admin'));

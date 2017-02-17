@@ -104,7 +104,7 @@ class PoolController extends Controller
             });
 
             $grid->actions(function ($actions) {
-                $actions->prepend('<a href="' . route('generate', ['id' => $actions->getKey()]) . '" title="生成分组"><i class="fa fa-paper-plane"></i></a>');
+                $actions->prepend('<a href="' . route('generation', ['id' => $actions->getKey()]) . '" title="生成分组"><i class="fa fa-paper-plane"></i></a>');
             });
         });
     }

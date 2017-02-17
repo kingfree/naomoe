@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Competition;
+use App\Option;
 use App\User;
 use App\VoteLog;
 
@@ -80,20 +81,25 @@ class VoteLogController extends Controller
                 $actions->disableEdit();
             });
 
-            $grid->id('ID')->sortable();
             $grid->column('user_id', '用户')->display(function ($id) {
                 return User::find($id)->name;
             })->sortable();
             $grid->column('competition_id', '比赛')->display(function ($id) {
                 return Competition::find($id)->title;
             })->sortable();
-            $grid->column('ip', 'IP');
+            $grid->column('votes', '投票')->display(function ($str) {
+                $ids = json_decode($str);
+                return join(' ', Option::find($ids)->pluck('title')->toArray());
+            })->sortable();
+            $grid->column('ip', 'IP')->sortable();
             $grid->column('header', '请求头部');
             $grid->column('body', '请求体');
-            $grid->valid('有效票')->switch();
-
-            $grid->created_at();
-            $grid->updated_at();
+            $states = [
+                'on'  => ['value' => 1, 'text' => '有效', 'color' => 'success'],
+                'off' => ['value' => 0, 'text' => '无效', 'color' => 'danger'],
+            ];
+            $grid->valid('有效票')->switch($states);
+            $grid->created_at('投票时间')->sortable();
         });
     }
 

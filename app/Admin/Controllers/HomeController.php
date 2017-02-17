@@ -48,7 +48,7 @@ class HomeController extends Controller
                 $row->column(3, new InfoBox('投票项', 'check-square-o', 'fuchsia', '/admin/options', Option::count()));
                 $row->column(3, new InfoBox('角色池', 'database', 'purple', '/admin/pools', Pool::count()));
                 $row->column(3, new InfoBox('投票记录', 'list', 'maroon', '/admin/votelogs', VoteLog::count()));
-                $row->column(3, new InfoBox('投票', 'file ', 'teal', '/admin/votes', Vote::count()));
+                $row->column(3, new InfoBox('页面', 'file ', 'teal', '/admin/pages', Page::count()));
             });
 
             $content->row(function (Row $row) {

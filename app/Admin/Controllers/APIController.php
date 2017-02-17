@@ -8,6 +8,7 @@ use App\Group;
 use App\Http\Controllers\Controller;
 use App\Option;
 use App\Pool;
+use App\VoteLog;
 use Encore\Admin\Widgets\Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -50,6 +51,51 @@ class APIController extends Controller
 
         return Option::where('title', 'like', "%$q%")
             ->paginate(null);
+    }
+
+    public function calculate($id)
+    {
+        $competition = Competition::find($id);
+        $votelogs = VoteLog::where('competition_id', $id)->get();
+
+        $groups = Group::where('competition_id', $id)->get();
+        $groupIds = $groups->pluck('id');
+        $options = Option::whereIn('group_id', $groupIds)->get();
+
+        $map = [];
+        foreach ($options as $option) {
+            $option->voted = 0;
+            $option->valid = 0;
+            $map[$option->id] = $option;
+        }
+
+        foreach ($votelogs as $votelog) {
+            if (!$votelog->votes) {
+                $body = $votelog->body();
+                if ($body['votes']) {
+                    $votes = $body['votes'];
+                    $votelog->votes = json_encode($votes);
+                } else {
+                    $votes = [];
+                }
+            } else {
+                $votes = json_decode($votelog->votes);
+            }
+            if ($votelog->created_at->lt($competition->start_at) || $votelog->created_at->gt($competition->end_at)) {
+                $votelog->valid = false;
+            }
+            foreach ($votes as $vote) {
+                $map[$vote]->voted++;
+                $map[$vote]->valid += $votelog->valid ? 1 : 0;
+            }
+            $votelog->save();
+        }
+
+        foreach ($map as $oid => $option) {
+            $option->save();
+        }
+
+        return view('admin:tools.result')->withCompetition($competition);
     }
 
     public function generateGroup($id)
@@ -160,7 +206,7 @@ class APIController extends Controller
                         ];
                         $chara->work = $val['出处'];
                         $chara->works = [
-                            'ja' => array_get($val, '作品日文名', '') ,
+                            'ja' => array_get($val, '作品日文名', ''),
                             'en' => ''
                         ];
                         $chara->info = [
