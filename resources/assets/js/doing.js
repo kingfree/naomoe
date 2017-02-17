@@ -4,7 +4,7 @@ if (window.location.href.includes('/voting')) {
 
     } else {
 
-        $('.doing .option').on('touchstart click', function () {
+        $('.doing .option').on('touch click', function () {
             $(this).transition('pulse');
 
             var id = $(this).data('id');
@@ -27,7 +27,7 @@ if (window.location.href.includes('/voting')) {
         });
 
 
-        $('.voting .submit').on('touchstart click', function (event) {
+        $('.voting .submit').on('touch click', function (event) {
             event.preventDefault();
             var vote = function () {
                 var compId = $('.competition').data('id');
