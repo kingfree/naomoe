@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use App\Competition;
 use App\Option;
 use App\User;
-use App\Vote;
 use App\VoteLog;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
@@ -24,6 +22,7 @@ class VoteController extends Controller
         if ($competition) {
             return redirect()->route('doing', ['id' => $competition->id]);
         }
+        return redirect()->route('');
     }
 
     public function willdo($id)
@@ -44,12 +43,11 @@ class VoteController extends Controller
         if ($user) {
             $log = VoteLog::firstOrNew([
                 'user_id' => $user->id,
-                //'competition_id' => $comp->id
+                'competition_id' => $comp->id
             ]);
         } else {
             $log = new VoteLog;
         }
-
         return view('vote.doing')->withCompetition($comp)->withLog($log);
     }
 

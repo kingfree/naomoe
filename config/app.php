@@ -232,6 +232,7 @@ return [
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Ip'  => Zhuzhichao\IpLocationZh\Ip::class,
 
     ],
 

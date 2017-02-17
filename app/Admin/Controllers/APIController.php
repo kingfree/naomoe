@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\MessageBag;
 use Maatwebsite\Excel\Facades\Excel;
+use Ip;
 
 class APIController extends Controller
 {
@@ -88,6 +89,10 @@ class APIController extends Controller
                 $map[$vote]->voted++;
                 $map[$vote]->valid += $votelog->valid ? 1 : 0;
             }
+            $location = Ip::find($votelog->ip);
+            $votelog->country = $location[0];
+            $votelog->province = $location[1];
+            $votelog->city = $location[2];
             $votelog->save();
         }
 

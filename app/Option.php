@@ -27,11 +27,6 @@ class Option extends Model
         return $this->group->competition;
     }
 
-    public function votes()
-    {
-        return $this->hasMany(Vote::class);
-    }
-
     public static function boot()
     {
         parent::boot();

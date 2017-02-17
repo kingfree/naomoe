@@ -81,21 +81,28 @@ class VoteLogController extends Controller
                 $actions->disableEdit();
             });
 
-            $grid->column('user_id', '用户')->display(function ($id) {
-                return User::find($id)->name;
-            })->sortable();
+//            $grid->column('user_id', '用户')->display(function ($id) {
+//                return User::find($id)->name;
+//            })->sortable();
             $grid->column('competition_id', '比赛')->display(function ($id) {
                 return Competition::find($id)->title;
             })->sortable();
+            $grid->column('ip', '用户')->display(function ($ip) {
+                return '<strong>'.User::find($this->user_id)->name.'</strong>'
+                    . '<br>' . $ip
+                    . '<br>' . $this->country . $this->province . $this->city;
+            })->sortable();
             $grid->column('votes', '投票')->display(function ($str) {
                 $ids = json_decode($str);
-                return join(' ', Option::find($ids)->pluck('title')->toArray());
+                return join('<br>', Option::find($ids)->pluck('title')->toArray());
             })->sortable();
-            $grid->column('ip', 'IP')->sortable();
-            $grid->column('header', '请求头部');
-            $grid->column('body', '请求体');
+            $grid->column('header', 'User-Agent')->display(function ($str) {
+                $header = json_decode($str, true);
+                return join('<br>', $header['user-agent']);
+            });
+            //$grid->column('body', '请求体');
             $states = [
-                'on'  => ['value' => 1, 'text' => '有效', 'color' => 'success'],
+                'on' => ['value' => 1, 'text' => '有效', 'color' => 'success'],
                 'off' => ['value' => 0, 'text' => '无效', 'color' => 'danger'],
             ];
             $grid->valid('有效票')->switch($states);

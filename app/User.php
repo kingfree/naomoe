@@ -29,11 +29,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function votes()
-    {
-        return $this->hasMany(Vote::class);
-    }
-
     public function vote_logs()
     {
         return $this->hasMany(VoteLog::class);
@@ -41,12 +36,6 @@ class User extends Authenticatable
 
     public static function tryToGetUser()
     {
-        $user = Auth::user();
-        if ($user) return $user;
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+
     }
 }

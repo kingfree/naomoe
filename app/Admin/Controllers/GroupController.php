@@ -90,6 +90,7 @@ class GroupController extends Controller
                 }, $options);
                 return join(' ', $options);
             });
+            $grid->win('晋级');
             $grid->allow('可投');
             $grid->column('选项数量')->value(function () {
                 return count($this->options);
@@ -115,6 +116,7 @@ class GroupController extends Controller
                 }
             })->ajax('/admin/api/competitions');
             $form->json('info', '其他信息');
+            $form->number('win', '晋级数')->default(1);
             $form->number('allow', '允许投票数')->default(1);
             $form->hasMany('options', '选项', function (Form\NestedForm $nest) {
                 $nest->text('title', '选项');

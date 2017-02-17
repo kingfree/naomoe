@@ -24,11 +24,6 @@ class VoteLog extends Model
         return $this->belongsTo(Competition::class);
     }
 
-    public function votes()
-    {
-        return $this->hasMany(Vote::class);
-    }
-
     public static function boot()
     {
         parent::boot();
@@ -50,9 +45,14 @@ class VoteLog extends Model
         return json_decode($this->body, true) ?? [];
     }
 
+    public function vote()
+    {
+        return json_decode($this->votes ?? '[]') ?? [];
+    }
+
     public function voted($id)
     {
-        foreach (json_decode($this->votes) as $vote) {
+        foreach ($this->vote() as $vote) {
             if ($vote === $id) return true;
         }
         return false;

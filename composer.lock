@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "84a2736e8a7ab58c17656002d97cde71",
+    "content-hash": "d44e0a16308161ac0b8120c331b13e20",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3085,6 +3085,44 @@
                 "lumen"
             ],
             "time": "2016-01-08T13:26:26+00:00"
+        },
+        {
+            "name": "zhuzhichao/ip-location-zh",
+            "version": "v2.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zhuzhichao/ip-location-zh.git",
+                "reference": "8cbe401de3a29c0b680365d7515a2468da8206d8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zhuzhichao/ip-location-zh/zipball/8cbe401de3a29c0b680365d7515a2468da8206d8",
+                "reference": "8cbe401de3a29c0b680365d7515a2468da8206d8",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zhuzhichao\\IpLocationZh\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zhuzhichao",
+                    "email": "me@zhuzhichao.com"
+                }
+            ],
+            "description": "get the ip's true location with Chinese",
+            "keywords": [
+                "Chinese",
+                "IP",
+                "location"
+            ],
+            "time": "2017-01-17T03:06:02+00:00"
         }
     ],
     "packages-dev": [
