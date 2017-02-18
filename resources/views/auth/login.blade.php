@@ -59,37 +59,9 @@
                                         登录
                                     </button>
 
-                                    <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                        忘记密码？
-                                    </a>
                                 </div>
                             </div>
 
-                            <hr>
-                            <div class="form-group">
-                                <div class="col-md-8 col-md-offset-4">
-                                    <a class="ui twitter button" href="{{ url('/auth/twitter') }}">
-                                        <i class="twitter icon"></i>
-                                        推特
-                                    </a>
-                                    <a class="ui google plus button" href="{{ url('/auth/weibo') }}">
-                                        <i class="weibo icon"></i>
-                                        微博
-                                    </a>
-                                    <a class="ui blue button" href="{{ url('/auth/baidu') }}">
-                                        <i class="paw  icon"></i>
-                                        贴吧
-                                    </a>
-                                    <a class="ui orange button" href="{{ url('/auth/qq') }}">
-                                        <i class="qq icon"></i>
-                                        QQ
-                                    </a>
-                                    <a class="ui green button" href="{{ url('/auth/weixin') }}">
-                                        <i class="weixin icon"></i>
-                                        微信
-                                    </a>
-                                </div>
-                            </div>
                         </form>
                     </div>
                 </div>

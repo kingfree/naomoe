@@ -85,6 +85,9 @@ class CompetitionController extends Controller
             $grid->column('voted', '投票')->display(function () {
                 return $this->valid . '/' . $this->voted;
             })->sortable();
+            $grid->column('状态')->display(function () {
+                return ['未开始', '进行中', '已结束'][$this->status];
+            });
             $grid->description('描述');
             $grid->start_at('比赛时间')->display(function () {
                 return $this->start_at . ' -- ' . $this->end_at;

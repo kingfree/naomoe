@@ -22,7 +22,7 @@
         .navbar-default .navbar-nav > li > a:focus,
         .navbar-default .navbar-nav > .open > a:focus,
         .navbar-default .navbar-nav > .open > a:hover {
-            background-color: #F95BC6;
+            background-color: #e660ab;
             color: #ffffff;
         }
 
@@ -53,6 +53,7 @@
         }
         @media (max-width: 767px) {
             .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                background-color: #e03997;
                 color: #ffffff;
             }
         }

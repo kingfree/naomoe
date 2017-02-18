@@ -21,6 +21,7 @@ Route::get('/lang/{lang}', 'LanguageController@index')->name('language');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/change', 'HomeController@change')->name('change');
+Route::post('/change', 'HomeController@doChange')->name('doChange');
 
 Route::get('/vote', 'VoteController@index')->name('votes');
 Route::get('/vote/{id}', 'VoteController@willdo')->name('before');

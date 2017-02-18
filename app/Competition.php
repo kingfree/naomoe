@@ -11,6 +11,8 @@ class Competition extends Model
 //        'info' => 'json',
 //    ];
 
+    const WILL = 0, DOING = 1, DID = 2;
+
     protected $dates = ['start_at', 'end_at'];
 
     public function groups()
@@ -58,10 +60,49 @@ class Competition extends Model
         return $now->gte($this->start_at) && $now->lte($this->end_at);
     }
 
-    protected $appends = ['text'];
+    public function state()
+    {
+        $now = Carbon::now();
+        if ($now->lt($this->start_at)) return self::WILL;
+        if ($now->lte($this->end_at)) return self::DOING;
+        return self::DID;
+    }
+
+    public static function getNewestDoing()
+    {
+        $now = Carbon::now();
+        return Competition::where('start_at', '<=', $now)
+            ->where('end_at', '>=', $now)
+            ->orderBy('start_at', 'desc')
+            ->first();
+    }
+
+    public static function getNewestWill()
+    {
+        $now = Carbon::now();
+        return Competition::where('start_at', '>=', $now)
+            ->orderBy('start_at', 'asc')
+            ->first();
+    }
+
+    public static function getNewestDid()
+    {
+        $now = Carbon::now();
+        return Competition::where('start_at', '<=', $now)
+            ->where('end_at', '>=', $now)
+            ->orderBy('end_at', 'desc')
+            ->first();
+    }
+
+    protected $appends = ['text', 'status'];
 
     public function getTextAttribute()
     {
         return $this->title;
+    }
+
+    public function getStatusAttribute()
+    {
+        return $this->state();
     }
 }
