@@ -9,10 +9,30 @@
     <link type="image/png" rel="shortcut icon" href="/favicon.png">
 
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
     <style>
-        html, body {
-            background-color: #fff;
+        a {
             color: #e03997;
+        }
+
+        a:hover {
+            color: #e03997;
+        }
+
+        html, body {
+            <?php $showBack = Admin::user() or \Carbon\Carbon::now()->gte(\Carbon\Carbon::createFromDate(2017, 2, 26)); ?>
+            @if ($showBack)
+                  color: #e03997;
+            @else
+                  color: #e03997;
+            @endif
+            @if ($showBack)
+                background-image: url('/images/background.jpg');
+                background-size: cover;
+                background-position: 37% 0%;
+            @else
+                background-color: #fff;
+            @endif
             font-family: sans-serif;
             font-weight: 100;
             height: 100vh;
@@ -46,7 +66,9 @@
         }
 
         .content {
+            padding: 10px;
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.45);
         }
 
         .title {
@@ -58,13 +80,36 @@
             font-size: 64px;
         }
 
+        .links {
+            padding: 5px;
+        }
+
         .links > a {
-            color: #636b6f;
-            padding: 0 25px;
+            @if ($showBack)
+              color: #ffffff;
+            @else
+              color: #636b6f;
+            -webkit-text-stroke: 0px #fff;
+            @endif
+              padding: 0 25px;
             font-size: 18px;
             letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;
+            display: inline;
+        }
+
+        .ui.list > a.item {
+            color: #0a001f;
+        }
+
+        .ui.list > a.item:hover {
+            font-weight: bold;
+            color: #e03997;
+        }
+
+        a:hover {
+            font-weight: bold;
         }
 
         .m-b-md {
@@ -94,22 +139,22 @@
     </div>
 
     <div class="content">
-        <div class="title m-b-md">
+        <a class="title m-b-md" href="/vote">
             @lang('welcome.naomoe')
-        </div>
+        </a>
         <div class="subtitle m-b-md">
             @lang('welcome.toyamanaosaimoe')
         </div>
 
-        <div class="links">
-            <a href="/vote">@lang('welcome.votes')</a>
-            <a href="/schedule">@lang('welcome.schedule')</a>
-            <a href="/discuss">@lang('welcome.discuss')</a>
+        <div class="links ui huge celled horizontal list">
+            <a class="item" href="/vote">@lang('welcome.votes')</a>
+            <a class="item" href="/schedule">@lang('welcome.schedule')</a>
+            <a class="item" href="/discuss">@lang('welcome.discuss')</a>
             @if (Route::has('stotk'))
-                <a href="/stock">@lang('welcome.stock')</a>
+                <a class="item" href="/stock">@lang('welcome.stock')</a>
             @endif
-            <a href="//tieba.toyama.moe">@lang('welcome.tieba')</a>
-            <a href="//git.kingfree.moe/kingfree/naomoe" target="_blank">@lang('welcome.source')</a>
+            <a class="item" href="//tieba.toyama.moe">@lang('welcome.tieba')</a>
+            <a class="item" href="//git.kingfree.moe/kingfree/naomoe" target="_blank">@lang('welcome.source')</a>
         </div>
     </div>
 </div>
