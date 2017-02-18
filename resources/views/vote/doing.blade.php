@@ -8,7 +8,13 @@
             <i class="{{ $competition->icon() }} icon"></i>
             <div class="content">
                 {{ $competition->title }}
-                <div class="sub header">{{ $competition->infos()['type'] ?? '预选赛' }}</div>
+                <div class="sub header">
+                    {{ $competition->infos()['type'] ?? '预选赛' }}
+
+                    {{ $competition->start_at }}
+                    --
+                    {{ $competition->end_at }}
+                </div>
             </div>
         </h2>
         <div class="ui segments">
@@ -88,6 +94,9 @@
                     {{$log->comment}}
                 @else
                     @lang('vote.noneed')
+                @endif
+                @if (Route::has('simple'))
+                <a class="ui right floated" href="{{route('simple', ['id' => $competition->id])}}">无法点击？尝试简单版</a>
                 @endif
             </div>
         </div>

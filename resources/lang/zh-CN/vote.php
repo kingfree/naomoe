@@ -11,6 +11,8 @@ return [
     'no_votes' => '投票无效',
     'not_login' => '用户信息获取失败',
     'select_one' => '请至少选择一个',
+    'select_max' => '最多只能选择 :allow 个',
     'success' => '投票成功！',
-    'failed' => '投票失败！'
+    'failed' => '投票失败！',
+    'allow' => '最多允许选择 :allow 项'
 ];

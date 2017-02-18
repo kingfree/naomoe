@@ -63,6 +63,10 @@ class APIController extends Controller
         $groupIds = $groups->pluck('id');
         $options = Option::whereIn('group_id', $groupIds)->get();
 
+        $groupMap = [];
+        foreach ($groups as $group) {
+            $groupMap[$group->id] = $group;
+        }
         $map = [];
         foreach ($options as $option) {
             $option->voted = 0;
@@ -85,7 +89,16 @@ class APIController extends Controller
             if ($votelog->created_at->lt($competition->start_at) || $votelog->created_at->gt($competition->end_at)) {
                 $votelog->valid = false;
             }
+            $allows = [];
+            foreach ($groups as $group) {
+                $allows[$group->id] = ['allow' => $group->allow, 'count' => 0];
+            }
             foreach ($votes as $vote) {
+                $allow = &$allows[$map[$vote]->group_id];
+                if ($allow['count']++ >= $allow['allow']) {
+                    $votelog->valid = false;
+                    continue;
+                }
                 $map[$vote]->voted++;
                 $map[$vote]->valid += $votelog->valid ? 1 : 0;
             }
@@ -99,8 +112,7 @@ class APIController extends Controller
         foreach ($map as $oid => $option) {
             $option->save();
         }
-
-        return view('admin:tools.result')->withCompetition($competition);
+        return redirect()->back();
     }
 
     public function generateGroup($id)

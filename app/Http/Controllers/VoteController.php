@@ -39,7 +39,7 @@ class VoteController extends Controller
         language();
 
         $comp = Competition::find($id);
-        if (!$comp->inTime()) return redirect()->route('did', ['id' => $id]);
+        if (!$comp->inTime()) return redirect()->route('after', ['id' => $id]);
 
         $user = Auth::user();
         if ($user) {
@@ -51,6 +51,25 @@ class VoteController extends Controller
             $log = new VoteLog;
         }
         return view('vote.doing')->withCompetition($comp)->withLog($log);
+    }
+
+    public function simple($id)
+    {
+        language();
+
+        $comp = Competition::find($id);
+        if (!$comp->inTime()) return redirect()->route('after', ['id' => $id]);
+
+        $user = Auth::user();
+        if ($user) {
+            $log = VoteLog::firstOrNew([
+                'user_id' => $user->id,
+                'competition_id' => $comp->id
+            ]);
+        } else {
+            $log = new VoteLog;
+        }
+        return view('vote.simple')->withCompetition($comp)->withLog($log);
     }
 
     public function did($id)
@@ -97,6 +116,16 @@ class VoteController extends Controller
         $voteIds = Input::get('votes');
         $votes = Option::find($voteIds);
         if (!$votes || !count($votes)) return response()->json(['code' => 404, 'info' => __('vote.no_votes')]);
+        $map = [];
+        foreach ($votes as $vote) {
+            if (!array_key_exists($vote->group_id, $map)) {
+                $map[$vote->group_id] = ['allow' => $vote->group->allow, 'count' => 0];
+            }
+            $map[$vote->group_id]['count']++;
+            if ($map[$vote->group_id]['count'] > $map[$vote->group_id]['allow']) {
+                return response()->json(['code' => 403, 'info' => __('vote.select_max', ['allow' => $map[$vote->group_id]['allow']])]);
+            }
+        }
 
         $user = Auth::user();
         if (!$user) return response()->json(['code' => 403, 'info' => __('vote.not_login')]);

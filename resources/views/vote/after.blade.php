@@ -4,11 +4,17 @@
 
 @section('content')
     <div class="ui piled segment">
-        <h2 class="ui header competition" data-id="{{ $competition->id }}">
+        <h2 class="ui pink header competition" data-id="{{ $competition->id }}">
             <i class="{{ $competition->icon() }} icon"></i>
             <div class="content">
                 {{ $competition->title }}
-                <div class="sub header">{{ $competition->infos()['type'] ?? '预选赛' }}</div>
+                <div class="sub header">
+                    {{ $competition->infos()['type'] ?? '预选赛' }}
+
+                    {{ $competition->start_at }}
+                    --
+                    {{ $competition->end_at }}
+                </div>
             </div>
         </h2>
         <div class="ui segments">
@@ -18,9 +24,9 @@
                         {{ $group->title }}
                         <div class="sub header">0 / {{ $group->allow }}</div>
                     </div>
-                    <div class="ui stackable {{ $group->infos()['columns'] ?? 'seven' }} column grid link doing cards">
+                    <div class="ui stackable {{ $group->infos()['columns'] ?? 'seven' }} column grid doing cards">
                         @foreach($group->options as $option)
-                            <div class="card option {{ $log->voted($option->id) ? 'selected' : '' }}"
+                            <div class="card option {{ $option->win ? 'selected' : '' }}"
                                  data-id="{{ $option->id }}" data-allow="{{ $group->allow }}"
                                  data-group="{{ $group->id }}">
                                 <div class="image">

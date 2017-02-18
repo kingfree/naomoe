@@ -10,7 +10,7 @@ class Option extends Model
 //        'info' => 'json',
 //    ];
 
-    protected $fillable = ['character_id', 'group_id', 'title', 'valid', 'voted', 'created_at', 'updated_at'];
+    protected $fillable = ['character_id', 'group_id', 'title', 'win', 'valid', 'voted', 'created_at', 'updated_at'];
 
     public function character()
     {

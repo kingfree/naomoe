@@ -86,8 +86,6 @@ class OptionController extends Controller
             $grid->voted('已投')->sortable();
             $grid->valid('有效')->sortable();
             $grid->description('描述');
-
-            $grid->created_at('创建时间');
             $grid->updated_at('修改时间');
 
             $grid->filter(function ($filter) {
@@ -125,6 +123,7 @@ class OptionController extends Controller
                 }
             })->ajax('/admin/api/groups');
 
+            $form->radio('win', '晋级情况')->options(['0' => '暂定', '1' => '晋级', '2' => '胜出'])->default('0');
             $form->number('voted', '已投票');
             $form->number('valid', ' 有效票');
 

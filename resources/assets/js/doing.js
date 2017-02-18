@@ -1,8 +1,94 @@
+$('.ui.checkbox')
+    .checkbox()
+;
+
+function doVote(compId, votes) {
+    var vote = function () {
+        axios.post('/vote', {
+            competition_id: compId,
+            votes: votes
+        }).then(function (response) {
+            if (response.data.code === 0) {
+                swal({
+                    title: response.data.info || messages.failed,
+                    timer: 1000,
+                    type: "success"
+                }, function () {
+                    window.location.href = '/vote';
+                });
+            } else {
+                swal({
+                    title: response.data.info || messages.failed,
+                    timer: 1000,
+                    type: "error"
+                });
+            }
+        }).catch(function (error) {
+            swal({
+                title: messages.failed,
+                timer: 1000,
+                type: "error"
+            });
+        })
+    };
+    var showAlert = function (cb) {
+        var text = '';
+        if (!votes.length) {
+            swal({
+                title: messages.select_one,
+                timer: 1000,
+                type: "warning"
+            });
+            return false;
+        }
+        $('.voting .item').not('.hidden').each(function (i, e) {
+            text += $(e).html();
+        });
+        swal({
+            title: messages.title,
+            text: '<div class="ui mini horizontal list">' + text + '</div>',
+            html: true,
+            type: null,
+            showCancelButton: true,
+            confirmButtonColor: "#c71f7e",
+            confirmButtonText: messages.confirmButtonText,
+            cancelButtonText: messages.cancelButtonText,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true
+        }, function (isConfirm) {
+            if (isConfirm) cb();
+            return true;
+        });
+    };
+
+    axios.post('/amiok', {}).then(function (response) {
+        showAlert(vote);
+    }).catch(function (error) {
+        axios.post('/create', {}).then(function (response) {
+            showAlert(vote);
+        });
+    });
+}
+
+var voteSimple = function() {
+    var compId = $('.competition').data('id');
+    var votes = [];
+    $('.option[selected]').each(function (i, e) {
+        votes.push($(e).val());
+    });
+    doVote(compId, votes);
+};
+
 if (window.location.href.includes('/voting')) {
-    var voted = $('.voting .submit').hasClass('disabled');
+    var voted = $('.submit').hasClass('disabled');
     if (voted) {
 
     } else {
+
+        $('.simple .submit').on('click', function (e) {
+            alert('ok');
+            voteSimple(e);
+        });
 
         $('.doing .option').on('touch click', function () {
             $(this).transition('pulse');
@@ -26,82 +112,14 @@ if (window.location.href.includes('/voting')) {
             $('.footer').height($('.voting').height());
         });
 
-
         $('.voting .submit').on('touch click', function (event) {
             event.preventDefault();
-            var vote = function () {
-                var compId = $('.competition').data('id');
-                var votes = [];
-                $('.option.selected').each(function (i, e) {
-                    votes.push($(e).data('id'));
-                });
-                axios.post('/vote', {
-                    competition_id: compId,
-                    votes: votes
-                }).then(function (response) {
-                    if (response.data.code === 0) {
-                        swal({
-                            title: response.data.info,
-                            timer: 1000,
-                            type: "success"
-                        }, function () {
-                            window.location.href = '/vote';
-                        });
-                    } else {
-                        swal({
-                            title: response.data.info,
-                            timer: 1000,
-                            type: "error"
-                        });
-                    }
-                }).catch(function (error) {
-                    swal({
-                        title: messages.failed,
-                        timer: 1000,
-                        type: "error"
-                    });
-                })
-            };
-            var showAlert = function (cb) {
-                var text = '';
-                var selected = $('.option.selected');
-                if (!selected.length) {
-                    swal({
-                        title: messages.select_one,
-                        timer: 1000,
-                        type: "warning"
-                    });
-                    return false;
-                }
-                var votes = $('.voting .item').not('.hidden');
-                votes.each(function (i, e) {
-                    text += $(e).html();
-                });
-                swal({
-                    title: messages.title,
-                    text: '<div class="ui mini horizontal list">' + text + '</div>',
-                    html: true,
-                    type: null,
-                    showCancelButton: true,
-                    confirmButtonColor: "#c71f7e",
-                    confirmButtonText: messages.confirmButtonText,
-                    cancelButtonText: messages.cancelButtonText,
-                    closeOnConfirm: false,
-                    showLoaderOnConfirm: true
-                }, function (isConfirm) {
-                    if (isConfirm) cb();
-                    return true;
-                });
-            };
-
-            axios.post('/amiok', {}).then(function (response) {
-                showAlert(vote);
-            }).catch(function (error) {
-                axios.post('/create', {}).then(function (response) {
-                    showAlert(vote);
-                });
+            var compId = $('.competition').data('id');
+            var votes = [];
+            $('.option.selected').each(function (i, e) {
+                votes.push($(e).data('id'));
             });
-            return false;
+            doVote(compId, votes);
         });
     }
 }

@@ -87,7 +87,8 @@
         .content {
             padding: 10px;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.45);
+            background-color: rgba(255, 255, 255, 0.4);
+            border-radius: 10px;
         }
 
         .content:hover {
@@ -160,7 +161,7 @@
 
     <div class="content">
         <a class="title m-b-md" href="/vote">
-            @lang('welcome.naomoe')
+            <img src="/images/naomoe.png" width="40%">
         </a>
         <div class="subtitle m-b-md">
             @lang('welcome.toyamanaosaimoe')
