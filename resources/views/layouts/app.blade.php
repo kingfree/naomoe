@@ -17,22 +17,44 @@
     <link rel="stylesheet" type="text/css" href="/packages/sweetalert/dist/sweetalert.css">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <style>
-        .navbar-default .navbar-brand:hover, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-            background-color: #f596aa;
+        .navbar-default .navbar-brand:hover,
+        .navbar-default .navbar-nav > li > a:hover,
+        .navbar-default .navbar-nav > li > a:focus,
+        .navbar-default .navbar-nav > .open > a:focus,
+        .navbar-default .navbar-nav > .open > a:hover {
+            background-color: #F95BC6;
             color: #ffffff;
         }
-        .navbar-default, .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a {
+
+        .navbar-default,
+        .navbar-default .navbar-brand,
+        .navbar-default .navbar-nav > li > a,
+        .navbar-default .navbar-nav > li > a {
             background-color: #e03997;
             color: #ffffff;
         }
+
         .navbar-default .navbar-toggle {
             border-color: #fff;
         }
+
         .navbar-default .navbar-toggle .icon-bar {
             background-color: #fff;
         }
-        .navbar-default .navbar-nav .open .dropdown-menu>li>a {
+
+        .navbar-default .navbar-nav  .dropdown-menu > li > a,
+        .navbar-default .navbar-nav > .open > a {
+            background-color: #e03997;
             color: #ffffff;
+        }
+
+        .dropdown-menu {
+            background-color: #e03997;
+        }
+        @media (max-width: 767px) {
+            .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+                color: #ffffff;
+            }
         }
     </style>
     <!-- Scripts -->
@@ -48,7 +70,8 @@
         <div class="container">
             <div class="navbar-header">
 
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#app-navbar-collapse">
                     <span class="sr-only">@lang('welcome.toggle')</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -66,7 +89,7 @@
                     <li><a href="/schedule"><i class="calendar icon"></i>@lang('welcome.schedule')</a></li>
                     <li><a href="/discuss"><i class="comments icon"></i>@lang('welcome.discuss')</a></li>
                     @if (Route::has('stotk'))
-                        <li>    <a class="item" href="/stock"><i class="payment icon"></i>@lang('welcome.stock')</a></li>
+                        <li><a class="item" href="/stock"><i class="payment icon"></i>@lang('welcome.stock')</a></li>
                     @endif
                 </ul>
 
@@ -79,7 +102,8 @@
                         <li><a href="{{ route('register') }}">@lang('welcome.register')</a></li>
                     @else
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
@@ -92,7 +116,8 @@
                                         @lang('welcome.logout')
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                          style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </li>

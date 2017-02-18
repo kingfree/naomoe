@@ -166,7 +166,7 @@
             @lang('welcome.toyamanaosaimoe')
         </div>
 
-        <div class="links ui huge celled horizontal list">
+        <div class="ui horizontal huge bulleted link list">
             <a class="item" href="/vote">@lang('welcome.votes')</a>
             <a class="item" href="/schedule">@lang('welcome.schedule')</a>
             <a class="item" href="/discuss">@lang('welcome.discuss')</a>
