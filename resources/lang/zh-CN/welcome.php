@@ -12,4 +12,7 @@ return [
     'admin' => '后台',
     'login' => '登录',
     'register' => '注册',
+    'toggle' => '切换',
+    'logout' => '退出',
+    'change' => '更改密码'
 ];

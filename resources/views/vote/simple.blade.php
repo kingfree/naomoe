@@ -84,11 +84,7 @@
             @endforeach
             <div class="ui pink segment">
                 <button class="ui pink submit button {{ $log->id ? 'disabled' : '' }}">@lang('vote.vote')</button>
-                @if ($log->comment)
-                    {{$log->comment}}
-                @else
-                    @lang('vote.noneed')
-                @endif
+                @lang('vote.noneed')
             </div>
         </div>
     </div>
