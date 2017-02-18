@@ -10,6 +10,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
+    <?php $showBack = Admin::user() or \Carbon\Carbon::now()->gte(\Carbon\Carbon::createFromDate(2017, 2, 26)); ?>
     <style>
         a {
             color: #e03997;
@@ -20,19 +21,7 @@
         }
 
         html, body {
-            <?php $showBack = Admin::user() or \Carbon\Carbon::now()->gte(\Carbon\Carbon::createFromDate(2017, 2, 26)); ?>
-            @if ($showBack)
-                  color: #e03997;
-            @else
-                  color: #e03997;
-            @endif
-            @if ($showBack)
-                background-image: url('/images/background.jpg');
-                background-size: cover;
-                background-position: 37% 0%;
-            @else
-                background-color: #fff;
-            @endif
+            color: #e03997;
             font-family: sans-serif;
             font-weight: 100;
             height: 100vh;
@@ -47,6 +36,19 @@
             align-items: center;
             display: flex;
             justify-content: center;
+            @if ($showBack)
+                background-image: url('/images/nao.jpg');
+                background-size: cover;
+                background-position: 37% 0%;
+            @else
+                background-color: #fff;
+            @endif
+        }
+
+        .flex-center:hover {
+            @if ($showBack)
+               background-image: url('/images/naos.jpg');
+            @endif
         }
 
         .position-ref {
@@ -63,6 +65,23 @@
             position: absolute;
             right: 10px;
             top: 18px;
+        }
+
+        .footer {
+            font-size: 14px;
+            color: #0a001f;
+        }
+
+        .foot-left {
+            position: absolute;
+            left: 10px;
+            bottom: 18px;
+        }
+
+        .foot-right {
+            position: absolute;
+            right: 10px;
+            bottom: 18px;
         }
 
         .content {
@@ -92,7 +111,7 @@
             -webkit-text-stroke: 0px #fff;
             @endif
               padding: 0 25px;
-            font-size: 18px;
+            font-size: 16px;
             letter-spacing: .1rem;
             text-decoration: none;
             text-transform: uppercase;
@@ -101,6 +120,7 @@
 
         .ui.list > a.item {
             color: #0a001f;
+            font-size: 20px;
         }
 
         .ui.list > a.item:hover {
@@ -131,10 +151,6 @@
             <a href="/vote">@lang('welcome.vote')</a>
         @else
             <a href="{{ url('/login') }}">@lang('welcome.login')</a>
-            <a href="{{ url('/register') }}">@lang('welcome.register')</a>
-        @endif
-        @if (Admin::user())
-            <a href="/admin">@lang('welcome.admin')</a>
         @endif
     </div>
 
@@ -153,8 +169,17 @@
             @if (Route::has('stotk'))
                 <a class="item" href="/stock">@lang('welcome.stock')</a>
             @endif
-            <a class="item" href="//tieba.toyama.moe">@lang('welcome.tieba')</a>
-            <a class="item" href="//git.kingfree.moe/kingfree/naomoe" target="_blank">@lang('welcome.source')</a>
+            @if (Admin::user())
+                <a class="item" href="/admin">@lang('welcome.admin')</a>
+            @endif
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="foot-right ui link list">
+            <div class="item">画师 <a class="" href="http://elfartworld.com/users/102042/">@深蓝杰克</a></div>
+            <!--div class="item">网站 <a class="" href="http://weibo.com/kingfree/">@王者自由</a></div-->
+            <div class="item">运营 <a class="" href="http://tieba.toyama.moe">东山奈央吧</a></div>
         </div>
     </div>
 </div>
