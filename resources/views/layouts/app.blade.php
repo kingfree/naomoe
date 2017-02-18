@@ -16,48 +16,6 @@
     <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
     <link rel="stylesheet" type="text/css" href="/packages/sweetalert/dist/sweetalert.css">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
-    <style>
-        .navbar-default .navbar-brand:hover,
-        .navbar-default .navbar-nav > li > a:hover,
-        .navbar-default .navbar-nav > li > a:focus,
-        .navbar-default .navbar-nav > .open > a:focus,
-        .navbar-default .navbar-nav > .open > a:hover {
-            background-color: #e660ab;
-            color: #ffffff;
-        }
-
-        .navbar-default,
-        .navbar-default .navbar-brand,
-        .navbar-default .navbar-nav > li > a,
-        .navbar-default .navbar-nav > li > a {
-            background-color: #e03997;
-            color: #ffffff;
-        }
-
-        .navbar-default .navbar-toggle {
-            border-color: #fff;
-        }
-
-        .navbar-default .navbar-toggle .icon-bar {
-            background-color: #fff;
-        }
-
-        .navbar-default .navbar-nav  .dropdown-menu > li > a,
-        .navbar-default .navbar-nav > .open > a {
-            background-color: #e03997;
-            color: #ffffff;
-        }
-
-        .dropdown-menu {
-            background-color: #e03997;
-        }
-        @media (max-width: 767px) {
-            .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-                background-color: #e03997;
-                color: #ffffff;
-            }
-        }
-    </style>
     <!-- Scripts -->
     <script>
         window.Laravel = {

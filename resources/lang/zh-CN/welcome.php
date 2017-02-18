@@ -15,5 +15,6 @@ return [
     'toggle' => '切换',
     'logout' => '退出',
     'change' => '更改密码',
-    'password_changed' => '个人资料修改成功！'
+    'password_changed' => '个人资料修改成功！',
+    'result' => '赛果'
 ];

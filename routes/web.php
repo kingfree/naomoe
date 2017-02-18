@@ -33,6 +33,7 @@ Route::post('/vote', 'VoteController@vote')->name('vote');
 
 Route::get('/schedule', 'ScheduleController@index')->name('schedule');
 Route::get('/discuss', 'DiscussController@index')->name('discuss');
+Route::get('/votes/{id}', 'DiscussController@votelog')->name('votelog');
 //Route::get('/stock', 'StockController@index')->name('stock');
 
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');

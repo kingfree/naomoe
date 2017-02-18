@@ -16,13 +16,15 @@ class VoteController extends Controller
     {
         $now = Carbon::now();
         $today = Carbon::today();
-        $competition = Competition::where('start_at', '<=', $now)
-            ->where('end_at', '>=', $now)
-            ->first();
+        $competition = Competition::getNewestDoing();
         if ($competition) {
             return redirect()->route('doing', ['id' => $competition->id]);
         }
-        return redirect()->route('');
+        $competition = Competition::getNewestWill();
+        if ($competition) {
+            return redirect()->route('before', ['id' => $competition->id]);
+        }
+        return redirect()->route('schedule');
     }
 
     public function willdo($id)
