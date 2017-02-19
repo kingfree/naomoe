@@ -6,13 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class VoteLog extends Model
 {
-//    protected $casts = [
-//        'request' => 'json',
-//        'response' => 'json',
-//    ];
-
     protected $fillable = ['competition_id', 'user_id', 'valid', 'info', 'created_at', 'updated_at'];
-
 
     public function user()
     {
@@ -62,5 +56,4 @@ class VoteLog extends Model
     {
 
     }
-
 }

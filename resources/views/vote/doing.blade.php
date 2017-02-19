@@ -12,7 +12,7 @@
                     {{ $competition->infos()['type'] ?? '预选赛' }}
 
                     {{ $competition->start_at }}
-                    --
+                    ~
                     {{ $competition->end_at }}
                 </div>
             </div>
@@ -20,10 +20,10 @@
         <div class="ui segments">
             @foreach($competition->groups as $group)
                 <div class="ui segment group" data-id="{{ $group->id }}">
-                    <div class="ui huge header">
+                    <div class="ui pink ribbon label">
                         {{ $group->title }}
-                        <div class="sub header">0 / {{ $group->allow }}</div>
                     </div>
+                    <span class=" sub header">0 / {{ $group->allow }}</span>
                     <div class="ui doubling {{ $group->infos()['columns'] ?? 'six' }} column grid link doing cards">
                         @foreach($group->options as $option)
                             <div class="card option {{ $log->voted($option->id) ? 'selected' : '' }}"

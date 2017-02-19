@@ -12,6 +12,6 @@ class ScheduleController extends Controller
     {
         $year = Carbon::today()->year;
         $schedules = Schedule::where('year', $year);
-        return view('schedule.' . $year)->withDays($schedules);
+        return view('schedule.' . $year)->withDays($schedules)->withId(0);
     }
 }

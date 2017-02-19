@@ -6,11 +6,23 @@
 @import "variables";
 
 // Bootstrap
-// @import "../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
+//@import "../../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
 
 .view {
   position: inherit;
   padding-bottom: 80px;
+}
+
+a {
+  color: #e03997;
+}
+
+a:hover {
+  color: #e974b6;
+}
+
+a:active {
+  color: #e974b6;
 }
 
 .option {}

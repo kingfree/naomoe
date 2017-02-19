@@ -87,14 +87,19 @@ class VoteLogController extends Controller
             $grid->column('competition_id', '比赛')->display(function ($id) {
                 return Competition::find($id)->title;
             })->sortable();
-            $grid->column('ip', '用户')->display(function ($ip) {
-                return '<strong>'.User::find($this->user_id)->name.'</strong>'
-                    . '<br>' . $ip
-                    . '<br>' . $this->country . $this->province . $this->city;
-            })->sortable();
             $grid->column('votes', '投票')->display(function ($str) {
                 $ids = json_decode($str);
-                return join('<br>', Option::find($ids)->pluck('title')->toArray());
+                $str = '<ul class="list-inline">';
+                foreach (Option::find($ids)->pluck('title')->toArray() as $item) {
+                    $str .= '<li>' . $item . '</li>';
+                }
+                $str .= '</ul>';
+                return $str;
+            })->sortable();
+            $grid->column('ip', '用户')->display(function ($ip) {
+                return '<strong>' . User::find($this->user_id)->name . '</strong>'
+                    . '<br>' . $ip
+                    . '<br>' . $this->country . $this->province . $this->city;
             })->sortable();
             $grid->column('header', 'User-Agent')->display(function ($str) {
                 $header = json_decode($str, true);
@@ -102,8 +107,8 @@ class VoteLogController extends Controller
             });
             //$grid->column('body', '请求体');
             $states = [
-                'on' => ['value' => 1, 'text' => '有效', 'color' => 'success'],
-                'off' => ['value' => 0, 'text' => '无效', 'color' => 'danger'],
+                'on' => ['value' => true, 'text' => '有效', 'color' => 'success'],
+                'off' => ['value' => false, 'text' => '无效', 'color' => 'danger'],
             ];
             $grid->valid('有效票')->switch($states);
             $grid->created_at('投票时间')->sortable();
@@ -120,9 +125,11 @@ class VoteLogController extends Controller
         return Admin::form(VoteLog::class, function (Form $form) {
 
             $form->display('id', 'ID');
-
+            $form->switch('valid', '可见')->default(true);
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
         });
     }
+
+
 }
