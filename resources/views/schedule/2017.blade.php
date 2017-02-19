@@ -110,7 +110,7 @@
                                 <div class="ui pink ribbon label">
                                     {{ $group->title }}
                                 </div>
-                                <span class="sub header">{{ $group->allow }} / {{ count($group->options) }}</span>
+                                <span class="sub header">{{ $group->win }} / {{ count($group->options) }}</span>
                                 <ul class="ui list">
                                     @foreach($group->rank as $option)
                                         <div class="item">

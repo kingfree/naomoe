@@ -114,9 +114,13 @@ class APIController extends Controller
         }
 
         foreach ($groups as $group) {
+            $score = 9999999;
             foreach ($group->rank as $index => $option) {
-                if ($index <= $group->allow) {
+                if ($index + 1 <= $group->win) {
                     $option->winner = 2;
+                    $score = $option->valid;
+                } else if ($option->valid >= $score) {
+                    $option->winner = 1;
                 } else {
                     $option->winner = 0;
                 }
