@@ -45,9 +45,9 @@ class Option extends Model
     {
         $avatar = array_get($this->infos(), 'avatar', null);
         if ($avatar) return $avatar;
-        $avatar = $this->character->avatar();
+        $avatar = $this->character->avatar;
         if ($avatar) return $avatar;
-        return $this->group->avatar ?? '../../images/default.png';
+        return $this->group->avatar() ?? '../../images/default.png';
     }
 
     protected $appends = ['text', 'avatar'];
