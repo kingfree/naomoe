@@ -23,7 +23,7 @@
                         <li>{{ $chara->text }}</li>
                     @endforeach
                 </ul>
-                <form class="form-horizontal" method="POST" action="{{ route('doGenerate') }}">
+                <form class="form-horizontal" method="POST" action="{{ route('generate') }}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="id" value="{{ $pool->id }}">
 
