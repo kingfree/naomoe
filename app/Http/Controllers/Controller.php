@@ -36,7 +36,7 @@ class Controller extends BaseController
             '(-[a-z]{1,8})*\s*' .   // M2 -other parts of language e.g -us
             // Optional quality factor M3 ;q=, M4 - Quality Factor
             '(;\s*q\s*=\s*((1(\.0{0,3}))|(0(\.[0-9]{0,3}))))?/i',
-            $_SERVER['HTTP_ACCEPT_LANGUAGE'],
+            array_get($_SERVER, 'HTTP_ACCEPT_LANGUAGE', ''),
             $langParse);
 
         $langs = $langParse[1]; // M1 - First part of language
