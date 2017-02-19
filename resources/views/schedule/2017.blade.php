@@ -136,7 +136,7 @@
                                             <div class="right floated compact">
                                                 <div class="ui huge circular {{
                                                     ($index == 0) ? 'yellow' : (
-                                                    ($index == 1) ? 'black': (
+                                                    ($index == 1) ? 'pink': (
                                                     ($index == 2) ? 'orange' : (
                                                     ($option->winner) ? 'teal' : '')))
                                                 }} label">
