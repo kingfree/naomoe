@@ -30,8 +30,8 @@ class VoteController extends Controller
     public function willdo($id)
     {
         language();
-
-        return view('vote.before')->withCompetition(Competition::find($id));
+        $log = new VoteLog;
+        return view('vote.doing')->withCompetition(Competition::find($id)->withLog($log));
     }
 
     public function doing($id)
@@ -41,15 +41,7 @@ class VoteController extends Controller
         $comp = Competition::find($id);
         if (!$comp->inTime()) return redirect()->route('after', ['id' => $id]);
 
-        $user = Auth::user();
-        if ($user) {
-            $log = VoteLog::firstOrNew([
-                'user_id' => $user->id,
-                'competition_id' => $comp->id
-            ]);
-        } else {
-            $log = new VoteLog;
-        }
+        $log = VoteLog::getLog($comp->id);
         return view('vote.doing')->withCompetition($comp)->withLog($log);
     }
 
@@ -59,24 +51,17 @@ class VoteController extends Controller
 
         $comp = Competition::find($id);
         if (!$comp->inTime()) return redirect()->route('after', ['id' => $id]);
-
-        $user = Auth::user();
-        if ($user) {
-            $log = VoteLog::firstOrNew([
-                'user_id' => $user->id,
-                'competition_id' => $comp->id
-            ]);
-        } else {
-            $log = new VoteLog;
-        }
+        $log = VoteLog::getLog($comp->id);
         return view('vote.simple')->withCompetition($comp)->withLog($log);
     }
 
     public function did($id)
     {
         language();
-
-        return view('vote.after')->withCompetition(Competition::find($id));
+        $year = Carbon::today()->year;
+        $comp = Competition::find($id);
+        $log = VoteLog::getLog($id);
+        return view('schedule.' . $year)->withId($id)->withCompetition($comp)->withLog($log);
     }
 
     public function amiok()

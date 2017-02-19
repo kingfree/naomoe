@@ -96,6 +96,15 @@ class CompetitionController extends Controller
             $grid->actions(function ($actions) {
                 $actions->prepend('<a href="' . route('calculate', ['id' => $actions->getKey()]) . '" title="记票"><i class="fa fa-paper-plane"></i></a>');
             });
+
+            $grid->filter(function ($filter) {
+                $filter->disableIdFilter();
+
+                $filter->where(function ($query) {
+                    $query->where('title', 'like', "%{$this->input}%")
+                        ->orWhere('id', $this->input);
+                }, '搜索');
+            });
         });
     }
 

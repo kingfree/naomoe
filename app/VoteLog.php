@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class VoteLog extends Model
 {
@@ -42,6 +43,20 @@ class VoteLog extends Model
     public function vote()
     {
         return json_decode($this->votes ?? '[]') ?? [];
+    }
+
+    public static function getLog($compId)
+    {
+        $user = Auth::user();
+        if ($user) {
+            $log = VoteLog::firstOrNew([
+                'user_id' => $user->id,
+                'competition_id' => $compId
+            ]);
+        } else {
+            $log = new VoteLog;
+        }
+        return $log;
     }
 
     public function voted($id)

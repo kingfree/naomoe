@@ -112,6 +112,17 @@ class APIController extends Controller
         foreach ($map as $oid => $option) {
             $option->save();
         }
+
+        foreach ($groups as $group) {
+            foreach ($group->rank as $index => $option) {
+                if ($index <= $group->allow) {
+                    $option->winner = 2;
+                } else {
+                    $option->winner = 0;
+                }
+                $option->save();
+            }
+        }
         return redirect()->back();
     }
 

@@ -21,6 +21,10 @@ class Group extends Model
         return $this->hasMany(Option::class)->orderBy('character_id');
     }
 
+    public function rank() {
+        return $this->hasMany(Option::class)->orderBy('winner', 'desc')->orderBy('valid', 'desc');
+    }
+
     public static function boot()
     {
         parent::boot();

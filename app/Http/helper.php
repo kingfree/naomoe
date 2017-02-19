@@ -16,7 +16,7 @@ function cal($year, $month, $day, $compId = 0)
         if ($cal->competition_id == $compId) {
             return '<a href="' . $url . '" class="ui pink circular label">' . $day . '</a>';
         } else {
-            return '<a href="' . $url . '" style="color: deeppink;">' . $day . '</a>';
+            return '<a href="' . $url . '">' . $day . '</a>';
         }
     } else if ($today->month == $month) {
         return '<span style="color: black;">' . $day . '</span>';

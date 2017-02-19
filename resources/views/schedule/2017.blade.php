@@ -3,8 +3,8 @@
 @section('title', __('schedule.title'))
 
 @section('content')
-    <div class="ui doubling grid">
-        <div class="six wide column">
+    <div class="ui doubling stackable grid">
+        <div class="five wide column">
             <h2 class="ui pink top attached header">
                 <i class="calendar icon"></i>
                 <div class="content">
@@ -67,9 +67,84 @@
                     </tbody>
                 </table>
             </div>
+            @if ($id and $log)
+                <div class="ui attached segment">
+                    @foreach($competition->groups as $group)
+                        <div class="ui list">
+                            <div class="ui pink ribbon label">
+                                {{ $group->title }}
+                            </div>
+                            @foreach($group->options as $option)
+                                <div class="item {{ $log->voted($option->id) ? '' : 'hidden' }}"
+                                     data-id="{{ $option->id }}">
+                                    <img class="ui avatar image"
+                                         src="{{ config('admin.upload.host') . $option->avatar }}">
+                                    <div class="content">{{ $option->title }}</div>
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
+                </div>
+                <div class="ui attached segment">
+                    <div class="ui feed">
+                        <div class="event">
+                            <div class="content">
+                                <div class="date">
+                                    {{$log->created_at}}
+                                </div>
+                                <div class="summary">
+                                    {{$log->comment}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
-        <div class="ten wide column">
-
+        <div class="eleven wide column">
+            @if ($id and $competition)
+                <div class="ui two column doubling grid">
+                    @foreach($competition->groups as $group)
+                        <div class="column">
+                            <div class="ui segment">
+                                <div class="ui pink ribbon label">
+                                    {{ $group->title }}
+                                </div>
+                                <span class="sub header">{{ $group->allow }} / {{ count($group->options) }}</span>
+                                <ul class="ui list">
+                                    @foreach($group->rank as $option)
+                                        <div class="item">
+                                            <div class="right floated compact ui statistic {{($option->winner > 1) ? 'red' : (($option->winner > 0) ? 'yellow':'')}}">
+                                                <div class="value">
+                                                    {{$option->valid}}
+                                                </div>
+                                                <div class="label">
+                                                    @if ($competition->state() == \App\Competition::DID))
+                                                        @lang('schedule.winner'.$option->winner)
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <h3 class="ui header">
+                                                <img src="{{ config('admin.upload.host') . $option->avatar }}">
+                                                <div class="content">
+                                                    {{$option->character->lname}}
+                                                    <div class="sub header">
+                                                        {{$option->character->lwork}}
+                                                    </div>
+                                                </div>
+                                            </h3>
+                                        </div>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="ui piled segment">
+                    {!! $page->content !!}
+                </div>
+            @endif
         </div>
     </div>
 @endsection
