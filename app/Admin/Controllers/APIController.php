@@ -227,16 +227,18 @@ class APIController extends Controller
             if (!empty($data) && $data->count()) {
                 foreach ($data as $key => $value) {
                     $pool = new Pool;
-                    $pool->title = $value->getTitle();
+                    $pool->title = $value->getTitle() ?? '导入的角色池';
                     $pool->save();
                     foreach ($value as $index => $val) {
                         $chara = new Character;
-                        $chara->name = $val['人物'];
+                        $chara->name = array_get($val, '人物', '');
+                        if (empty($chara->name)) $chara->name = array_get($val, '日文', '');
+                        if (empty($chara->name)) $chara->name = array_get($val, '罗马音', '');
                         $chara->names = [
-                            'ja' => $val['日文'],
+                            'ja' => array_get($val, '日文', ''),
                             'en' => array_get($val, '罗马音', '')
                         ];
-                        $chara->work = $val['出处'];
+                        $chara->work = array_get($val, '出处', '');
                         $chara->works = [
                             'ja' => array_get($val, '作品日文名', ''),
                             'en' => ''
@@ -246,7 +248,7 @@ class APIController extends Controller
                             '编号' => array_get($val, '编号', ''),
                             '有图' => array_get($val, '是否有图', '')
                         ];
-                        $chara->description = $val['简介'];
+                        $chara->description = array_get($val, '简介', '');
                         $chara->save();
                         $number++;
                         $pool->characters()->save($chara);

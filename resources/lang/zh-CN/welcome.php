@@ -6,7 +6,7 @@ return [
     'votes' => '投票',
     'vote' => '投票',
     'schedule' => '赛程',
-    'discuss' => '记录',
+    'discuss' => '讨论',
     'tieba' => '贴吧',
     'source' => '源码',
     'admin' => '后台',
