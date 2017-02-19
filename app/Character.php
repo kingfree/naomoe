@@ -88,7 +88,7 @@ class Character extends Model
     {
         $sources = $this->infos()['source'] ?? [];
         if (App::getLocale() === 'ja') return array_map(function ($e) {
-            return self::SOURCES_ja[$e];
+            return array_get(self::SOURCES_ja, $e, $e);
         }, $sources);
         return $sources;
     }
