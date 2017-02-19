@@ -34,8 +34,14 @@ class User extends Authenticatable
         return $this->hasMany(VoteLog::class);
     }
 
-    public static function tryToGetUser()
+    public function hiddenName()
     {
-
+        if (!$this->password) {
+            $arr = explode('.', $this->name);
+            $arr[1] = '*';
+            $arr[2] = '*';
+            return join('.', $arr);
+        }
+        return $this->name;
     }
 }

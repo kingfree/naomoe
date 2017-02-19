@@ -21,6 +21,7 @@
         window.Laravel = {
             "csrfToken": "{{ csrf_token() }}"
         };
+        window.locale = "{{ language() }}";
     </script>
 </head>
 <body>
@@ -101,5 +102,8 @@
 <!-- Scripts -->
 <script src="/packages/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
+<div style="display: none">
+    <script src="http://s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564" language="JavaScript"></script>
+</div>
 </body>
 </html>

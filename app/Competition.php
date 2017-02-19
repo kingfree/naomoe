@@ -25,6 +25,11 @@ class Competition extends Model
         return $this->hasMany(VoteLog::class)->orderBy('created_at');
     }
 
+    public function votelogsDesc()
+    {
+        return $this->hasMany(VoteLog::class)->orderBy('created_at', 'desc');
+    }
+
     public function options()
     {
         return $this->hasManyThrough(Option::class, Group::class);

@@ -45,6 +45,11 @@ class VoteLog extends Model
         return json_decode($this->votes ?? '[]') ?? [];
     }
 
+    public function options()
+    {
+        return Option::find($this->vote());
+    }
+
     public static function getLog($compId)
     {
         $user = Auth::user();

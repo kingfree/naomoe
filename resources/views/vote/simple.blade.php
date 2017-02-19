@@ -4,6 +4,7 @@
 
 @section('content')
     <div class="alert alert-danger hidden"></div>
+    <form id="voting">
     <div class="ui piled segment">
         <h2 class="ui header competition" data-id="{{ $competition->id }}">
             <i class="{{ $competition->icon() }} icon"></i>
@@ -35,11 +36,12 @@
                 </div>
             @endforeach
             <div class="ui pink segment">
-                <a class="ui simple pink submit button {{ $log->id ? 'disabled' : '' }}">@lang('vote.vote')</a>
+                <button type="submit" class="ui simple pink submit button {{ $log->id ? 'disabled' : '' }}">@lang('vote.vote')</button>
                 @lang('vote.noneed')
             </div>
         </div>
     </div>
+    </form>
 
     <script>
         var messages = {

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('schedule.title'))
+@section('title', ($id and $competition) ? $competition->title :__('schedule.title'))
 
 @section('content')
     <div class="ui doubling stackable grid">
@@ -67,6 +67,25 @@
                     </tbody>
                 </table>
             </div>
+            @if ($id and $competition)
+                <div class="ui attached segment">
+                    <h2 class="ui header competition" data-id="{{ $competition->id }}">
+                        <i class="{{ $competition->icon() }} icon"></i>
+                        <div class="content">
+                            {{ $competition->title }}
+                            <div class="sub header">
+                                {{ $competition->infos()['type'] ?? '预选赛' }}
+                            </div>
+                        </div>
+                    </h2>
+
+                    <div>
+                        {{ $competition->start_at }}
+                    ~
+                        {{ $competition->end_at }}
+                    </div>
+                </div>
+            @endif
             @if ($id and $log)
                 <div class="ui attached segment">
                     @foreach($competition->groups as $group)
@@ -112,16 +131,16 @@
                                 </div>
                                 <span class="sub header">{{ $group->win }} / {{ count($group->options) }}</span>
                                 <ul class="ui list">
-                                    @foreach($group->rank as $option)
+                                    @foreach($group->rank as $index => $option)
                                         <div class="item">
-                                            <div class="right floated compact ui statistic {{($option->winner > 1) ? 'red' : (($option->winner > 0) ? 'yellow':'')}}">
-                                                <div class="value">
+                                            <div class="right floated compact">
+                                                <div class="ui huge circular {{
+                                                    ($index == 0) ? 'yellow' : (
+                                                    ($index == 1) ? 'black': (
+                                                    ($index == 2) ? 'orange' : (
+                                                    ($option->winner) ? 'teal' : '')))
+                                                }} label">
                                                     {{$option->valid}}
-                                                </div>
-                                                <div class="label">
-                                                    @if ($competition->state() == \App\Competition::DID))
-                                                        @lang('schedule.winner'.$option->winner)
-                                                    @endif
                                                 </div>
                                             </div>
                                             <h3 class="ui header">

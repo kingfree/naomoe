@@ -186,6 +186,9 @@ a
 
     <div class="footer">
         <div class="foot-right ui link list">
+            <div style="display: none">
+                <script src="http://s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564" language="JavaScript"></script>
+            </div>
             @if ($showBack)
             <div class="item">画师 <a class="" href="http://elfartworld.com/users/102042/">@深蓝杰克</a></div>
             @endif

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', __('welcome.votes'))
+@section('title', $competition->title .' - '. __('welcome.votes'))
 
 @section('content')
     <div class="ui do segment">

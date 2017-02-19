@@ -1,6 +1,10 @@
-$('.ui.checkbox')
-    .checkbox()
-;
+$('.ui.checkbox').checkbox();
+
+if (window.location.href.includes('/votes')) {
+    $('.date').each(function (i, e) {
+        $(e).text(moment($(e).data('data')).fromNow());
+    });
+}
 
 function doVote(compId, votes) {
     var comment = $('#comment').text();
@@ -93,8 +97,10 @@ var voteSimple = function() {
     doVote(compId, votes);
 };
 
-$('.simple.submit').on('click', function () {
+$('#voting').on('submit', function (e) {
+    e.preventDefault();
     voteSimple();
+    return false;
 });
 
 if (window.location.href.includes('/voting')) {

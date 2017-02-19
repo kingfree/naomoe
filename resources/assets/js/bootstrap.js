@@ -46,3 +46,6 @@ require('../../../public/semantic-ui/semantic.js');
 //     broadcaster: 'pusher',
 //     key: 'your-pusher-key'
 // });
+
+window.moment = require('moment');
+moment.locale(locale);

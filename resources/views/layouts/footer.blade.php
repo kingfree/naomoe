@@ -1,12 +1,13 @@
 @section('footer')
-    <footer class="ui segment">
-        <div class="ui right floated">
-            <strong><a href="http://nao.toyama.moe">闹萌</a></strong>
-            ©️<em>2017</em>
-            由 <a href="http://kingfree.toyama.moe">王者自由</a> 编写
-        </div>
-        <div>
-            <strong><a href="http://tieba.toyama.moe" target="_blank">东山奈央吧</a> 闹萌制作委员会</strong>
+    <footer class="ui grid">
+        <div class="ui list" style="margin: 10px;">
+            <div class="item">
+                东山奈央最萌大赛
+                <a href="http://nao.toyama.moe">闹萌</a>
+                ©
+                <a href="/about"><strong>闹萌制作委员会</strong></a>
+                2017
+            </div>
         </div>
     </footer>
 @endsection
