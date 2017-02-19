@@ -14,5 +14,6 @@ return [
     'select_max' => '最多只能选择 :allow 个',
     'success' => '投票成功！',
     'failed' => '投票失败！',
+    'input_moeb'=>'写一句应援的话吧！',
     'allow' => '最多允许选择 :allow 项'
 ];

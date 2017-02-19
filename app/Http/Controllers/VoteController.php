@@ -79,8 +79,12 @@ class VoteController extends Controller
         $user = User::firstOrCreate([
             'name' => $ip
         ]);
-        Auth::login($user, true);
-        return response('User Logged in', 200);
+        if (!$user->password) {
+            Auth::login($user, true);
+            return response('User Logged in', 200);
+        } else {
+            return response('Not Login', 403);
+        }
     }
 
     public function vote()
@@ -90,6 +94,7 @@ class VoteController extends Controller
         $ip = request()->getClientIp();
         $header = request()->header();
         $body = request()->all();
+        $comment = Input::get('comment');
         $header['cookie'] = [];
         $header['x-xsrf-token'] = [];
         $header['x-csrf-token'] = [];
@@ -125,6 +130,7 @@ class VoteController extends Controller
         $log->header = $header;
         $log->body = $body;
         $log->ip = $ip;
+        $log->comment = $comment;
         $log->votes = $votes->pluck('id');
         $log->save();
 

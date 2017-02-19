@@ -3,10 +3,12 @@ $('.ui.checkbox')
 ;
 
 function doVote(compId, votes) {
+    var comment = $('#comment').text();
     var vote = function () {
         axios.post('/vote', {
             competition_id: compId,
-            votes: votes
+            votes: votes,
+            comment: comment
         }).then(function (response) {
             if (response.data.code === 0) {
                 swal({
@@ -48,15 +50,19 @@ function doVote(compId, votes) {
             title: messages.title,
             text: '<div class="ui mini horizontal list">' + text + '</div>',
             html: true,
-            type: null,
+            type: "input",
+            inputPlaceholder: messages.inputPlaceholder,
+            inputValue: $('#comment').text(),
             showCancelButton: true,
             confirmButtonColor: "#c71f7e",
             confirmButtonText: messages.confirmButtonText,
             cancelButtonText: messages.cancelButtonText,
             closeOnConfirm: false,
             showLoaderOnConfirm: true
-        }, function (isConfirm) {
-            if (isConfirm) cb();
+        }, function(inputValue){
+            if (inputValue === false) return false;
+            $('#comment').text(inputValue);
+            cb();
             return true;
         });
     };
@@ -66,6 +72,14 @@ function doVote(compId, votes) {
     }).catch(function (error) {
         axios.post('/create', {}).then(function (response) {
             showAlert(vote);
+        }).catch(function (error) {
+            swal({
+                title: messages.failed,
+                timer: 1000,
+                type: "error"
+            }, function () {
+                window.location.href = '/login';
+            });
         });
     });
 }
@@ -73,7 +87,7 @@ function doVote(compId, votes) {
 var voteSimple = function() {
     var compId = $('.competition').data('id');
     var votes = [];
-    $('.option[selected]').each(function (i, e) {
+    $('.checkbox.checked > input').each(function (i, e) {
         votes.push($(e).val());
     });
     doVote(compId, votes);
@@ -85,9 +99,8 @@ if (window.location.href.includes('/voting')) {
 
     } else {
 
-        $('.simple .submit').on('click', function (e) {
-            alert('ok');
-            voteSimple(e);
+        $('.simple.submit').on('click', function () {
+            voteSimple();
         });
 
         $('.doing .option').on('touch click', function () {

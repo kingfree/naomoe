@@ -3,7 +3,7 @@
 @section('title', __('welcome.votes'))
 
 @section('content')
-    <div class="ui piled segment">
+    <div class="ui do segment">
         <h2 class="ui header competition" data-id="{{ $competition->id }}">
             <i class="{{ $competition->icon() }} icon"></i>
             <div class="content">
@@ -52,6 +52,7 @@
             title: "{{__('vote.confirm_title')}}",
             confirmButtonText: "{{__('vote.confirm')}}",
             cancelButtonText: "{{__('vote.cancel')}}",
+            inputPlaceholder: "{{__('vote.input_moeb')}}",
             select_one: "{{__('vote.select_one')}}"
         };
     </script>
@@ -91,8 +92,9 @@
             <div class="ui pink segment">
                 <button class="ui pink submit button {{ $log->id ? 'disabled' : '' }}">@lang('vote.vote')</button>
                 @if ($log->comment)
-                    {{$log->comment}}
+                    <span id="comment">{{$log->comment}}</span>
                 @else
+                    <span id="comment"></span>
                     @lang('vote.noneed')
                 @endif
                 @if (Route::has('simple'))
