@@ -31,7 +31,7 @@ class VoteController extends Controller
     {
         language();
         $log = new VoteLog;
-        return view('vote.doing')->withCompetition(Competition::find($id)->withLog($log));
+        return view('vote.doing')->withCompetition(Competition::find($id))->withLog($log);
     }
 
     public function doing($id)

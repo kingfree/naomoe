@@ -106,6 +106,7 @@ class VoteLogController extends Controller
                 return join('<br>', $header['user-agent']);
             });
             //$grid->column('body', '请求体');
+            $grid->comment('萌文');
             $states = [
                 'on' => ['value' => true, 'text' => '有效', 'color' => 'success'],
                 'off' => ['value' => false, 'text' => '无效', 'color' => 'danger'],

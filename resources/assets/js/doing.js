@@ -7,8 +7,8 @@ if (window.location.href.includes('/votes')) {
 }
 
 function doVote(compId, votes) {
-    var comment = $('#comment').text();
     var vote = function () {
+        var comment = $('#comment').text();
         axios.post('/vote', {
             competition_id: compId,
             votes: votes,
