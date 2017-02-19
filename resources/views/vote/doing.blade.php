@@ -24,7 +24,7 @@
                         {{ $group->title }}
                         <div class="sub header">0 / {{ $group->allow }}</div>
                     </div>
-                    <div class="ui stackable {{ $group->infos()['columns'] ?? 'seven' }} column grid link doing cards">
+                    <div class="ui doubling {{ $group->infos()['columns'] ?? 'six' }} column grid link doing cards">
                         @foreach($group->options as $option)
                             <div class="card option {{ $log->voted($option->id) ? 'selected' : '' }}"
                                  data-id="{{ $option->id }}" data-allow="{{ $group->allow }}"
@@ -72,10 +72,10 @@
 
     <div class="footer"></div>
     <div class="voting ui material">
-        <div class="ui stackable segments">
+        <div class="ui doubling segments">
             @foreach($competition->groups as $group)
                 <div class="ui segment">
-                    <div class="ui horizontal stackable list">
+                    <div class="ui horizontal doubling list">
                         <div class="item">
                             <div class="header">{{ $group->title }}</div>
                         </div>

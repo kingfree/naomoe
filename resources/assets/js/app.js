@@ -20,3 +20,5 @@ require('./bootstrap');
 require('./main');
 require('./doing');
 require('./schedule');
+
+swal.setDefaults({ confirmButtonColor: '#e03997' });

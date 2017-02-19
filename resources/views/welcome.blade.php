@@ -20,6 +20,10 @@
             color: #e03997;
         }
 
+        ::selection {
+            background-color: #ef9ccb;
+        }
+a
         html, body {
             color: #e03997;
             font-family: sans-serif;
