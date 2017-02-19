@@ -22,7 +22,7 @@ class Group extends Model
     }
 
     public function rank() {
-        return $this->hasMany(Option::class)->orderBy('winner', 'desc')->orderBy('valid', 'desc');
+        return $this->hasMany(Option::class)->orderBy('valid', 'desc');
     }
 
     public static function boot()

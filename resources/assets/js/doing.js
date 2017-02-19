@@ -93,15 +93,15 @@ var voteSimple = function() {
     doVote(compId, votes);
 };
 
+$('.simple.submit').on('click', function () {
+    voteSimple();
+});
+
 if (window.location.href.includes('/voting')) {
     var voted = $('.submit').hasClass('disabled');
     if (voted) {
 
     } else {
-
-        $('.simple.submit').on('click', function () {
-            voteSimple();
-        });
 
         $('.doing .option').on('touch click', function () {
             $(this).transition('pulse');

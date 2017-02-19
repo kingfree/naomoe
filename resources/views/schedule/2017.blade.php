@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="ui doubling stackable grid">
-        <div class="five wide column">
+        <div class="six wide column">
             <h2 class="ui pink top attached header">
                 <i class="calendar icon"></i>
                 <div class="content">
@@ -15,16 +15,16 @@
                 </div>
             </h2>
             <div class="ui attached segment">
-                <table class="calendar ui celled unstackable table">
+                <table class="calendar ui celled seven unstackable column table" style="margin: -8px;">
                     <thead>
                     <tr class="center aligned">
-                        <th><span class="ui red header">日</span></th>
-                        <th><span class="ui black header">月</span></th>
-                        <th><span class="ui black header">火</span></th>
-                        <th><span class="ui black header">水</span></th>
-                        <th><span class="ui black header">木</span></th>
-                        <th><span class="ui black header">金</span></th>
-                        <th><span class="ui green header">土</span></th>
+                        <th><span style="color: red;">日</span></th>
+                        <th><span style="color: black;">月</span></th>
+                        <th><span style="color: black;">火</span></th>
+                        <th><span style="color: black;">水</span></th>
+                        <th><span style="color: black;">木</span></th>
+                        <th><span style="color: black;">金</span></th>
+                        <th><span style="color: green;">土</span></th>
                     </tr>
                     </thead>
                     <tbody class="center aligned">
@@ -101,7 +101,7 @@
                 </div>
             @endif
         </div>
-        <div class="eleven wide column">
+        <div class="ten wide column">
             @if ($id and $competition)
                 <div class="ui two column doubling grid">
                     @foreach($competition->groups as $group)
