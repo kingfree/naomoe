@@ -80,6 +80,7 @@ class VoteLogController extends Controller
                 //$actions->disableDelete();
                 $actions->disableEdit();
             });
+            $grid->model()->orderBy('id', 'desc');
 
 //            $grid->column('user_id', '用户')->display(function ($id) {
 //                return User::find($id)->name;

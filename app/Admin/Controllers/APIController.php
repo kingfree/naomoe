@@ -65,13 +65,14 @@ class APIController extends Controller
 
         $groupMap = [];
         foreach ($groups as $group) {
-            $groupMap[$group->id] = $group;
+            $group->voted = 0;
+            $groupMap[$group->id] = &$group;
         }
         $map = [];
         foreach ($options as $option) {
             $option->voted = 0;
             $option->valid = 0;
-            $map[$option->id] = $option;
+            $map[$option->id] = &$option;
         }
 
         foreach ($votelogs as $votelog) {
@@ -94,7 +95,9 @@ class APIController extends Controller
                 $allows[$group->id] = ['allow' => $group->allow, 'count' => 0];
             }
             foreach ($votes as $vote) {
-                $allow = &$allows[$map[$vote]->group_id];
+                $groupId = $map[$vote]->group_id;
+                $groupMap[$groupId]->voted++;
+                $allow = &$allows[$groupId];
                 if ($allow['count']++ >= $allow['allow']) {
                     $votelog->valid = false;
                     continue;
@@ -112,6 +115,12 @@ class APIController extends Controller
         foreach ($map as $oid => $option) {
             $option->save();
         }
+        foreach ($groupMap as $gid => $group) {
+            $group->save();
+        }
+        $total = count($votelogs);
+        $competition->voted = $total;
+        $competition->save();
 
         foreach ($groups as $group) {
             $score = 9999999;

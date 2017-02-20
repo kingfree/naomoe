@@ -130,6 +130,9 @@
                                     {{ $group->title }}
                                 </div>
                                 <span class="sub header">{{ $group->win }} / {{ count($group->options) }}</span>
+                                @if ($competition->inTime())
+                                    <p class="text-muted">@lang('schedule.lastupdate') <span class="date" data-data="{{$competition->updated_at}}">{{$competition->updated_at}}</span></p>
+                                @endif
                                 <ul class="ui list">
                                     @foreach($group->rank as $index => $option)
                                         <div class="item">

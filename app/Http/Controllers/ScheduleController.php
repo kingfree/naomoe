@@ -11,9 +11,13 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $year = Carbon::today()->year;
+        $today = Carbon::today();
+        $cal = Schedule::where('year', $today->year)->where('month', $today->month)->where('day', $today->day)->first();
+        if ($cal and $cal->visible) {
+            return route('after', ['id' => $cal->competition_id]);
+        }
         $page = Page::find(1);
         if (!$page) $page = new Page;
-        return view('schedule.' . $year)->withId(0)->withPage($page);
+        return view('schedule.' . $today->year)->withId(0)->withPage($page);
     }
 }
