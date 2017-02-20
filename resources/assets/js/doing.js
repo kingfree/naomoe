@@ -1,10 +1,8 @@
 $('.ui.checkbox').checkbox();
 
-if (window.location.href.includes('/votes')) {
-    $('.date').each(function (i, e) {
-        $(e).text(moment($(e).data('data')).fromNow());
-    });
-}
+$('.date').each(function (i, e) {
+    $(e).text(moment($(e).data('data')).fromNow());
+});
 
 function doVote(compId, votes) {
     var vote = function () {

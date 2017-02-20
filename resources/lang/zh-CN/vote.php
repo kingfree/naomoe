@@ -15,5 +15,6 @@ return [
     'success' => '投票成功！',
     'failed' => '投票失败！',
     'input_moeb'=>'写一句应援的话吧！',
-    'allow' => '最多允许选择 :allow 项'
+    'allow' => '最多允许选择 :allow 项',
+    'votedto' => '投给了'
 ];
