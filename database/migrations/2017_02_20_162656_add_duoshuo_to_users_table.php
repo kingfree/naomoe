@@ -14,8 +14,8 @@ class AddDuoshuoToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('user_id')->nullale();
-            $table->string('access_token')->nullale();
+            $table->string('user_id')->nullale()->default(null);
+            $table->string('access_token')->nullale()->default(null);
         });
     }
 
@@ -27,7 +27,8 @@ class AddDuoshuoToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn('user_id');
+            $table->dropColumn('access_token');
         });
     }
 }

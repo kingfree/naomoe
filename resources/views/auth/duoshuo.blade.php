@@ -7,6 +7,8 @@
             <input type="hidden" name="user_id" value="{{session('user_id')}}">
             <input type="hidden" name="access_token" value="{{session('access_token')}}">
         @else
+            <input type="hidden" name="user_id" value="">
+            <input type="hidden" name="access_token" value="">
             <a href="http://naomoe.duoshuo.com/login/baidu/?sso=1&amp;redirect_uri={{route('duoshuoin')}}"
                class="ui facebook button">
                 <i class="paw icon"></i>
