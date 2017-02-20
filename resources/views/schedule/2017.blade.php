@@ -5,15 +5,17 @@
 @section('content')
     <div class="ui doubling stackable grid">
         <div class="six wide column">
-            <h2 class="ui pink top attached header">
-                <i class="calendar icon"></i>
-                <div class="content">
-                    @lang('schedule.calendar')
-                    <div class="sub header">
-                        2017.2 - 2017.3
+            <a href="{{route('schedule')}}">
+                <h2 class="ui pink top attached header">
+                    <i class="calendar icon"></i>
+                    <div class="content">
+                        @lang('schedule.calendar')
+                        <div class="sub header">
+                            2017.2 - 2017.3
+                        </div>
                     </div>
-                </div>
-            </h2>
+                </h2>
+            </a>
             <div class="ui attached segment">
                 <table class="calendar ui celled seven unstackable column table" style="margin: -8px;">
                     <thead>
@@ -81,7 +83,7 @@
 
                     <div>
                         {{ $competition->start_at }}
-                    ~
+                        ~
                         {{ $competition->end_at }}
                     </div>
                 </div>
@@ -131,7 +133,9 @@
                                 </div>
                                 <span class="sub header">{{ $group->win }} / {{ count($group->options) }}</span>
                                 @if ($competition->inTime())
-                                    <p class="text-muted">@lang('schedule.lastupdate') <span class="date" data-data="{{$group->updated_at}}">{{$group->updated_at}}</span></p>
+                                    <p class="text-muted">@lang('schedule.lastupdate') <span class="date"
+                                                                                             data-data="{{$group->updated_at}}">{{$group->updated_at}}</span>
+                                    </p>
                                 @endif
                                 <ul class="ui list">
                                     @foreach($group->rank as $index => $option)

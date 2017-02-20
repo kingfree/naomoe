@@ -46,7 +46,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="/vote"><i class="gamepad icon"></i>@lang('welcome.votes')</a></li>
-                    <li><a href="/schedule"><i class="calendar icon"></i>@lang('welcome.schedule')</a></li>
+                    <li><a href="/result"><i class="calendar checkered icon"></i>@lang('welcome.result')</a></li>
                     <li><a href="/discuss"><i class="comments icon"></i>@lang('welcome.discuss')</a></li>
                     @if (Route::has('stotk'))
                         <li><a class="item" href="/stock"><i class="payment icon"></i>@lang('welcome.stock')</a></li>
@@ -58,15 +58,14 @@
                         <li><a href="/admin"><i class="desktop icon"></i>@lang('welcome.admin')</a></li>
                     @endif
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">@lang('welcome.login')</a></li>
-                        <li><a href="{{ route('register') }}">@lang('welcome.register')</a></li>
+                        <li><a href="{{ route('login') }}"><i class="sign in icon"></i>@lang('welcome.login')</a></li>
+                        <li><a href="{{ route('register') }}"><i class="add user icon"></i>@lang('welcome.register')</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
-
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ route('change') }}">@lang('welcome.change')</a></li>
                                 <li>

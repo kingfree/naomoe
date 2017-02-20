@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Competition;
 use App\Option;
+use App\Schedule;
 use App\User;
 use App\VoteLog;
 use Carbon\Carbon;
@@ -23,6 +24,16 @@ class VoteController extends Controller
         $competition = Competition::getNewestWill();
         if ($competition) {
             return redirect()->route('before', ['id' => $competition->id]);
+        }
+        return redirect()->route('schedule');
+    }
+
+    public function result()
+    {
+        $today = Carbon::today();
+        $cal = Schedule::where('year', $today->year)->where('month', $today->month)->where('day', $today->day)->first();
+        if ($cal and $cal->visible) {
+            return redirect()->route('after', ['id' => $cal->competition_id]);
         }
         return redirect()->route('schedule');
     }
