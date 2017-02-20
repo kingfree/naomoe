@@ -34,6 +34,11 @@ class User extends Authenticatable
         return $this->hasMany(VoteLog::class);
     }
 
+    public static function duoshuo($user_id)
+    {
+        return User::where('user_id', $user_id)->first();
+    }
+
     public function hiddenName()
     {
         if (!$this->password) {

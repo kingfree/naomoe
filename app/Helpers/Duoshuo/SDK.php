@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Config;
 
 /**
  * DuoshuoSDK 本地服务类定义
@@ -88,8 +89,8 @@ class Duoshuo_SDK extends Duoshuo_Abstract
     {
         //short_name,secret，sync_to_local等信息可以直接在下方填写，sync_lock和last_sync等信息建议写入数据库保存
         $this->options = array();
-        $this->options['short_name'] = config('DUOSHUO_KEY');//注册了abc.duoshuo.com,short_name即abc
-        $this->options['secret'] = config('DUOSHUO_SECRET');//在http://abc.duoshuo.com/settings查看
+        $this->options['short_name'] = 'naomoe';//注册了abc.duoshuo.com,short_name即abc
+        $this->options['secret'] = '7bdaed02fa5b1b4491f267a16dcfc1cf';//在http://abc.duoshuo.com/settings查看
         $this->options['sync_to_local'] = 1;//1表示开启同步回本地，0表示关闭
         $this->options['sync_lock'] = 0;//用于防止瞬间发起多次同步请求，请配置setOption函数进行存储
         $this->options['last_sync'] = 0;//用于记录最后同步的log_id，请配置setOption函数进行存储

@@ -181,6 +181,7 @@ return [
         SocialiteProviders\Manager\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
 
+        App\Providers\DuoshuoServiceProvider::class,
     ],
 
     /*

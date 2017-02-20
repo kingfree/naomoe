@@ -10,8 +10,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use Auth;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Request;
 use Response;
 use Socialite;
 
@@ -81,6 +83,33 @@ class AuthController extends Controller
     public function duoshuoin()
     {
         $code = Input::get('code');
+        $sdk = new \Duoshuo_SDK;
+        $client = $sdk->getClient();
+        try {
+            $response = $client->getAccessToken('code', [
+                'code' => $code,
+                'redirect_uri' => route('duoshuologin')
+            ]);
+            $user_id = $response['user_id'];
+            $access_token = $response['access_token'];
+            $user = User::duoshuo($user_id);
+            if (!$user) {
+                session($response);
+                return redirect()->route('login');
+            } else {
+                $user->access_token = $access_token;
+                $user->save();
+                Auth::login($user);
+                return redirect()->route('vote');
+            }
+        } catch (\Exception $e) {
+            return redirect()->route('login');
+        }
+    }
+
+    public function duoshuologin()
+    {
+        dd(Input::get());
     }
 
     public function duoshuout()

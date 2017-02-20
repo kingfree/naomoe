@@ -59,33 +59,15 @@
                                         <i class="sign in icon"></i>
                                         登录
                                     </button>
-                                </div>
-                                </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label">其他登录方式</label>
-                            <div class="col-md-8">
-                                    <a href="http://naomoe.duoshuo.com/login/baidu/?sso=1&amp;redirect_uri={{route('duoshuoin')}}"
-                                       class="ui facebook button">
-                                        <i class="paw icon"></i>
-                                        贴吧
-                                    </a>
-                                    <a href="http://naomoe.duoshuo.com/login/weibo/?sso=1&amp;redirect_uri={{route('duoshuoin')}}"
-                                       class="ui red button">
-                                        <i class="weibo icon"></i>
-                                        微博
-                                    </a>
-                                    <a href="http://naomoe.duoshuo.com/login/qq/?sso=1&amp;redirect_uri={{route('duoshuoin')}}"
-                                       class="ui black button">
-                                        <i class="qq icon"></i>
-                                        QQ
-                                    </a>
-                                    <a href="http://naomoe.duoshuo.com/login/weixin/?sso=1&amp;redirect_uri={{route('duoshuoin')}}"
-                                       class="ui green button">
-                                        <i class="weixin icon"></i>
-                                        微信
+                                    <a class="ui button" href="{{route('register')}}">
+                                        <i class="add user icon"></i>
+                                        注册
                                     </a>
                                 </div>
                             </div>
+
+                            @include('auth.duoshuo')
+                            @yield('duoshuo')
 
                         </form>
                     </div>
@@ -93,21 +75,4 @@
             </div>
         </div>
     </div>
-    <script>
-        var duoshuoQuery = {
-            short_name: "naomoe",
-            sso: {
-                login: "{{route('duoshuoin')}}",
-                logout: "{{route('duoshuout')}}"
-            }
-        };
-        (function () {
-            var ds = document.createElement('script');
-            ds.type = 'text/javascript';
-            ds.async = true;
-            ds.src = 'http://static.duoshuo.com/embed.js';
-            ds.charset = 'UTF-8';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
-        })();
-    </script>
 @endsection

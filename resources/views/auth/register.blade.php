@@ -74,6 +74,9 @@
                                 </button>
                             </div>
                         </div>
+
+                        @include('auth.duoshuo')
+                        @yield('duoshuo')
                     </form>
                 </div>
             </div>

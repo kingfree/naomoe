@@ -32,12 +32,17 @@ Route::post('/amiok', 'VoteController@amiok')->name('amiok');
 Route::post('/create', 'VoteController@create')->name('create');
 Route::post('/vote', 'VoteController@vote')->name('vote');
 
+Route::get('/home', function () {
+    return redirect()->route('votes');
+})->name('home');
+
 Route::get('/schedule', 'ScheduleController@index')->name('schedule');
 Route::get('/discuss', 'DiscussController@index')->name('discuss');
 Route::get('/votes/{id}', 'DiscussController@votelog')->name('votelog');
 //Route::get('/stock', 'StockController@index')->name('stock');
 
-Route::get('duoshuo/login', 'Auth\AuthController@duoshuoin')->name('duoshuoin');
+Route::get('duoshuo/in', 'Auth\AuthController@duoshuoin')->name('duoshuoin');
+Route::get('duoshuo/login', 'Auth\AuthController@duoshuologin')->name('duoshuologin');
 Route::get('duoshuo/logout', 'Auth\AuthController@duoshuout')->name('duoshuout');
 
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
