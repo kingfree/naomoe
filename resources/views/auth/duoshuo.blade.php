@@ -3,7 +3,7 @@
     <label class="col-md-4 control-label">其他登录方式</label>
     <div class="col-md-8">
         @if (session('user_id'))
-            绑定已有账号，请登录。或者注册一个新账号与之绑定。
+            已登录外部账号。
             <input type="hidden" name="user_id" value="{{session('user_id')}}">
             <input type="hidden" name="access_token" value="{{session('access_token')}}">
         @else

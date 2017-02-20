@@ -92,11 +92,13 @@ class AuthController extends Controller
             ]);
             $user_id = $response['user_id'];
             $access_token = $response['access_token'];
-            $user = User::duoshuo($user_id);
+            $login = Auth::check();
+            $user = $login ? User::find(Auth::user()->id) : User::duoshuo($user_id);
             if (!$user) {
                 session($response);
                 return redirect()->route('login');
             } else {
+                $user->user_id = $user_id;
                 $user->access_token = $access_token;
                 $user->save();
                 Auth::login($user);

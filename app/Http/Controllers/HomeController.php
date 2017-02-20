@@ -38,6 +38,18 @@ class HomeController extends Controller
     {
         $user = Auth::user();
         if (!$user) return redirect()->back();
+        $usr = User::find($user->id);
+        if (!empty($usr->user_id)) {
+            session([
+                'user_id' => $usr->user_id,
+                'access_token' => $usr->access_token,
+            ]);
+        } else {
+            session([
+                'user_id' => null,
+                'access_token' => null,
+            ]);
+        }
         return view('auth.register')
             ->withAction(url('/change'))
             ->withName($user->name)
@@ -58,6 +70,12 @@ class HomeController extends Controller
         $usr->name = Input::get('name');
         $usr->email = Input::get('email');
         if (Input::get('password')) $usr->password = bcrypt(Input::get('password'));
+        $user_id = Input::get('user_id');
+        $access_token = Input::get('access_token');
+        if (($user_id and $user_id == $usr->user_id) or (!$usr->user_id)) {
+            $usr->user_id = $user_id;
+            $usr->access_token = $access_token;
+        }
         $usr->save();
         return redirect('change')->with('status', __('welcome.password_changed'));
     }
