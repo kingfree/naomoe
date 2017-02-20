@@ -120,6 +120,31 @@
                         </div>
                     </div>
                 </div>
+            @else
+                <div class="ui attached segment">
+                    <h3 class="ui pink header">
+                        测试赛
+                    </h3>
+                    <table class="ui very basic collapsing celled table">
+                        <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>萌战内容</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>2月19日（日）</td>
+                            <td><a href="{{route('goto', ['date'=>'2017-02-19'])}}">中川花音专辑赛</a></td>
+                        </tr>
+                        <tr>
+                            <td>2月20日（月）</td>
+                            <td><a href="{{route('goto', ['date'=>'2017-02-20'])}}">闹群最萌</a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
             @endif
         </div>
         <div class="ten wide column">
@@ -168,6 +193,141 @@
                 </div>
             @else
                 <div class="ui piled segment">
+
+                    <table class="ui very basic collapsing celled table">
+                        <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>时间</th>
+                            <th>萌战内容</th>
+                            <th>备注</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>2月27日</td>
+                            <td>00:00~23:00</td>
+                            <td>预选赛1、2组</td>
+                            <td>20进4选8。每组前4晋级为32强</td>
+                        </tr>
+                        <tr>
+                            <td>2月28日</td>
+                            <td>00:00~23:00</td>
+                            <td>预选赛3、4组</td>
+                            <td>20进4选8。每组前4晋级为32强</td>
+                        </tr>
+                        <tr>
+                            <td>3月1日</td>
+                            <td>00:00~23:00</td>
+                            <td>预选赛5、6组</td>
+                            <td>20进4选8。每组前4晋级为32强</td>
+                        </tr>
+                        <tr>
+                            <td>3月2日</td>
+                            <td>00:00~23:00</td>
+                            <td>预选赛7、8组</td>
+                            <td>20进4选8。每组前4晋级为32强</td>
+                        </tr>
+                        <tr>
+                            <td>3月2日</td>
+                            <td>23:01~23:59</td>
+                            <td>本战32强分组</td>
+                            <td>随机分配成8组，每组4人</td>
+                        </tr>
+                        <tr>
+                            <td>3月3日</td>
+                            <td>00:00~23:00</td>
+                            <td>本战1回战</td>
+                            <td>4进2选2。A、B组前2晋级</td>
+                        </tr>
+                        <tr>
+                            <td>3月4日</td>
+                            <td>00:00~23:00</td>
+                            <td>本战1回战</td>
+                            <td>4进2选2。C、D组前2晋级</td>
+                        </tr>
+                        <tr>
+                            <td>3月5日</td>
+                            <td>00:00~23:00</td>
+                            <td>本战1回战</td>
+                            <td>4进2选2。E、F组前2晋级</td>
+                        </tr>
+                        <tr>
+                            <td>3月6日</td>
+                            <td>00:00~23:00</td>
+                            <td>本战1回战</td>
+                            <td>4进2选2。G、H组前2晋级</td>
+                        </tr>
+                        <tr>
+                            <td>3月7日</td>
+                            <td>00:00~23:00</td>
+                            <td>本战2回战</td>
+                            <td>2进1选1。A、B、C、D各组第一晋级为八强</td>
+                        </tr>
+                        <tr>
+                            <td>3月8日</td>
+                            <td>00:00~23:00</td>
+                            <td>本战2回战</td>
+                            <td>2进1选1。E、F、G、H各组第一晋级为八强</td>
+                        </tr>
+                        <tr>
+                            <td>3月8日</td>
+                            <td>23:01~23:59</td>
+                            <td>决赛圈分组</td>
+                            <td>8人随机分配</td>
+                        </tr>
+                        <tr>
+                            <td>3月9日</td>
+                            <td>00:00~23:00</td>
+                            <td>八进四</td>
+                            <td>2进1选1。东、南、西、北4组同时进行</td>
+                        </tr>
+                        <tr>
+                            <td>3月10日</td>
+                            <td>00:00~23:00</td>
+                            <td>半决赛</td>
+                            <td>2进1选1。东西、南北2组同时进行</td>
+                        </tr>
+                        <tr>
+                            <td>3月11日</td>
+                            <td>00:00~23:00</td>
+                            <td>萌王战</td>
+                            <td>决出萌王和准萌</td>
+                        </tr>
+                        <tr>
+                            <td>3月12日</td>
+                            <td></td>
+                            <td>休战</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3月13日</td>
+                            <td>00:00~23:00</td>
+                            <td>表演赛I</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3月14日</td>
+                            <td>00:00~23:00</td>
+                            <td>表演赛II</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3月15日</td>
+                            <td>00:00~23:00</td>
+                            <td>表演赛III</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>3月15日</td>
+                            <td></td>
+                            <td>2017届闹萌</td>
+                            <td>结束</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
                     {!! $page->content !!}
                 </div>
             @endif
