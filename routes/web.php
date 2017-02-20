@@ -37,5 +37,8 @@ Route::get('/discuss', 'DiscussController@index')->name('discuss');
 Route::get('/votes/{id}', 'DiscussController@votelog')->name('votelog');
 //Route::get('/stock', 'StockController@index')->name('stock');
 
+Route::get('duoshuo/login', 'Auth\AuthController@duoshuoin')->name('duoshuoin');
+Route::get('duoshuo/logout', 'Auth\AuthController@duoshuout')->name('duoshuout');
+
 Route::get('auth/{provider}', 'Auth\AuthController@redirectToProvider');
 Route::get('auth/{provider}/callback', 'Auth\AuthController@handleProviderCallback');

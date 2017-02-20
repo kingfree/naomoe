@@ -105,7 +105,7 @@ a
         }
 
         .subtitle {
-            font-size: 48px;
+            font-size: 56px;
         }
 
         .links {

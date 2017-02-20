@@ -108,7 +108,7 @@
                     <div class="ui feed">
                         <div class="event">
                             <div class="content">
-                                <div class="date">
+                                <div class="date" data-data="{{$log->created_at}}">
                                     {{$log->created_at}}
                                 </div>
                                 <div class="summary">

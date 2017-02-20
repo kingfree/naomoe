@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Input;
 use Response;
 use Socialite;
 
@@ -75,6 +76,16 @@ class AuthController extends Controller
             'provider_id' => $user->id,
             'avatar' => $user->avatar
         ]);
+    }
+
+    public function duoshuoin()
+    {
+        $code = Input::get('code');
+    }
+
+    public function duoshuout()
+    {
+
     }
 
 }

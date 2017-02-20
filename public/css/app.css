@@ -1,7 +1,18 @@
 .view {
   position: inherit;
-  padding-top: 65px;
-  padding-bottom: 40px;
+  padding-bottom: 80px;
+}
+
+a {
+  color: #e03997;
+}
+
+a:hover {
+  color: #e974b6;
+}
+
+a:active {
+  color: #e974b6;
 }
 
 .option.selected {
@@ -23,4 +34,54 @@
 
 .hidden {
   display: none !important;
+}
+
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > .open > a:focus,
+.navbar-default .navbar-nav > .open > a:hover {
+  background-color: #e660ab;
+  color: #ffffff;
+}
+
+.navbar-default,
+.navbar-default .navbar-brand,
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav > li > a {
+  background-color: #e03997;
+  color: #ffffff;
+}
+
+.navbar-default .navbar-toggle {
+  border-color: #fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+.navbar-default .navbar-nav .dropdown-menu > li > a,
+.navbar-default .navbar-nav > .open > a {
+  background-color: #e03997;
+  color: #ffffff;
+}
+
+.dropdown-menu {
+  background-color: #e03997;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    background-color: #e03997;
+    color: #ffffff;
+  }
+}
+
+::-moz-selection {
+  background: #e03997;
+}
+
+::selection {
+  background: #e03997;
 }
