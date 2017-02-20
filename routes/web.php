@@ -41,6 +41,7 @@ Route::get('/goto/{date}', 'ScheduleController@goto')->name('goto');
 Route::get('/result', 'VoteController@result')->name('result');
 Route::get('/discuss', 'DiscussController@index')->name('discuss');
 Route::get('/votes/{id}', 'DiscussController@votelog')->name('votelog');
+Route::get('/votes', 'DiscussController@index');
 //Route::get('/stock', 'StockController@index')->name('stock');
 
 Route::get('duoshuo/in', 'Auth\AuthController@duoshuoin')->name('duoshuoin');

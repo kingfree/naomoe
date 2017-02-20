@@ -14,11 +14,22 @@ class DiscussController extends Controller
         if (!$competition) {
             $competition = Competition::getNewestDid();
         }
-        return redirect()->route('votelog', ['id' => $competition]);
+        if (!$competition) {
+            $competition = Competition::orderBy('start_at', 'desc')->first();
+        }
+        return redirect()->route('votelog', ['id' => $competition->id]);
     }
 
     public function votelog($id)
     {
-        return view('discuss.votes')->withCompetition(Competition::find($id));
+        $competition = Competition::find($id);
+        if (!$competition) {
+            $competition = Competition::getNewestDoing();
+            if (!$competition) {
+                $competition = Competition::getNewestDid();
+            }
+            return redirect()->route('votelog', ['id' => $competition->id]);
+        }
+        return view('discuss.votes')->withCompetition($competition);
     }
 }
