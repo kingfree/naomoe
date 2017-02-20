@@ -123,7 +123,7 @@ class OptionController extends Controller
                 }
             })->ajax('/admin/api/groups');
 
-            $form->radio('win', '晋级情况')->options(['0' => '暂定', '1' => '晋级', '2' => '胜出'])->default('0');
+            $form->radio('winner', '晋级情况')->options(['0' => '暂定', '1' => '晋级', '2' => '胜出'])->default('0');
             $form->number('voted', '已投票');
             $form->number('valid', ' 有效票');
 

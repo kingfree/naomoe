@@ -66,14 +66,16 @@ class APIController extends Controller
         $groupMap = [];
         foreach ($groups as $group) {
             $group->voted = 0;
+            $group->valid = 0;
             $groupMap[$group->id] = &$group;
         }
         $map = [];
         foreach ($options as $option) {
             $option->voted = 0;
             $option->valid = 0;
-            $map[$option->id] = &$option;
+            $map[$option->id] = $option;
         }
+        $count = 0;
 
         foreach ($votelogs as $votelog) {
             if (!$votelog->votes) {
@@ -95,15 +97,28 @@ class APIController extends Controller
                 $allows[$group->id] = ['allow' => $group->allow, 'count' => 0];
             }
             foreach ($votes as $vote) {
-                $groupId = $map[$vote]->group_id;
+                $option = null;
+                if ($map[$vote]->id === $vote) {
+                    $option = $map[$vote];
+                } else {
+                    foreach ($map as $oid => $op) {
+                        if ($op->id == $vote) {
+                            $option = $op;
+                            break;
+                        }
+                    }
+                }
+                if (!$option) $option = Option::find($vote)->get();
+                $groupId = $option->group_id;
                 $groupMap[$groupId]->voted++;
                 $allow = &$allows[$groupId];
                 if ($allow['count']++ >= $allow['allow']) {
                     $votelog->valid = false;
                     continue;
                 }
-                $map[$vote]->voted++;
-                $map[$vote]->valid += $votelog->valid ? 1 : 0;
+                $option->voted++;
+                $option->valid += $votelog->valid ? 1 : 0;
+                $count += $votelog->valid ? 1 : 0;
             }
             $location = Ip::find($votelog->ip);
             $votelog->country = $location[0];
@@ -120,6 +135,7 @@ class APIController extends Controller
         }
         $total = count($votelogs);
         $competition->voted = $total;
+        $competition->valid = $count;
         $competition->save();
 
         foreach ($groups as $group) {
