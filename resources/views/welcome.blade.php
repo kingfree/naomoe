@@ -102,10 +102,12 @@
         .title {
             font-size: 84px;
             font-weight: bold;
+            line-height: 90px;
         }
 
         .subtitle {
             font-size: 56px;
+            line-height: 60px;
         }
 
         .links {
