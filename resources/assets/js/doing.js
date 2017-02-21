@@ -101,6 +101,14 @@ $('#voting').on('submit', function (e) {
     return false;
 });
 
+$('.doing .option').on('touch click', function () {
+    $(this).html('<iframe frameborder="no" border="0" marginwidth="0"'
+        + ' marginheight="0" width=280 height=110 '
+        + 'src="//music.163.com/outchain/player?type=2&id='
+        + $(this).data('music')
+        + '&auto=0&height=90"> </iframe>');
+});
+
 if (window.location.href.includes('/voting')) {
     if (!$('.submit').hasClass('disabled')) {
 
@@ -137,13 +145,3 @@ if (window.location.href.includes('/voting')) {
         });
     }
 }
-
-$(document).ready(function () {
-    $('.doing .option').each(function (i, e) {
-        $(e).html('<iframe frameborder="no" border="0" marginwidth="0"'
-            + ' marginheight="0" width=280 height=110 '
-            + 'src="//music.163.com/outchain/player?type=2&id='
-            + $(e).data('music')
-            + '&auto=0&height=90"> </iframe>');
-    })
-});

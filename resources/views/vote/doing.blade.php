@@ -44,7 +44,7 @@
                         height: 36px;
                         margin-bottom: 10px;
                         line-height: 36px;
-                        padding-left: 24px;
+                        padding-left: 2px;
                         font-size: 14px;
                         font-weight: normal;
                         zoom: 1;
@@ -89,23 +89,16 @@
                                         <div class="cover">
                                             <img id="cover" src="{{ config('admin.upload.host') . $option->avatar }}">
                                         </div>
-                                        <div class="ctrlBox" style="width: 150px;">
-                                            <h2 class="f-pr"><i data-action="home" class="bg logo"></i>
-                                                <div id="title" class="title">{{$option->title}}</div>
-                                            </h2>
-                                            <div class="bar">
-                                                <div class="played j-flag" style="width: 55.7538%;"><span
-                                                            class="bg thumb j-flag"></span></div>
-                                            </div>
-                                            <div class="oprBox">
-                                                <div id="time" class="time"></div>
-                                                <div class="btnGroup f-cb">
-                                                    <div id="prev" class="bg prev" data-action="prev"></div>
-                                                    <div id="pause" class="bg mid pause" data-action="pause"></div>
-                                                    <div id="play" class="bg mid play f-hide" data-action="play"></div>
-                                                    <div id="next" class="bg next" data-action="next"></div>
+                                        <div class="ctrlBox">
+                                            <h2 class="f-pr" style="max-width: 150px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
+                                                <div class="title">{{$option->character->name}}
                                                 </div>
-                                                <div class="bg open z-dis" data-action="open"></div>
+                                            </h2>
+                                            <div style="color: #e03997;max-width: 150px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
+                                                {{$option->character->description}}
+                                            </div>
+                                            <div class="bar" style="font-size: 12px;max-width: 150px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
+                                                <span>{{$option->character->work}}</span>
                                             </div>
                                         </div>
                                     </div>
