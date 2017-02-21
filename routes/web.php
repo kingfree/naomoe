@@ -19,7 +19,9 @@ Auth::routes();
 
 Route::get('/lang/{lang}', 'LanguageController@index')->name('language');
 
-Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
 Route::get('/change', 'HomeController@change')->name('change');
 Route::post('/change', 'HomeController@doChange')->name('doChange');
 

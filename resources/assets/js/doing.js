@@ -102,10 +102,7 @@ $('#voting').on('submit', function (e) {
 });
 
 if (window.location.href.includes('/voting')) {
-    var voted = $('.submit').hasClass('disabled');
-    if (voted) {
-
-    } else {
+    if (!$('.submit').hasClass('disabled')) {
 
         $('.doing .option').on('touch click', function () {
             $(this).transition('pulse');

@@ -12,9 +12,9 @@
     <link type="image/png" rel="shortcut icon" href="/favicon.png">
 
     <!-- Styles -->
-    <link rel="stylesheet" type="text/css" href="/packages/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="/packages/sweetalert/dist/sweetalert.css">
+    <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/semantic-ui/2.2.7/semantic.min.css" rel="stylesheet">
+    <link href="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.css" rel="stylesheet">
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
     <!-- Scripts -->
     <script>
@@ -99,7 +99,7 @@
 </div>
 
 <!-- Scripts -->
-<script src="/packages/sweetalert/dist/sweetalert.min.js"></script>
+<script src="//cdn.bootcss.com/sweetalert/1.1.3/sweetalert.min.js"></script>
 <script src="{{ mix('/js/app.js') }}"></script>
 <div style="display: none">
     <script src="http://s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564" language="JavaScript"></script>
