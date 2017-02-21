@@ -12,6 +12,9 @@ class DiscussController extends Controller
         language();
         $competition = Competition::getNewestDoing();
         if (!$competition) {
+            $competition = Competition::getNewestWill();
+        }
+        if (!$competition) {
             $competition = Competition::getNewestDid();
         }
         if (!$competition) {
@@ -25,6 +28,9 @@ class DiscussController extends Controller
         $competition = Competition::find($id);
         if (!$competition) {
             $competition = Competition::getNewestDoing();
+            if (!$competition) {
+                $competition = Competition::getNewestWill();
+            }
             if (!$competition) {
                 $competition = Competition::getNewestDid();
             }
