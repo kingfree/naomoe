@@ -3,13 +3,26 @@
 use App\Competition;
 use App\Group;
 use App\Option;
+use App\Schedule;
 use App\VoteLog;
+use Carbon\Carbon;
 use Zhuzhichao\IpLocationZh\Ip;
 
 function language()
 {
     App::setLocale(session('locale', 'zh-CN'));
     return App::getLocale();
+}
+
+function complink($date, $default)
+{
+    $today = Carbon::createFromFormat('Y-m-d', $date);
+    $cal = Schedule::where('year', $today->year)->where('month', $today->month)->where('day', $today->day)->first();
+    if ($cal and $cal->visible) {
+        $comp = Competition::find($cal->competition_id);
+        return '<a href="'.route('after', ['id' => $comp->id]).'">'.$comp->title.'</a>';
+    }
+    return $default;
 }
 
 function cal($year, $month, $day, $compId = 0)

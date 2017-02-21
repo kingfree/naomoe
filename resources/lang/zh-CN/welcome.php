@@ -17,5 +17,5 @@ return [
     'logout' => '退出',
     'change' => '更改密码',
     'password_changed' => '个人资料修改成功！',
-    'result' => '赛果'
+    'result' => '结果'
 ];
