@@ -25,6 +25,10 @@ class Group extends Model
         return $this->hasMany(Option::class)->orderBy('valid', 'desc')->orderBy('character_id');
     }
 
+    public function rankLimit() {
+        return $this->hasMany(Option::class)->orderBy('valid', 'desc')->orderBy('character_id')->limit($this->allow);
+    }
+
     public static function boot()
     {
         parent::boot();

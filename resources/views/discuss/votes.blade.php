@@ -4,9 +4,48 @@
 
 @section('content')
     <div class="ui stackable two column grid">
-        <div class="column">
-            <div class="ds-thread" data-thread-key="{{$competition->id}}" data-title="{{$competition->title}}"
-                 data-url="{{route('votelog', ['id'=>$competition->id])}}"></div>
+        <div class="ui column segments">
+            <div class="ui attached segment">
+                <h2 class="ui header competition" data-id="{{ $competition->id }}">
+                    {{ $competition->title }}
+                    <div class="sub header">
+                        {{ $competition->infos()['type'] ?? '预选赛' }}
+                    </div>
+                </h2>
+            </div>
+            @if ($competition->status == \App\Competition::DID)
+                    @foreach($competition->groups as $group)
+                        <div class="ui attached segment">
+                            <div class="ui pink ribbon label">
+                                {{ $group->title }}
+                            </div>
+                            <div class="ui ordered horizontal list">
+                                @foreach($group->rankLimit as $index => $option)
+                                    <div class="item">
+                                        <div class="ui avatar circular {{
+                                                    ($index == 0) ? 'yellow' : (
+                                                    ($index == 1) ? 'pink': (
+                                                    ($index == 2) ? 'orange' : (
+                                                    ($option->winner) ? 'teal' : '')))
+                                                }} label">
+                                            {{$option->valid}}
+                                        </div>
+                                        <div class="content">
+                                            <div class="header">
+                                                {{$option->character->lname}}
+                                            </div>
+                                            <div class="description">{{$option->character->lwork}}</div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+            <div class="ui segment">
+                <div class="ds-thread" data-thread-key="{{$competition->id}}" data-title="{{$competition->title}}"
+                     data-url="{{route('votelog', ['id'=>$competition->id])}}"></div>
+            </div>
         </div>
         <script type="text/javascript">
             var duoshuoQuery = {short_name: "naomoe"};
@@ -21,7 +60,7 @@
             })();
         </script>
         <div class="column">
-            <div class="ui feed segments ">
+            <div class="ui feed segments">
                 @foreach($competition->votelogsDesc as $log)
                     <div class="event ui segment">
                         <div class="label">
