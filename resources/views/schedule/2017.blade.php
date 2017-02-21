@@ -179,7 +179,7 @@
                                                 <img src="{{ config('admin.upload.host') . $option->avatar }}">
                                                 <div class="content">
                                                     {{$option->character->lname}}
-                                                    <div class="sub header">
+                                                    <div class="sub header" style="max-width: 120px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
                                                         {{$option->character->lwork}}
                                                     </div>
                                                 </div>

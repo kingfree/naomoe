@@ -47,6 +47,7 @@
     </div>
 @endsection
 
+@if($competition->inTime())
 @section('footer')
     <script>
         var messages = {
@@ -57,20 +58,6 @@
             select_one: "{{__('vote.select_one')}}"
         };
     </script>
-
-    <div class="ui small modal">
-        <i class="close icon"></i>
-        <div class="header">@lang('vote.confirm')</div>
-        <div class="actions">
-            <div class="ui black deny button">
-                @lang('vote.cancel')
-            </div>
-            <div class="ui positive right labeled icon button">
-                @lang('vote.ok')
-                <i class="checkmark icon"></i>
-            </div>
-        </div>
-    </div>
 
     <div class="footer"></div>
     <div class="voting ui material">
@@ -105,3 +92,4 @@
         </div>
     </div>
 @endsection
+@endif

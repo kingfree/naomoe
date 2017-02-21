@@ -2,7 +2,8 @@
 
 return [
     'naomoe' => '闹萌',
-    'toyamanaosaimoe' => '东山奈央最萌大赛',
+    'toyamanao' => '东山奈央',
+    'saimoe' => '最萌大赛',
     'votes' => '投票',
     'vote' => '投票',
     'schedule' => '赛程',

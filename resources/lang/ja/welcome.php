@@ -12,4 +12,11 @@ return [
     'admin' => '管理',
     'login' => 'ログイン',
     'register' => '登録',
+    'toyamanao' => '東山奈央',
+    'saimoe' => '最萌トーナメント',
+    'toggle' => 'トグルスイッチ',
+    'logout' => 'ロッグオート',
+    'change' => 'プロフィール',
+    'password_changed' => 'プロフィール更新成功！',
+    'result' => '結果'
 ];

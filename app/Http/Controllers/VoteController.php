@@ -50,6 +50,7 @@ class VoteController extends Controller
         language();
 
         $comp = Competition::find($id);
+        if (!$comp) return redirect()->route('schedule');
         if (!$comp->inTime()) return redirect()->route('after', ['id' => $id]);
 
         $log = VoteLog::getLog($comp->id);
@@ -61,6 +62,7 @@ class VoteController extends Controller
         language();
 
         $comp = Competition::find($id);
+        if (!$comp) return redirect()->route('schedule');
         if (!$comp->inTime()) return redirect()->route('after', ['id' => $id]);
         $log = VoteLog::getLog($comp->id);
         return view('vote.simple')->withCompetition($comp)->withLog($log);
@@ -71,6 +73,7 @@ class VoteController extends Controller
         language();
         $year = Carbon::today()->year;
         $comp = Competition::find($id);
+        if (!$comp) return redirect()->route('schedule');
         $log = VoteLog::getLog($id);
         return view('schedule.' . $year)->withId($id)->withCompetition($comp)->withLog($log);
     }

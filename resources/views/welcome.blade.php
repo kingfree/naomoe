@@ -168,7 +168,7 @@
             <img src="/images/naomoe.png" width="40%">
         </a>
         <div class="subtitle m-b-md">
-            @lang('welcome.toyamanaosaimoe')
+            <a href="http://toyamanao.com" target="_blank">@lang('welcome.toyamanao')</a>@lang('welcome.saimoe')
         </div>
 
         <div class="ui horizontal huge bulleted link list">

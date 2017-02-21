@@ -75,8 +75,8 @@ class ScheduleController extends Controller
     {
         return Admin::grid(Schedule::class, function (Grid $grid) {
             $grid->year('年');
-            $grid->month('年');
-            $grid->day('年');
+            $grid->month('月');
+            $grid->day('日');
             $grid->competition_id('比赛')->display(function ($id) {
                 return Competition::find($id)->title;
             });
