@@ -73,6 +73,7 @@ class CharacterController extends Controller
     protected function grid()
     {
         return Admin::grid(Character::class, function (Grid $grid) {
+            $grid->model()->orderBy('updated_at', 'desc');
 
             $grid->id('ID')->sortable();
 

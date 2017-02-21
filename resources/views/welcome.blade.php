@@ -10,7 +10,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="/semantic-ui/semantic.min.css">
-    <?php $showBack = Admin::user() or \Carbon\Carbon::now()->gte(\Carbon\Carbon::createFromDate(2017, 2, 26)); ?>
+    <?php $showBack = true; ?>
     <style>
         a {
             color: #e03997;
@@ -23,7 +23,7 @@
         ::selection {
             background-color: #ef9ccb;
         }
-a
+
         html, body {
             color: #e03997;
             font-family: sans-serif;
