@@ -166,7 +166,7 @@
                                                                                              data-data="{{$group->updated_at}}">{{$group->updated_at}}</span>
                                     </p>
                                 @endif
-                                <ul class="ui list">
+                                <ul class="ui ordered list">
                                     @foreach($group->rank as $index => $option)
                                         <div class="item">
                                             <div class="right floated compact">
