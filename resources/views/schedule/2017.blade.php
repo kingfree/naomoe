@@ -123,7 +123,7 @@
             @else
                 <div class="ui attached segment">
                     <h3 class="ui pink header">
-                        测试赛
+                        测试赛 | 热身赛 | 表演赛
                     </h3>
                     <table class="ui very basic collapsing celled table">
                         <thead>
@@ -140,6 +140,10 @@
                         <tr>
                             <td>2月20日（月）</td>
                             <td>{!! complink('2017-02-20', '闹群最萌') !!}</td>
+                        </tr>
+                        <tr>
+                            <td>2月22日（水）</td>
+                            <td>{!! complink('2017-02-22', '闹曲歌赏') !!}</td>
                         </tr>
                         </tbody>
                     </table>

@@ -45,9 +45,15 @@ function doVote(compId, votes) {
             });
             return false;
         }
-        $('.voting .item').not('.hidden').each(function (i, e) {
-            text += $(e).html();
-        });
+        if (votes.length < 8) {
+            $('.voting .item').not('.hidden').each(function (i, e) {
+                text += $(e).html();
+            });
+        } else {
+            $('.voting .item').not('.hidden').each(function (i, e) {
+                text += '<div class="item">'+$(e).text()+'</div>';
+            });
+        }
         swal({
             title: messages.title,
             text: '<div class="ui mini horizontal list">' + text + '</div>',
