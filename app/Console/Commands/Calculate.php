@@ -39,6 +39,7 @@ class Calculate extends Command
     public function handle()
     {
         $comp = Competition::getNewestDoing();
-        calculate($comp->id);
+        if (!$comp) Competition::getNewestDid();
+        if ($comp) calculate($comp->id);
     }
 }
