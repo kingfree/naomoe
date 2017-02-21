@@ -190,7 +190,7 @@
                 <script src="http://s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564" language="JavaScript"></script>
             </div>
             @if ($showBack)
-            <div class="item">画师 <a class="" href="http://elfartworld.com/users/102042/">@深蓝杰克</a></div>
+            <div class="item">画师 <a>@深蓝杰克</a></div>
             @endif
             <!--div class="item">网站 <a class="" href="http://weibo.com/kingfree/">@王者自由</a></div-->
             <div class="item">运营 <a class="" href="http://tieba.toyama.moe">东山奈央吧</a></div>

@@ -91,7 +91,7 @@ class OptionController extends Controller
             $grid->filter(function ($filter) {
                 $filter->disableIdFilter();
 
-                $filter->like('name', '选项');
+                $filter->like('title ', '选项');
                 $filter->is('group_id', '分组')->select(Group::all()->pluck('title', 'id'));
 
             });
