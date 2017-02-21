@@ -40,21 +40,40 @@
         ul {
             list-style: none;
         }
+
+        @media (max-width: 460px) {
+            .about, .about a {
+                font-size: 14px;
+            }
+            td, th {
+                padding: .4em .8em;
+            }
+        }
+
+        @media (min-width: 461px) and (max-width: 720px) {
+            .about, .about a {
+                font-size: 16px;
+            }
+            td, th {
+                padding: .4em .9em;
+            }
+        }
+
     </style>
     <table class="about">
         <tbody>
         <tr>
-            <th class="right" lang="ja">原　　作</th>
+            <th class="right" lang="ja">原　作</th>
             <td><a href="http://toyamanao.com/">東山奈央</a></td>
             <td></td>
         </tr>
         <tr>
-            <th class="right" lang="ja">企　　画</th>
+            <th class="right" lang="ja">企　画</th>
             <td><a href="http://tieba.toyama.moe/">东山奈央吧</a></td>
             <td></td>
         </tr>
         <tr>
-            <th class="right" lang="ja">監　　督</th>
+            <th class="right" lang="ja">監　督</th>
             <td><a href="http://weibo.com/kingfree">王者自由</a></td>
             <td></td>
         </tr>
@@ -64,21 +83,21 @@
             <td></td>
         </tr>
         <tr>
-            <th class="right" lang="ja">原　　画</th>
+            <th class="right" lang="ja">原　画</th>
             <td><a href="http://www.pixiv.net/member.php?id=1562284">深蓝杰克</a></td>
             <td lang="ja"><a href="http://www.pixiv.net/member.php?id=197076">ぴょん吉</a></td>
         </tr>
         <tr>
-            <th class="right" lang="ja">提　　名</th>
+            <th class="right" lang="ja">提　名</th>
             <td><a href="http://weibo.com/2630753673">我太小白</a></td>
             <td><a href="http://weibo.com/horieyui">千樱随舞</a></td>
         </tr>
         <tr>
-            <th class="right" lang="ja">文　　字</th>
-            <td colspan="2">三更半夜来偷鸡</td>
+            <th class="right" lang="ja">文　字</th>
+            <td colspan="2">百合战士偷鸡</td>
         </tr>
         <tr>
-            <th class="right" lang="ja">運　　営</th>
+            <th class="right" lang="ja">運　営</th>
             <td><a href="http://weibo.com/horieyui">千樱随舞</a></td>
             <td><a href="http://weibo.com/kingfree">王者自由</a></td>
         </tr>
@@ -90,7 +109,7 @@
         <tr>
             <th></th>
             <td>鑫哥有节操</td>
-            <td>三更半夜来偷鸡</td>
+            <td>百合战士偷鸡</td>
         </tr>
         <tr>
             <th></th>
@@ -98,8 +117,13 @@
             <td>萌萌的灵梦</td>
         </tr>
         <tr>
+            <th></th>
+            <td><a href="http://weibo.com/2630753673">我太小白</a></td>
+            <td>雪　酥</td>
+        </tr>
+        <tr>
             <th class="right" lang="ja">ロゴデザイン</th>
-            <td>雪　　酥</td>
+            <td>雪　酥</td>
             <td>鑫哥有节操</td>
         </tr>
         <tr>
@@ -117,7 +141,7 @@
             <td></td>
         </tr>
         <tr>
-            <th class="right">制　　作</th>
+            <th class="right">制　作</th>
             <td colspan="2">
                 闹萌制作委员会
             </td>
