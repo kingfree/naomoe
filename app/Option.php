@@ -50,6 +50,12 @@ class Option extends Model
         return $this->group->avatar() ?? '../../images/default.png';
     }
 
+    public function music()
+    {
+        $info = $this->character->infos();
+        return array_get($info, 'music', null);
+    }
+
     protected $appends = ['text', 'avatar'];
 
     public function getTextAttribute()

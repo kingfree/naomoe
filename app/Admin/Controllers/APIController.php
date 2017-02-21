@@ -169,13 +169,14 @@ class APIController extends Controller
                         ];
                         $chara->work = array_get($val, '出处', '');
                         $chara->works = [
-                            'ja' => array_get($val, '作品日文名', ''),
+                            'ja' => array_get($val, '作品日文', array_get($val, '作品日文名', '')),
                             'en' => ''
                         ];
                         $chara->info = [
                             'source' => [array_get($val, '来源', '动画')],
                             '编号' => array_get($val, '编号', ''),
-                            '有图' => array_get($val, '是否有图', '')
+                            '有图' => array_get($val, '是否有图', ''),
+                            'music' => array_get($val, '网易云', null)
                         ];
                         $chara->description = array_get($val, '简介', '');
                         $chara->save();

@@ -73,6 +73,11 @@ class Competition extends Model
         return self::DID;
     }
 
+    public function isMusic()
+    {
+        return $this->infos()['music'];
+    }
+
     public static function getNewestDoing()
     {
         $now = Carbon::now();

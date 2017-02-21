@@ -61,7 +61,7 @@ function doVote(compId, votes) {
             cancelButtonText: messages.cancelButtonText,
             closeOnConfirm: false,
             showLoaderOnConfirm: true
-        }, function(inputValue){
+        }, function (inputValue) {
             if (inputValue === false) return false;
             $('#comment').text(inputValue);
             cb();
@@ -86,7 +86,7 @@ function doVote(compId, votes) {
     });
 }
 
-var voteSimple = function() {
+var voteSimple = function () {
     var compId = $('.competition').data('id');
     var votes = [];
     $('.checkbox.checked > input').each(function (i, e) {
@@ -137,3 +137,13 @@ if (window.location.href.includes('/voting')) {
         });
     }
 }
+
+$(document).ready(function () {
+    $('.doing .option').each(function (i, e) {
+        $(e).html('<iframe frameborder="no" border="0" marginwidth="0"'
+            + ' marginheight="0" width=280 height=110 '
+            + 'src="//music.163.com/outchain/player?type=2&id='
+            + $(e).data('music')
+            + '&auto=0&height=90"> </iframe>');
+    })
+});
