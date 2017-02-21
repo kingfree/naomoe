@@ -10,7 +10,6 @@
 
     <!-- Styles -->
     <link href="//cdn.bootcss.com/semantic-ui/2.2.7/semantic.min.css" rel="stylesheet">
-    <?php $showBack = true; ?>
     <style>
         a {
             color: #e03997;
@@ -21,7 +20,8 @@
         }
 
         ::selection {
-            background-color: #ef9ccb;
+            background: #e974b6;
+            color: white;
         }
 
         html, body {
@@ -40,19 +40,15 @@
             align-items: center;
             display: flex;
             justify-content: center;
-            @if ($showBack)
-                background-image: url('/images/nao.jpg');
-                background-size: cover;
-                background-position: 37% 0%;
-            @else
-                background-color: #fff;
-            @endif
+            background-image: url('/images/nao.jpg');
+            background-size: cover;
+            background-position: 37% 0%;
+            transition: background-image 0.6s linear;
         }
 
         .flex-center:hover {
-            @if ($showBack)
-               background-image: url('/images/naos.jpg');
-            @endif
+            background-image: url('/images/naos.jpg');
+            transition: background-image 0.6s linear;
         }
 
         .position-ref {
@@ -91,12 +87,14 @@
         .content {
             padding: 10px;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0);
             border-radius: 10px;
+            transition: background-color 0.3s linear;
         }
 
         .content:hover {
             background-color: rgba(255, 255, 255, 0.7);
+            transition: background-color 0.3s linear;
         }
 
         .title {
@@ -108,6 +106,7 @@
         .subtitle {
             font-size: 56px;
             line-height: 60px;
+            text-shadow: -2px 1px 3px white;
         }
 
         .links {
@@ -115,13 +114,8 @@
         }
 
         .links > a {
-            @if ($showBack)
-              color: #ffffff;
-            @else
-              color: #636b6f;
-            -webkit-text-stroke: 0px #fff;
-            @endif
-              padding: 0 25px;
+            color: #ffffff;
+            padding: 0 25px;
             font-size: 16px;
             letter-spacing: .1rem;
             text-decoration: none;
@@ -130,17 +124,18 @@
         }
 
         .ui.list > a.item {
-            color: #0a001f;
+            text-shadow: 0px 1px 3px white;
+            font-weight: normal;
+            color: black;
             font-size: 20px;
         }
 
         .ui.list > a.item:hover {
-            font-weight: bold;
             color: #e03997;
         }
 
         a:hover {
-            font-weight: bold;
+            text-shadow: -2px 1px 3px white;
         }
 
         .m-b-md {
@@ -189,12 +184,11 @@
     <div class="footer">
         <div class="foot-right ui link list">
             <div style="display: none">
-                <script src="http://s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564" language="JavaScript"></script>
+                <script src="http://s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564"
+                        language="JavaScript"></script>
             </div>
-            @if ($showBack)
             <div class="item">画师 <a href="http://www.pixiv.net/member.php?id=1562284">@深蓝杰克</a></div>
-            @endif
-            <!--div class="item">网站 <a class="" href="http://weibo.com/kingfree/">@王者自由</a></div-->
+        <!--div class="item">网站 <a class="" href="http://weibo.com/kingfree/">@王者自由</a></div-->
             <div class="item"><a href="/about">闹萌制作委员会</a></div>
         </div>
     </div>
