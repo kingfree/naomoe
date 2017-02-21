@@ -153,7 +153,7 @@
         </div>
         <div class="ten wide column">
             @if ($id and $competition)
-                <div class="ui two column doubling grid">
+                <div class="ui {{count($competition->groups) > 1 ? 'two' : ''}} column doubling grid">
                     @foreach($competition->groups as $group)
                         <div class="column">
                             <div class="ui segment">
@@ -183,7 +183,7 @@
                                                 <img src="{{ config('admin.upload.host') . $option->avatar }}">
                                                 <div class="content">
                                                     {{$option->character->lname}}
-                                                    <div class="sub header" style="max-width: 120px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
+                                                    <div class="sub header">
                                                         {{$option->character->lwork}}
                                                     </div>
                                                 </div>
