@@ -45,6 +45,7 @@
             .about, .about a {
                 font-size: 14px;
             }
+
             td, th {
                 padding: .4em .8em;
             }
@@ -54,6 +55,7 @@
             .about, .about a {
                 font-size: 16px;
             }
+
             td, th {
                 padding: .4em .9em;
             }
@@ -69,8 +71,7 @@
         </tr>
         <tr>
             <th class="right" lang="ja">企　画</th>
-            <td><a href="http://tieba.toyama.moe/">东山奈央吧</a></td>
-            <td></td>
+            <td colspan="2"><a href="http://tieba.toyama.moe/">东山奈央吧</a></td>
         </tr>
         <tr>
             <th class="right" lang="ja">監　督</th>
@@ -94,7 +95,7 @@
         </tr>
         <tr>
             <th class="right" lang="ja">文　字</th>
-            <td colspan="2">百合战士偷鸡</td>
+            <td colspan="2">偷鸡大师</td>
         </tr>
         <tr>
             <th class="right" lang="ja">運　営</th>
@@ -109,7 +110,7 @@
         <tr>
             <th></th>
             <td>鑫哥有节操</td>
-            <td>百合战士偷鸡</td>
+            <td>偷鸡大师</td>
         </tr>
         <tr>
             <th></th>
@@ -147,7 +148,9 @@
             </td>
         </tr>
         </tbody>
+    </table>
 @endsection
 
 @section('footer')
+    <script src="http://s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564" language="JavaScript"></script>
 @endsection
