@@ -41,8 +41,11 @@ class VoteController extends Controller
     public function willdo($id)
     {
         language();
+        $comp = Competition::find($id);
+        if (!$comp) return redirect()->route('schedule');
+        if ($comp->inTime()) return redirect()->route('doing', ['id' => $id]);
         $log = new VoteLog;
-        return view('vote.doing')->withCompetition(Competition::find($id))->withLog($log);
+        return view('vote.doing')->withCompetition($comp)->withLog($log);
     }
 
     public function doing($id)
