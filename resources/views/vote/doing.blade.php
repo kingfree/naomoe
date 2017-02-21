@@ -24,6 +24,7 @@
                         {{ $group->title }}
                     </div>
                     <span class="sub header">0 / {{ $group->allow }}</span>
+                    <div class="text-muted">@lang('vote.allow', ['allow'=>$group->allow])</div>
                     <div class="ui doubling {{ $group->infos()['columns'] ?? 'six' }} column grid link doing cards">
                         @foreach($group->options as $option)
                             <div class="card option {{ $log->voted($option->id) ? 'selected' : '' }}"

@@ -26,7 +26,7 @@ Route::post('/change', 'HomeController@doChange')->name('doChange');
 Route::get('/vote', 'VoteController@index')->name('votes');
 Route::get('/vote/{id}', 'VoteController@willdo')->name('before');
 Route::get('/voting/{id}', 'VoteController@doing')->name('doing');
-Route::get('/voting/{id}/simple', 'VoteController@simple')->name('simple');
+//Route::get('/voting/{id}/simple', 'VoteController@simple')->name('simple');
 Route::get('/voted/{id}', 'VoteController@did')->name('after');
 Route::post('/amiok', 'VoteController@amiok')->name('amiok');
 Route::post('/create', 'VoteController@create')->name('create');
