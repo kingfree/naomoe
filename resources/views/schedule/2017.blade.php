@@ -166,7 +166,7 @@
                                                                                              data-data="{{$group->updated_at}}">{{$group->updated_at}}</span>
                                     </p>
                                 @endif
-                                <ul class="ui ordered list">
+                                <ul class="ui ordered list did">
                                     @foreach($group->rank as $index => $option)
                                         <div class="item">
                                             <div class="right floated compact">
@@ -179,7 +179,8 @@
                                                     {{$option->valid}}
                                                 </div>
                                             </div>
-                                            <h3 class="ui header">
+                                            <h3 class="ui header option" data-id="{{ $option->id }}" data-allow="{{ $group->allow }}"
+                                                data-group="{{ $group->id }}" data-music="{{ $option->music() }}">
                                                 <img src="{{ config('admin.upload.host') . $option->avatar }}">
                                                 <div class="content">
                                                     {{$option->character->lname}}
