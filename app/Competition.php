@@ -75,7 +75,7 @@ class Competition extends Model
 
     public function isMusic()
     {
-        return $this->infos()['music'];
+        return array_get($this->infos(), 'music', null);
     }
 
     public static function getNewestDoing()
