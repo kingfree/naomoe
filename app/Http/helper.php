@@ -79,6 +79,7 @@ function calculate($id)
         } else {
             $votes = json_decode($votelog->votes);
         }
+        $votes = array_unique($votes);
         if ($votelog->created_at->lt($competition->start_at) || $votelog->created_at->gt($competition->end_at)) {
             $votelog->valid = false;
         }
