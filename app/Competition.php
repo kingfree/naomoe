@@ -104,6 +104,12 @@ class Competition extends Model
             ->first();
     }
 
+    public function style()
+    {
+        $info = $this->infos();
+        return array_get($info, 'style', 'tertiary pink inverted');
+    }
+
     protected $appends = ['text', 'status'];
 
     public function getTextAttribute()

@@ -88,7 +88,6 @@ class CompetitionController extends Controller
             $grid->column('状态')->display(function () {
                 return ['未开始', '进行中', '已结束'][$this->status];
             });
-            $grid->description('描述');
             $grid->start_at('比赛时间')->display(function () {
                 return $this->start_at . ' -- ' . $this->end_at;
             })->sortable();
@@ -123,7 +122,7 @@ class CompetitionController extends Controller
             $form->datetimeRange('start_at', 'end_at', '比赛时间');
             $form->display('voted', '已投票')->default(0);
             $form->display('valid', '有效票')->default(0);
-            $form->textarea('description', '比赛描述');
+            $form->editor('description', '战报');
             $form->json('info', '其他信息');
 
         });

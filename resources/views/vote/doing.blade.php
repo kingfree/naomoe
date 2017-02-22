@@ -180,7 +180,7 @@
                     @lang('vote.noneed')
                 @endif
                 @if (Route::has('simple'))
-                    <a class="ui right floated" href="{{route('simple', ['id' => $competition->id])}}">无法点击？尝试简单版</a>
+                    <a class="ui right floated" href="{{route('simple', ['id' => $competition->id])}}">尝试简单版</a>
                 @endif
             </div>
         </div>

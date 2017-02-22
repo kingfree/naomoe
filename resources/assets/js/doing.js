@@ -1,9 +1,3 @@
-$('.ui.checkbox').checkbox();
-
-$('.date').each(function (i, e) {
-    $(e).text(moment($(e).data('data')).fromNow());
-});
-
 function doVote(compId, votes) {
     var vote = function () {
         var comment = $('#comment').text();

@@ -70,21 +70,20 @@
                 </table>
             </div>
             @if ($id and $competition)
-                <div class="ui attached segment">
+                <div class="ui attached {{$competition->style()}} segment">
                     <h2 class="ui header competition" data-id="{{ $competition->id }}">
                         <i class="{{ $competition->icon() }} icon"></i>
                         <div class="content">
                             {{ $competition->title }}
-                            <div class="sub header">
+                            <div class="sub header" style="color: white;">
                                 {{ $competition->infos()['type'] ?? '预选赛' }}
                             </div>
                         </div>
                     </h2>
-
-                    <div>
-                        {{ $competition->start_at }}
-                        ~
-                        {{ $competition->end_at }}
+                </div>
+                <div class="ui attached segment">
+                    <div class="content">
+                        {!! $competition->description !!}
                     </div>
                 </div>
             @endif

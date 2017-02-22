@@ -79,9 +79,11 @@ a:active {
 }
 
 ::-moz-selection {
-  background: #e03997;
+  background: #e974b6;
+  color: white;
 }
 
 ::selection {
-  background: #e03997;
+  background: #e974b6;
+  color: white;
 }
