@@ -165,7 +165,7 @@
         </div>
         <div class="ten wide column">
             @if ($id and $competition)
-                <div class="ui {{count($competition->groups) > 1 ? 'two' : ''}} column doubling grid">
+                <div class="ui {{count($competition->groups) > 1 ? 'two' : 'one'}} column doubling grid">
                     @foreach($competition->groups as $group)
                         <div class="column">
                             <div class="ui segment">
@@ -180,14 +180,18 @@
                                     </p>
                                 @endif
                                 <ul class="ui ordered list did">
+                                    {{($option1 = $group->rank[0]) ?'': ''}}
+                                    {{($option2 = $group->rank[1]) ?'': ''}}
+                                    {{($option3 = $group->rank[2]) ?'': ''}}
                                     @foreach($group->rank as $index => $option)
                                         <div class="item">
                                             <div class="right floated compact">
                                                 <div class="ui huge circular {{
-                                                    ($index == 0) ? 'yellow' : (
-                                                    ($index == 1) ? 'pink': (
-                                                    ($index == 2) ? 'orange' : (
-                                                    ($option->winner) ? 'teal' : '')))
+                                                    ($option->valid === 0) ? '' : (
+                                                    ($index == 0 or $option->valid == $option1->valid) ? 'yellow' : (
+                                                    ($index == 1 or $option->valid == $option2->valid) ? 'pink': (
+                                                    ($index == 2 or $option->valid == $option3->valid) ? 'orange' : (
+                                                    ($option->winner) ? 'teal' : ''))))
                                                 }} label">
                                                     {{$option->valid}}
                                                 </div>
