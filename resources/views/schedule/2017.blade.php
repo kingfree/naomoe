@@ -82,9 +82,7 @@
                     </h2>
                 </div>
                 <div class="ui attached segment">
-                    <div class="content">
-                        {!! $competition->description !!}
-                    </div>
+                     {!! $competition->description !!}
                 </div>
             @endif
             @if ($id and $log)

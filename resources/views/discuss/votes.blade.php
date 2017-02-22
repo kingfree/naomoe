@@ -13,6 +13,9 @@
                     </div>
                 </h2>
             </div>
+            <div class="ui attached segment">
+                {!! $competition->description !!}
+            </div>
             @if ($competition->status == \App\Competition::DID)
                     @foreach($competition->groups as $group)
                         <div class="ui attached segment">
