@@ -1,7 +1,5 @@
-
 // Fonts
 // @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Variables
 @import "variables";
 
@@ -25,7 +23,8 @@ a:active {
   color: #e974b6;
 }
 
-.option {}
+.option {
+}
 
 .option.selected {
   box-shadow: 0 0 1px 1px #e03997, 0 3px 1px 0 #E03997, 0 2px 3px 0 #D4D4D5 !important;
@@ -73,7 +72,7 @@ a:active {
   background-color: #fff;
 }
 
-.navbar-default .navbar-nav  .dropdown-menu > li > a,
+.navbar-default .navbar-nav .dropdown-menu > li > a,
 .navbar-default .navbar-nav > .open > a {
   background-color: #e03997;
   color: #ffffff;
@@ -82,6 +81,7 @@ a:active {
 .dropdown-menu {
   background-color: #e03997;
 }
+
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     background-color: #e03997;
@@ -92,4 +92,31 @@ a:active {
 ::selection {
   background: #e974b6;
   color: white;
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+  .did .option .content {
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .did .option .content {
+    max-width: 150px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+@media (min-width: 1401px) {
+  .did .option .content {
+    max-width: 170px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
 }

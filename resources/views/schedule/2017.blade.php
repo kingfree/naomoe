@@ -176,7 +176,7 @@
                                 @if ($competition->inTime())
                                     <p class="text-muted">@lang('schedule.lastupdate')
                                         <span class="date"
-                                              data-data="{{$group->updated_at}}">{{$group->updated_at}}</span>
+                                              data-data="{{$competition->updated_at}}">{{$competition->updated_at}}</span>
                                     </p>
                                 @endif
                                 <ul class="ui ordered list did">
