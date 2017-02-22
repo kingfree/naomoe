@@ -4,47 +4,59 @@
 
 @section('content')
     <div class="ui stackable two column grid">
-        <div class="ui column segments">
-            <div class="ui attached segment">
+        <div class="ui column">
+            <div class="ui piled segment items">
                 <h2 class="ui header competition" data-id="{{ $competition->id }}">
                     {{ $competition->title }}
                     <div class="sub header">
                         {{ $competition->infos()['type'] ?? '预选赛' }}
                     </div>
                 </h2>
-            </div>
-            <div class="ui attached segment">
-                {!! $competition->description !!}
+                <div class="ui item">
+                    <div class="content">
+                        <div class="meta">
+                            <span class="voted">参赛人数: {{ $competition->voted }}人</span>
+                            <span class="valid">合计投出: {{ $competition->valid  }}票</span>
+                        </div>
+                        <div class="extra">
+                            <span class="dates">{{ $competition->start_at }}</span>~<span
+                                    class="dates">{{ $competition->end_at }}</span>
+                        </div>
+                        <div class="description">
+                            {!! $competition->description !!}
+                        </div>
+                    </div>
+                </div>
             </div>
             @if ($competition->status == \App\Competition::DID)
-                    @foreach($competition->groups as $group)
-                        <div class="ui attached segment">
-                            <div class="ui pink ribbon label">
-                                {{ $group->title }}
-                            </div>
-                            <div class="ui ordered horizontal list">
-                                @foreach($group->rankLimit as $index => $option)
-                                    <div class="item">
-                                        <div class="ui avatar circular {{
+                @foreach($competition->groups as $group)
+                    <div class="ui attached segment">
+                        <div class="ui pink ribbon label">
+                            {{ $group->title }}
+                        </div>
+                        <div class="ui ordered horizontal list">
+                            @foreach($group->rankLimit as $index => $option)
+                                <div class="item">
+                                    <div class="ui avatar circular {{
                                                     ($index == 0) ? 'yellow' : (
                                                     ($index == 1) ? 'pink': (
                                                     ($index == 2) ? 'orange' : (
                                                     ($option->winner) ? 'teal' : '')))
                                                 }} label">
-                                            {{$option->valid}}
-                                        </div>
-                                        <div class="content">
-                                            <div class="header">
-                                                {{$option->character->lname}}
-                                            </div>
-                                            <div class="description">{{$option->character->lwork}}</div>
-                                        </div>
+                                        {{$option->valid}}
                                     </div>
-                                @endforeach
-                            </div>
+                                    <div class="content">
+                                        <div class="header">
+                                            {{$option->character->lname}}
+                                        </div>
+                                        <div class="description">{{$option->character->lwork}}</div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
-                    @endforeach
-                @endif
+                    </div>
+                @endforeach
+            @endif
             <div class="ui segment">
                 <div class="ds-thread" data-thread-key="{{$competition->id}}" data-title="{{$competition->title}}"
                      data-url="{{route('votelog', ['id'=>$competition->id])}}"></div>

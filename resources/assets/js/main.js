@@ -8,3 +8,10 @@ $('.date').each(function (i, e) {
         $(e).text(moment(date).fromNow());
     }
 });
+
+$('.dates').each(function (i, e) {
+    var date = $(e).text();
+    if (date) {
+        $(e).text(moment(date).calendar());
+    }
+});

@@ -10,13 +10,18 @@
                 {{ $competition->title }}
                 <div class="sub header">
                     {{ $competition->infos()['type'] ?? '预选赛' }}
-
-                    {{ $competition->start_at }}
-                    ~
-                    {{ $competition->end_at }}
                 </div>
             </div>
         </h2>
+        <div class="ui items">
+            <div class="ui item">
+                <div class="content">
+                    <div class="extra">
+                        <span class="dates">{{ $competition->start_at }}</span>~<span class="dates">{{ $competition->end_at }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="ui segments">
             @if ($competition->isMusic())
                 <style>

@@ -79,10 +79,25 @@
                                 {{ $competition->infos()['type'] ?? '预选赛' }}
                             </div>
                         </div>
+
+
                     </h2>
                 </div>
-                <div class="ui attached segment">
-                     {!! $competition->description !!}
+                <div class="ui attached segment items">
+                    <div class="ui item">
+                        <div class="content">
+                            <div class="meta">
+                                <span class="voted">参赛人数: {{ $competition->voted }}人</span>
+                                <span class="valid">合计投出: {{ $competition->valid  }}票</span>
+                            </div>
+                            <div class="extra">
+                                <span class="dates">{{ $competition->start_at }}</span>~<span class="dates">{{ $competition->end_at }}</span>
+                            </div>
+                            <div class="description">
+                                {!! $competition->description !!}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             @endif
             @if ($id and $log)
@@ -159,8 +174,9 @@
                                 </div>
                                 <span class="sub header">{{ $group->win }} / {{ count($group->options) }}</span>
                                 @if ($competition->inTime())
-                                    <p class="text-muted">@lang('schedule.lastupdate') <span class="date"
-                                                                                             data-data="{{$group->updated_at}}">{{$group->updated_at}}</span>
+                                    <p class="text-muted">@lang('schedule.lastupdate')
+                                        <span class="date"
+                                              data-data="{{$group->updated_at}}">{{$group->updated_at}}</span>
                                     </p>
                                 @endif
                                 <ul class="ui ordered list did">
@@ -176,7 +192,8 @@
                                                     {{$option->valid}}
                                                 </div>
                                             </div>
-                                            <h3 class="ui header option" data-id="{{ $option->id }}" data-allow="{{ $group->allow }}"
+                                            <h3 class="ui header option" data-id="{{ $option->id }}"
+                                                data-allow="{{ $group->allow }}"
                                                 data-group="{{ $group->id }}" data-music="{{ $option->music() }}">
                                                 <img src="{{ config('admin.upload.host') . $option->avatar }}">
                                                 <div class="content">
