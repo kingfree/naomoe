@@ -79,10 +79,10 @@ class CharacterController extends Controller
 
             $grid->avatar('头像')->image();
             $grid->name('角色')->display(function () {
-                return join('<br>', array_merge([$this->name], array_values($this->names)));
+                return join('<br>', $this->allnames);
             })->sortable();
             $grid->work('作品')->display(function () {
-                return join('<br>', array_merge([$this->work], array_values($this->works)));
+                return join('<br>', $this->allworks);
             })->sortable();
             $grid->column('info->source', '来源')->display(function () {
                 $roles = $this->info['source'] ?? [];
@@ -131,12 +131,12 @@ class CharacterController extends Controller
             $form->text('name', '角色名')->rules('required');
             $form->text('work', '作品名')->rules('required');
 
-            $form->embeds('names', '其他角色名', function ($form) {
+            $form->embeds('namer', '其他角色名', function ($form) {
                 $form->text('ja', '日文');
                 $form->text('en', '英文');
             });
 
-            $form->embeds('works', '其他作品名', function ($form) {
+            $form->embeds('worker', '其他作品名', function ($form) {
                 $form->text('ja', '日文');
                 $form->text('en', '英文');
             });
