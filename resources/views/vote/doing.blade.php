@@ -16,7 +16,7 @@
         <div class="ui items">
             <div class="ui item">
                 <div class="content">
-                    <div class="extra">
+                    <div class="extra">a
                         <span class="dates">{{ $competition->start_at }}</span>~<span class="dates">{{ $competition->end_at }}</span>
                     </div>
                 </div>
