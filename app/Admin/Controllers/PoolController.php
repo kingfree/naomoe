@@ -126,7 +126,7 @@ $('.characters').select2().val({$this->characters->pluck('id')}).trigger("change
 JS;
                 Admin::script($script);
                 $charas = Character::find($ids);
-                if (!$charas) {
+                if ($charas && $this->characters) {
                     return $this->characters->pluck('text', 'id');
                 } else {
                     return $charas->pluck('text', 'id');
