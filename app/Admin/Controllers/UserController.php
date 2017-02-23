@@ -79,6 +79,7 @@ class UserController extends Controller
             $grid->name('用户名');
             $grid->email('邮箱');
             $grid->provider('登录方式');
+            $grid->user_id('多说ID')->sortable();
 
             $grid->created_at('创建时间');
             $grid->updated_at('修改时间');
@@ -102,6 +103,7 @@ class UserController extends Controller
             $form->image('avatar', '头像');
 
             $form->display('provider', '登录方式');
+            $form->display('user_id', '多说ID');
 
             $form->display('created_at', '创建时间');
             $form->display('updated_at', '修改时间');
