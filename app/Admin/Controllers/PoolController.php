@@ -126,10 +126,12 @@ $('.characters').select2().val({$this->characters->pluck('id')}).trigger("change
 JS;
                 Admin::script($script);
                 $charas = Character::find($ids);
-                if ($charas && $this->characters) {
+                if ($this->characters) {
                     return $this->characters->pluck('text', 'id');
-                } else {
+                } else if ($charas) {
                     return $charas->pluck('text', 'id');
+                } else {
+                    return [];
                 }
             })->ajax('/admin/api/characters');
             $form->textarea('description', '描述');
