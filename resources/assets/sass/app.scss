@@ -174,7 +174,7 @@ a:active {
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .ui.two.grid .did .option .content {
-    max-width: 100px;
+    max-width: 95px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -185,11 +185,14 @@ a:active {
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+  .ui.grid .did .ui.circular.label  {
+    font-size: 1.3rem;
+  }
 }
 
 @media (min-width: 1201px) and (max-width: 1400px) {
   .ui.two.grid .did .option .content {
-    max-width: 150px;
+    max-width: 140px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -204,7 +207,7 @@ a:active {
 
 @media (min-width: 1401px) {
   .ui.two.grid .did .option .content {
-    max-width: 170px;
+    max-width: 160px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
