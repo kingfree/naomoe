@@ -10,6 +10,7 @@ use App\VoteLog;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
+use SumanIon;
 
 class VoteController extends Controller
 {
@@ -92,7 +93,7 @@ class VoteController extends Controller
 
     public function create()
     {
-        $ip = request()->getClientIp();
+        $ip = SumanIon\CloudFlare::ip();
         $user = User::firstOrCreate([
             'name' => $ip
         ]);
@@ -108,7 +109,7 @@ class VoteController extends Controller
     {
         language();
 
-        $ip = request()->getClientIp();
+        $ip = SumanIon\CloudFlare::ip();
         $header = request()->header();
         $body = request()->all();
         $comment = Input::get('comment');

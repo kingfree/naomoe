@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d44e0a16308161ac0b8120c331b13e20",
+    "content-hash": "f8d61ff97f4c547e9781277691a98291",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2096,6 +2096,56 @@
             ],
             "description": "weibo.com OAuth2 Provider for Laravel Socialite",
             "time": "2017-01-25T09:48:29+00:00"
+        },
+        {
+            "name": "sumanion/laravel-cloudflare",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sumanion/laravel-cloudflare.git",
+                "reference": "8f25eef6a6a9cb574895a8d231cacae556ff3e1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sumanion/laravel-cloudflare/zipball/8f25eef6a6a9cb574895a8d231cacae556ff3e1f",
+                "reference": "8f25eef6a6a9cb574895a8d231cacae556ff3e1f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "^5.3",
+                "illuminate/http": "^5.3",
+                "illuminate/support": "^5.3",
+                "php": ">=7.0",
+                "symfony/http-foundation": "^3.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.5",
+                "phpunit/phpunit": "~5.0"
+            },
+            "type": "laravel-package",
+            "autoload": {
+                "psr-4": {
+                    "SumanIon\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ion Suman",
+                    "email": "sumanion122@gmail.com"
+                }
+            ],
+            "description": "Simple way to determine real client IP and country when using CloudFlare",
+            "keywords": [
+                "IP",
+                "cloudflare",
+                "country",
+                "laravel"
+            ],
+            "time": "2016-09-12T18:42:29+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
