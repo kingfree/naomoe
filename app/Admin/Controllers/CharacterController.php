@@ -126,7 +126,7 @@ class CharacterController extends Controller
 
             $form->display('id', 'ID');
 
-            $form->image('avatar', '头像');
+            $form->image('avatar', '头像')->uniqueName();
 
             $form->text('name', '角色名')->rules('required');
             $form->text('work', '作品名')->rules('required');
