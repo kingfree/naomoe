@@ -14,6 +14,11 @@ function language()
     return App::getLocale();
 }
 
+function removeHttp($url)
+{
+    return str_replace_first('http://', '//', $url);
+}
+
 function complink($date, $default)
 {
     $today = Carbon::createFromFormat('Y-m-d', $date);

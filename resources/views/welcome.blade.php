@@ -184,11 +184,10 @@
     <div class="footer">
         <div class="foot-right ui link list">
             <div style="display: none">
-                <script src="http://s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564"
+                <script src="//s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564"
                         language="JavaScript"></script>
             </div>
             <div class="item">画师 <a href="http://www.pixiv.net/member.php?id=1562284">@深蓝杰克</a></div>
-        <!--div class="item">网站 <a class="" href="http://weibo.com/kingfree/">@王者自由</a></div-->
             <div class="item"><a href="/about">闹萌制作委员会</a></div>
         </div>
     </div>
