@@ -116,7 +116,7 @@ class VoteLogController extends Controller
                 'on' => ['value' => true, 'text' => '有效', 'color' => 'success'],
                 'off' => ['value' => false, 'text' => '无效', 'color' => 'danger'],
             ];
-            $grid->valid('有效票')->switch($states);
+            $grid->valid('有效票')->switch($states)->sortable();
             $grid->created_at('投票时间')->sortable();
             $grid->filter(function ($filter) {
                 $filter->disableIdFilter();
