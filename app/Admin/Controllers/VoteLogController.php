@@ -107,7 +107,7 @@ class VoteLogController extends Controller
                 $header = json_decode($value);
                 $str = '<dl class="dl-horizontal">';
                 foreach ($header as $k => $v) {
-                    $str .= '<dt>' . $k . '</dt><dd>' . is_array($v) ? join(' ', $v) : $v . '</dd>';
+                    $str .= '<dt>' . $k . '</dt><dd>' . (is_array($v) ? join(' ', $v) : $v) . '</dd>';
                 }
                 return $str . '</dl>';
             });
@@ -143,7 +143,7 @@ class VoteLogController extends Controller
                 $header = json_decode($value);
                 $str = '<dl class="dl-horizontal">';
                 foreach ($header as $k => $v) {
-                    $str .= '<dt>' . $k . '</dt><dd>' . join(' ', $v) . '</dd>';
+                    $str .= '<dt>' . $k . '</dt><dd>' . (is_array($v) ? join(' ', $v) : $v) . '</dd>';
                 }
                 return $str . '</dl>';
             });
