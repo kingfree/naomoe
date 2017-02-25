@@ -76,10 +76,6 @@ class VoteLogController extends Controller
     {
         return Admin::grid(VoteLog::class, function (Grid $grid) {
             $grid->disableCreation();
-            $grid->actions(function ($actions) {
-                //$actions->disableDelete();
-                $actions->disableEdit();
-            });
             $grid->model()->orderBy('id', 'desc');
 
 //            $grid->column('user_id', '用户')->display(function ($id) {
@@ -90,7 +86,7 @@ class VoteLogController extends Controller
             })->sortable();
             $grid->column('votes', '投票')->display(function ($str) {
                 $ids = json_decode($str);
-                $str = '<ul class="list-inline">';
+                $str = '<ul>';
                 foreach (Option::find($ids)->pluck('title')->toArray() as $item) {
                     $str .= '<li>' . $item . '</li>';
                 }
@@ -100,20 +96,33 @@ class VoteLogController extends Controller
             $grid->column('ip', '用户')->display(function ($ip) {
                 return '<strong>' . User::find($this->user_id)->name . '</strong>'
                     . '<br>' . $ip
-                    . '<br>' . $this->country . $this->province . $this->city;
+                    . '<br>' . $this->country . $this->province . $this->city
+                    . '<hr>' . $this->comment;
             })->sortable();
-            $grid->column('header', 'User-Agent')->display(function ($str) {
-                $header = json_decode($str, true);
-                return join('<br>', $header['user-agent']);
+//            $grid->column('header', 'User-Agent')->display(function ($str) {
+//                $header = json_decode($str, true);
+//                return join('<br>', $header['user-agent']);
+//            });
+            $grid->column('header', '请求头')->display(function ($value) {
+                $header = json_decode($value);
+                $str = '<dl class="dl-horizontal">';
+                foreach ($header as $k => $v) {
+                    $str .= '<dt>' . $k . '</dt><dd>' . join(' ', $v) . '</dd>';
+                }
+                return $str . '</dl>';
             });
             //$grid->column('body', '请求体');
-            $grid->comment('萌文');
             $states = [
                 'on' => ['value' => true, 'text' => '有效', 'color' => 'success'],
                 'off' => ['value' => false, 'text' => '无效', 'color' => 'danger'],
             ];
             $grid->valid('有效票')->switch($states);
             $grid->created_at('投票时间')->sortable();
+            $grid->filter(function ($filter) {
+                $filter->disableIdFilter();
+
+                $filter->is('competition_id', '比赛')->select(Competition::all()->pluck('title', 'id'));
+            });
         });
     }
 
@@ -128,8 +137,20 @@ class VoteLogController extends Controller
 
             $form->display('id', 'ID');
             $form->switch('valid', '可见')->default(true);
+            $form->display('user_id', '用户ID');
+            $form->display('ip', 'IP');
+            $form->display('header', '请求头')->with(function ($value) {
+                $header = json_decode($value);
+                $str = '<dl class="dl-horizontal">';
+                foreach ($header as $k => $v) {
+                    $str .= '<dt>' . $k . '</dt><dd>' . join(' ', $v) . '</dd>';
+                }
+                return $str . '</dl>';
+            });
+            $form->display('body', '请求体');
+            $form->display('votes', '投票');
+            $form->display('comment', '评论');
             $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
         });
     }
 

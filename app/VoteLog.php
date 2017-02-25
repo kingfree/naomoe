@@ -30,12 +30,12 @@ class VoteLog extends Model
         });
     }
 
-    public function header()
+    public function headers()
     {
         return json_decode($this->header, true) ?? [];
     }
 
-    public function body()
+    public function bodies()
     {
         return json_decode($this->body, true) ?? [];
     }
