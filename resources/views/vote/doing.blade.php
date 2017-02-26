@@ -132,7 +132,7 @@
                                         <div class="header">{{ $option->character->lname }}</div>
                                         <div class="meta">{{ $option->character->lwork }}</div>
                                         <div class="description">
-                                            {{ $option->character->description }}
+                                            {!! $option->character->description !!}
                                         </div>
                                     </div>
                                 </div>
