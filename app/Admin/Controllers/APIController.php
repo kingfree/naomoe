@@ -89,7 +89,7 @@ class APIController extends Controller
                 $option->group_id = $group->id;
                 $option->character_id = $chara->id;
                 $option->title = $chara->text;
-                $option->description = $chara->names['ja'];
+                //$option->description = $chara->names['ja'];
                 $option->save();
             }
         } else {
@@ -108,7 +108,7 @@ class APIController extends Controller
                         $option->group_id = $group->id;
                         $option->character_id = $chara['id'];
                         $option->title = $chara['name'] . '@' . $chara['work'];
-                        $option->description = $chara['names']['ja'];
+                        //$option->description = $chara['names']['ja'];
                         $option->save();
                     }
                     break;
@@ -124,7 +124,7 @@ class APIController extends Controller
                     $option->group_id = $group->id;
                     $option->character_id = $chara['id'];
                     $option->title = $chara['name'] . '@' . $chara['work'];
-                    $option->description = $chara['names']['ja'];
+                    //$option->description = $chara['names']['ja'];
                     $option->save();
                 }
             }
