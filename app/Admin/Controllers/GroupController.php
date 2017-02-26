@@ -74,6 +74,7 @@ class GroupController extends Controller
     protected function grid()
     {
         return Admin::grid(Group::class, function (Grid $grid) {
+            $grid->model()->orderBy('updated_at', 'desc');
 
             $grid->id('ID')->sortable();
             $grid->column('info', '头像')->value(function ($info) {
@@ -92,8 +93,18 @@ class GroupController extends Controller
             });
             $grid->win('晋级');
             $grid->allow('可投');
+            $grid->updated_at('修改时间')->sortable();
             $grid->column('选项数量')->value(function () {
                 return count($this->options);
+            });
+
+            $grid->filter(function ($filter) {
+                $filter->disableIdFilter();
+
+                $filter->where(function ($query) {
+                    $query->where('title', 'like', "%{$this->input}%")
+                        ->orWhere('id', $this->input);
+                }, '搜索');
             });
 
         });
