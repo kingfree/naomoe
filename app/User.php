@@ -42,11 +42,15 @@ class User extends Authenticatable
 
     public function hiddenName()
     {
-        if (!$this->password) {
+        if ($isValid = filter_var($this->name, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
             $arr = explode('.', $this->name);
             $arr[1] = '*';
             $arr[2] = '*';
             return join('.', $arr);
+        } else if ($isValid = filter_var($this->name, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+            $arr = explode(':', $this->name);
+            $len = count($arr);
+            return $arr[0] . ':*:*:' . $arr[$len - 1];
         }
         return $this->name;
     }
