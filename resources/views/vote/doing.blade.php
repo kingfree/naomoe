@@ -17,7 +17,8 @@
             <div class="ui item">
                 <div class="content">
                     <div class="extra">
-                        <span class="dates">{{ $competition->start_at }}</span>~<span class="dates">{{ $competition->end_at }}</span>
+                        <span class="dates">{{ $competition->start_at }}</span>~<span
+                                class="dates">{{ $competition->end_at }}</span>
                     </div>
                 </div>
             </div>
@@ -95,14 +96,16 @@
                                             <img id="cover" src="{{ config('admin.upload.host') . $option->avatar }}">
                                         </div>
                                         <div class="ctrlBox">
-                                            <h2 class="f-pr" style="max-width: 150px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
+                                            <h2 class="f-pr"
+                                                style="max-width: 150px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
                                                 <div class="title">{{$option->character->name}}
                                                 </div>
                                             </h2>
                                             <div style="color: #e03997;max-width: 150px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
                                                 {{$option->character->description}}
                                             </div>
-                                            <div class="bar" style="font-size: 12px;max-width: 150px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
+                                            <div class="bar"
+                                                 style="font-size: 12px;max-width: 150px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
                                                 <span>{{$option->character->work}}</span>
                                             </div>
                                         </div>
@@ -158,8 +161,8 @@
     </script>
 
     <div class="footer"></div>
-    <div class="voting ui material">
-        <div class="ui doubling segments">
+    <div class="voting ui material segments">
+        <div class="ui horizontal segments">
             @foreach($competition->groups as $group)
                 <div class="ui segment">
                     <div class="ui horizontal doubling list">
@@ -176,18 +179,18 @@
                     </div>
                 </div>
             @endforeach
-            <div class="ui pink segment">
-                <button class="ui pink submit button {{ $log->id ? 'disabled' : '' }}">@lang('vote.vote')</button>
-                @if ($log->comment)
-                    <span id="comment">{{$log->comment}}</span>
-                @else
-                    <span id="comment"></span>
-                    @lang('vote.noneed')
-                @endif
-                @if (Route::has('simple'))
-                    <a class="ui right floated" href="{{route('simple', ['id' => $competition->id])}}">尝试简单版</a>
-                @endif
-            </div>
+        </div>
+        <div class="ui pink segment">
+            <button class="ui pink submit button {{ $log->id ? 'disabled' : '' }}">@lang('vote.vote')</button>
+            @if ($log->comment)
+                <span id="comment">{{$log->comment}}</span>
+            @else
+                <span id="comment"></span>
+                @lang('vote.noneed')
+            @endif
+            @if (Route::has('simple'))
+                <a class="ui right floated" href="{{route('simple', ['id' => $competition->id])}}">尝试简单版</a>
+            @endif
         </div>
     </div>
 @endsection
