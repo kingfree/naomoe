@@ -78,7 +78,7 @@ class ScheduleController extends Controller
             $grid->month('月');
             $grid->day('日');
             $grid->competition_id('比赛')->display(function ($id) {
-                return Competition::find($id)->title;
+                return $id ? Competition::find($id)->title : null;
             });
             $grid->visible('可见')->switch();
             $grid->info('额外信息');
