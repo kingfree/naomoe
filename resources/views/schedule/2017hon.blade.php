@@ -1,3 +1,5 @@
+@section('title', '本战对阵表')
+
 @section('schedule')
 
     <style>
