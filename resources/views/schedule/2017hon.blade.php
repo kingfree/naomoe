@@ -10,11 +10,11 @@
             padding: 4px;
         }
 
-        table.hon tr.pink th {
+        table.hon tr.pink th, table.hon tr.pink td {
             background-color: #f892d2;
         }
 
-        table.hon tr.blue th {
+        table.hon tr.blue th, table.hon tr.blue td {
             background-color: #74b6e9;
         }
 
@@ -93,9 +93,6 @@
         }
     </style>
 
-a    <h2 class="ui pink header">
-        <a href="/hon">本战分组</a>
-    </h2>
     <table class="hon">
         <tr class="red">
             <th colspan="2" class="gumi">A 组</th>
