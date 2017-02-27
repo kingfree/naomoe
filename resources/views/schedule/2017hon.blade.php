@@ -116,7 +116,7 @@
             <td class="gum">A-3</td>
             <td class="chara">蕾莱·拉·列娜@GATE 奇幻自卫队</td>
             <td class="i"></td>
-            <td rowspan="3" class="id">{!! complink('2017-03-04', '3月2日') !!}</td>
+            <td rowspan="3" class="id">{!! complink('2017-03-02', '3月2日') !!}</td>
             <td rowspan="3" class="ni"></td>
         </tr>
         <tr>
