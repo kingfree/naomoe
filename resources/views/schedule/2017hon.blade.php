@@ -10,7 +10,7 @@
         }
 
         table.hon tr.pink th {
-            background-color: #e974b6;
+            background-color: #f892d2;
         }
 
         table.hon tr.blue th {
