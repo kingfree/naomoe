@@ -78,7 +78,7 @@ class Vote extends Command
         $votes[] = $yes;
         foreach ($comp->groups as $group) {
             $allow = $group->allow;
-            $tou = random_int(1, $allow);
+            $tou = random_int(2, $allow - 1);
             $options = $group->options->pluck('id');
             $arr = $options->toArray();
             $rands = array_rand($arr, $tou);
@@ -86,7 +86,7 @@ class Vote extends Command
                 $votes[] = $arr[$index];
             }
         }
-        $votes = array_diff(array_unique(array_flatten($votes)), $no);
+        $votes = array_values(array_diff(array_unique(array_flatten($votes)), $no));
         $body = [
             'votes' => $votes,
             'competition_id' => $compId,
@@ -94,13 +94,12 @@ class Vote extends Command
         ];
 
         $record = VoteLog::inRandomOrder()->first();
-        $header = $record->header;
+        $header = $record->headers();
         if (array_key_exists('cf-ray', $header)) {
             unset($header['cf-ray']);
         }
-        $header['x-forwarded-for'] = $ip;
-        $header['cf-connecting-ip'] = $ip;
-        dump($header);
+        $header['x-forwarded-for'] = [$ip];
+        $header['cf-connecting-ip'] = [$ip];
         $log = new VoteLog;
         $log->competition_id = $compId;
         $log->user_id = $user->id;
