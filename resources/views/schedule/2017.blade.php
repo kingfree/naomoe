@@ -177,7 +177,7 @@
                                 <ul class="ui ordered list did">
                                     {{($option1 = $group->rank[0]) ?'': ''}}
                                     {{($option2 = $group->rank[1]) ?'': ''}}
-                                    {{($option3 = $group->rank[2]) ?'': ''}}
+                                    {{ count($group->rank) > 2 ? (($option3 = $group->rank[2]) ?'': ''):''}}
                                     @foreach($group->rank as $index => $option)
                                         <div class="item">
                                             <div class="right floated compact">
