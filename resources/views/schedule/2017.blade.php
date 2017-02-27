@@ -9,8 +9,9 @@
                 <i class="calendar icon"></i>
                 <div class="content">
                     <a href="{{route('schedule')}}">@lang('schedule.calendar')</a>
+                    <a href="{{route('hon')}}">本战分组</a>
                     <div class="sub header">
-                        2017.2 - 2017.3
+                        2017年2月 - 2017年3月
                     </div>
                 </div>
             </h2>

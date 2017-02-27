@@ -9,7 +9,7 @@
             <div class="content">
                 {{ $competition->title }}
                 <div class="sub header">
-                    {{ $competition->infos()['type'] ?? '预选赛' }}
+                    {{ $competition->infos()['type'] ?? '本战' }}
                 </div>
             </div>
         </h2>
