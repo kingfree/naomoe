@@ -50,31 +50,26 @@ class Group extends Model
         return array_get($this->infos(), 'avatar', null);
     }
 
-    protected $appends = ['text', 'first', 'second', 'third', 'count'];
+    protected $appends = ['text'];
 
     public function getTextAttribute()
     {
         return $this->title;
     }
 
-    public function getCountAttribute()
-    {
-        return count($this->options);
-    }
-
-    public function getFirstAttribute()
+    public function first()
     {
         $ranks = $this->rank;
         return $ranks[0];
     }
 
-    public function getSecondAttribute()
+    public function second()
     {
         $ranks = $this->rank;
         return $ranks[1];
     }
 
-    public function getThirdAttribute()
+    public function third()
     {
         $ranks = $this->rank;
         return count($ranks) > 2 ? $ranks[2] : $ranks[1];

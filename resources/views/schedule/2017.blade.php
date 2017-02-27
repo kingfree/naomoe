@@ -153,14 +153,17 @@
                                     </p>
                                 @endif
                                 <ul class="ui ordered list did">
+                                    {{$first=$group->first()?'':''}}
+                                    {{$second=$group->second()?'':''}}
+                                    {{$third=$group->third()?'':''}}
                                     @foreach($group->rank as $index => $option)
                                         <div class="item">
                                             <div class="right floated compact">
                                                 <div class="ui huge circular {{
                                                     ($option->valid === 0) ? '' : (
-                                                    ($index == 0 or $option->valid == $group->first->valid) ? 'yellow' : (
-                                                    ($index == 1 or $option->valid == $group->second->valid) ? 'pink': (
-                                                    ($index == 2 or $option->valid == $group->third->valid) ? 'orange' : (
+                                                    ($index == 0 or $option->valid == $first->valid) ? 'yellow' : (
+                                                    ($index == 1 or $option->valid == $second->valid) ? 'pink': (
+                                                    ($index == 2 or $option->valid == $third->valid) ? 'orange' : (
                                                     ($option->winner) ? 'teal' : ''))))
                                                 }} label">
                                                     {{$option->valid}}
