@@ -12,9 +12,13 @@ class ScheduleController extends Controller
     public function index()
     {
         $today = Carbon::today();
-        $page = Page::find(1);
-        if (!$page) $page = new Page;
-        return view('schedule.' . $today->year)->withId(0)->withPage($page);
+        return view('schedule.' . $today->year)->withId(0)->withPage($today->year.'index');
+    }
+
+    public function hon()
+    {
+        $today = Carbon::today();
+        return view('schedule.' . $today->year)->withId(0)->withPage($today->year . 'hon');
     }
 
     public function goto($date)

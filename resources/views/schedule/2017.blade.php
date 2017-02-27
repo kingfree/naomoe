@@ -5,17 +5,18 @@
 @section('content')
     <div class="ui doubling stackable grid">
         <div class="six wide column">
-            <a href="{{route('schedule')}}">
-                <h2 class="ui pink top attached header">
-                    <i class="calendar icon"></i>
-                    <div class="content">
-                        @lang('schedule.calendar')
-                        <div class="sub header">
-                            2017.2 - 2017.3
-                        </div>
+            <h2 class="ui pink top attached header">
+                <i class="calendar icon"></i>
+                <div class="content">
+                    <a href="{{route('schedule')}}">@lang('schedule.calendar')</a>
+                    <div class="sub header">
+                        2017.2 - 2017.3
                     </div>
-                </h2>
-            </a>
+                </div>
+            </h2>
+            <h3 class="ui pink attached header">
+                <a href="/hon">本战分组</a>
+            </h3>
             <div class="ui attached segment">
                 <table class="calendar ui celled seven unstackable column table" style="margin: -8px;">
                     <thead>
@@ -79,8 +80,6 @@
                                 {{ $competition->infos()['type'] ?? '预选赛' }}
                             </div>
                         </div>
-
-
                     </h2>
                 </div>
                 <div class="ui attached segment items">
@@ -91,7 +90,8 @@
                                 <span class="valid">合计投出: {{ $competition->valid  }}票</span>
                             </div>
                             <div class="extra">
-                                <span class="dates">{{ $competition->start_at }}</span>~<span class="dates">{{ $competition->end_at }}</span>
+                                <span class="dates">{{ $competition->start_at }}</span>~<span
+                                        class="dates">{{ $competition->end_at }}</span>
                             </div>
                             <div class="description">
                                 {!! $competition->description !!}
@@ -134,16 +134,7 @@
                 </div>
             @else
                 <div class="ui attached segment">
-                    <h3 class="ui pink header">
-                        测试赛 | 热身赛 | 表演赛
-                    </h3>
                     <table class="ui very basic collapsing celled table">
-                        <thead>
-                        <tr>
-                            <th>日期</th>
-                            <th>萌战内容</th>
-                        </tr>
-                        </thead>
                         <tbody>
                         <tr>
                             <td>2月19日（日）</td>
@@ -156,6 +147,10 @@
                         <tr>
                             <td>2月22日（水）</td>
                             <td>{!! complink('2017-02-22', '闹曲歌赏') !!}</td>
+                        </tr>
+                        <tr>
+                            <td>2月27日（月）</td>
+                            <td>{!! complink('2017-02-27', '表演赛I') !!}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -214,163 +209,9 @@
                         </div>
                     @endforeach
                 </div>
-            @else
-                <div class="ui piled segment">
-
-                    <table class="ui very basic collapsing celled table">
-                        <thead>
-                        <tr>
-                            <th class="three wide">日期</th>
-                            <th class="two wide">时间</th>
-                            <th class="four wide">萌战内容</th>
-                            <th class="seven wide">备注</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>2月23日（木）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-02-23', '预选赛1、2组') !!}</td>
-                            <td>20进4选8。每组前4晋级本战</td>
-                        </tr>
-                        <tr>
-                            <td>2月24日（金）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-02-24', '预选赛3、4组') !!}</td>
-                            <td>20进4选8。每组前4晋级本战</td>
-                        </tr>
-                        <tr>
-                            <td>2月25日（土）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-02-25', '预选赛5、6组') !!}</td>
-                            <td>20进4选8。每组前4晋级本战</td>
-                        </tr>
-                        <tr>
-                            <td>2月26日（日）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-02-26', '预选赛7、8组') !!}</td>
-                            <td>20进4选8。每组前4晋级本战</td>
-                        </tr>
-                        <tr>
-                            <td>2月27日（月）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-02-27', '表演赛I') !!}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>本战分组</td>
-                            <td>随机分配成8组，每组4人，分上下两区</td>
-                        </tr>
-                        <tr>
-                            <td>2月28日（火）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-02-28', '本战1回战ABCD上') !!}</td>
-                            <td>A、B、C、D组上半区，2选1进1</td>
-                        </tr>
-                        <tr>
-                            <td>3月1日（水）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-03-01', '本战1回战EFGH上') !!}</td>
-                            <td>E、F、G、H组上半区，2选1进1</td>
-                        </tr>
-                        <tr>
-                            <td>3月2日（木）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-03-02', '本战1回战ABCD下') !!}</td>
-                            <td>A、B、C、D组下半区，2选1进1</td>
-                        </tr>
-                        <tr>
-                            <td>3月3日（金）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-03-03', '本战1回战EFGH下') !!}</td>
-                            <td>E、F、G、H组下半区，2选1进1</td>
-                        </tr>
-                        <tr>
-                            <td>3月4日（土）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-03-04', '本战2回战上半区') !!}</td>
-                            <td>2进1选1。A、B、C、D各半区胜者参与</td>
-                        </tr>
-                        <tr>
-                            <td>3月5日（日）</td>
-                            <td>00:00~23:00</td>
-                            <td>{!! complink('2017-03-05', '本战2回战下半区') !!}</td>
-                            <td>2进1选1。E、F、G、H各半区胜者参与</td>
-                        </tr>
-                        <tr>
-                            <td>3月6日（月）</td>
-                            <td>00:00~23:00</td>
-                            <td>表演赛II</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td>决赛圈分组</td>
-                            <td>8人随机分为东南西北4组</td>
-                        </tr>
-                        <tr>
-                            <td>3月7日（火）</td>
-                            <td>00:00~23:00</td>
-                            <td>八进四东南组</td>
-                            <td>2进1选1。东、南2组同时进行</td>
-                        </tr>
-                        <tr>
-                            <td>3月8日（水）</td>
-                            <td>00:00~23:00</td>
-                            <td>八进四西北组</td>
-                            <td>2进1选1。西、北2组同时进行</td>
-                        </tr>
-                        <tr>
-                            <td>3月9日（木）</td>
-                            <td>00:00~23:00</td>
-                            <td>半决赛</td>
-                            <td>2进1选1。东西、南北2组同时进行</td>
-                        </tr>
-                        <tr>
-                            <td>3月10日（金）</td>
-                            <td>00:00~23:00</td>
-                            <td>三位战</td>
-                            <td>决出第三名和第四名</td>
-                        </tr>
-                        <tr>
-                            <td>3月11日（土）</td>
-                            <td>00:00~23:00</td>
-                            <td>萌王战</td>
-                            <td>决出萌王和准萌</td>
-                        </tr>
-                        <tr>
-                            <td>3月12日（日）</td>
-                            <td></td>
-                            <td>休战</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3月13日（月）</td>
-                            <td>00:00~23:00</td>
-                            <td>表演赛III</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3月14日（火）</td>
-                            <td>00:00~23:00</td>
-                            <td>表演赛IV</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>3月15日（水）</td>
-                            <td></td>
-                            <td>2017届闹萌</td>
-                            <td>结束</td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-
-                    {!! $page->content !!}
-                </div>
+            @elseif ($page)
+                @include('schedule.'.$page)
+                @yield('schedule')
             @endif
         </div>
     </div>

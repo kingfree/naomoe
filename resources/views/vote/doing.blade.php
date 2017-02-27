@@ -162,10 +162,10 @@
 
     <div class="footer"></div>
     <div class="voting ui material segments">
-        <div class="ui horizontal segments">
+        <div class="ui horizontal segments" style="background-color: white;">
             @foreach($competition->groups as $group)
                 <div class="ui segment">
-                    <div class="ui horizontal doubling list">
+                    <div class="ui horizontal list">
                         <div class="item">
                             <div class="header">{{ $group->title }}</div>
                         </div>
