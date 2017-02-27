@@ -25,7 +25,7 @@ function complink($date, $default)
     $cal = Schedule::where('year', $today->year)->where('month', $today->month)->where('day', $today->day)->first();
     if ($cal and $cal->visible) {
         $comp = Competition::find($cal->competition_id);
-        return '<a href="'.route('after', ['id' => $comp->id]).'">'.$comp->title.'</a>';
+        return '<a href="'.route('after', ['id' => $comp->id]).'">'.$default.'</a>';
     }
     return $default;
 }
