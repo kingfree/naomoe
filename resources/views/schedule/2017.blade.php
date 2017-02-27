@@ -153,9 +153,9 @@
                                     </p>
                                 @endif
                                 <ul class="ui ordered list did">
-                                    {{$first=$group->first()?'':''}}
-                                    {{$second=$group->second()?'':''}}
-                                    {{$third=$group->third()?'':''}}
+                                    {{($first=$group->first())?'':''}}
+                                    {{($second=$group->second())?'':''}}
+                                    {{($third=$group->third())?'':''}}
                                     @foreach($group->rank as $index => $option)
                                         <div class="item">
                                             <div class="right floated compact">
