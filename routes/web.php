@@ -38,7 +38,8 @@ Route::get('/home', function () {
     return redirect()->route('votes');
 })->name('home');
 
-Route::get('/schedule', 'ScheduleController@index')->name('schedule');
+Route::get('/schedule', 'ScheduleController@hon');
+Route::get('/schedules', 'ScheduleController@index')->name('schedule');
 Route::get('/hon', 'ScheduleController@hon')->name('hon');
 Route::get('/goto/{date}', 'ScheduleController@goto')->name('goto');
 Route::get('/result', 'VoteController@result')->name('result');

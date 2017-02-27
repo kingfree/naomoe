@@ -14,9 +14,6 @@
                     </div>
                 </div>
             </h2>
-            <h3 class="ui pink attached header">
-                <a href="/hon">本战分组</a>
-            </h3>
             <div class="ui attached segment">
                 <table class="calendar ui celled seven unstackable column table" style="margin: -8px;">
                     <thead>
@@ -134,27 +131,8 @@
                 </div>
             @else
                 <div class="ui attached segment">
-                    <table class="ui very basic collapsing celled table">
-                        <tbody>
-                        <tr>
-                            <td>2月19日（日）</td>
-                            <td>{!! complink('2017-02-19', '中川花音专辑赛') !!}</td>
-                        </tr>
-                        <tr>
-                            <td>2月20日（月）</td>
-                            <td>{!! complink('2017-02-20', '闹群最萌') !!}</td>
-                        </tr>
-                        <tr>
-                            <td>2月22日（水）</td>
-                            <td>{!! complink('2017-02-22', '闹曲歌赏') !!}</td>
-                        </tr>
-                        <tr>
-                            <td>2月27日（月）</td>
-                            <td>{!! complink('2017-02-27', '表演赛I') !!}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-
+                    @include('schedule.2017list')
+                    @yield('list')
                 </div>
             @endif
         </div>
@@ -175,17 +153,14 @@
                                     </p>
                                 @endif
                                 <ul class="ui ordered list did">
-                                    {{($option1 = $group->rank[0]) ?'': ''}}
-                                    {{($option2 = $group->rank[1]) ?'': ''}}
-                                    {{ count($group->rank) > 2 ? (($option3 = $group->rank[2]) ?'': ''):''}}
                                     @foreach($group->rank as $index => $option)
                                         <div class="item">
                                             <div class="right floated compact">
                                                 <div class="ui huge circular {{
                                                     ($option->valid === 0) ? '' : (
-                                                    ($index == 0 or $option->valid == $option1->valid) ? 'yellow' : (
-                                                    ($index == 1 or $option->valid == $option2->valid) ? 'pink': (
-                                                    ($index == 2 or $option->valid == $option3->valid) ? 'orange' : (
+                                                    ($index == 0 or $option->valid == $group->first->valid) ? 'yellow' : (
+                                                    ($index == 1 or $option->valid == $group->second->valid) ? 'pink': (
+                                                    ($index == 2 or $option->valid == $group->third->valid) ? 'orange' : (
                                                     ($option->winner) ? 'teal' : ''))))
                                                 }} label">
                                                     {{$option->valid}}

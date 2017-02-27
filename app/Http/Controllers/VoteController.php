@@ -26,7 +26,7 @@ class VoteController extends Controller
         if ($competition) {
             return redirect()->route('before', ['id' => $competition->id]);
         }
-        return redirect()->route('schedule');
+        return redirect()->route('hon');
     }
 
     public function result()
@@ -36,7 +36,7 @@ class VoteController extends Controller
         if ($cal and $cal->visible) {
             return redirect()->route('after', ['id' => $cal->competition_id]);
         }
-        return redirect()->route('schedule');
+        return redirect()->route('hon');
     }
 
     public function willdo($id)

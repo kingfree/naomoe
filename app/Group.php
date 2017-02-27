@@ -21,11 +21,13 @@ class Group extends Model
         return $this->hasMany(Option::class);
     }
 
-    public function rank() {
+    public function rank()
+    {
         return $this->hasMany(Option::class)->orderBy('valid', 'desc')->orderBy('character_id');
     }
 
-    public function rankLimit() {
+    public function rankLimit()
+    {
         return $this->hasMany(Option::class)->orderBy('valid', 'desc')->orderBy('character_id')->limit($this->allow);
     }
 
@@ -48,9 +50,33 @@ class Group extends Model
         return array_get($this->infos(), 'avatar', null);
     }
 
-    protected $appends = ['text'];
+    protected $appends = ['text', 'first', 'second', 'third', 'count'];
+
     public function getTextAttribute()
     {
         return $this->title;
+    }
+
+    public function getCountAttribute()
+    {
+        return count($this->options);
+    }
+
+    public function getFirstAttribute()
+    {
+        $ranks = $this->rank;
+        return $ranks[0];
+    }
+
+    public function getSecondAttribute()
+    {
+        $ranks = $this->rank;
+        return $ranks[1];
+    }
+
+    public function getThirdAttribute()
+    {
+        $ranks = $this->rank;
+        return count($ranks) > 2 ? $ranks[2] : $ranks[1];
     }
 }
