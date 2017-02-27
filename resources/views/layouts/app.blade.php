@@ -87,6 +87,7 @@
             </div>
         </div>
     </nav>
+    <!--email_off-->
 
     <div class="ui container">
         <div class="view">
@@ -96,6 +97,8 @@
 
     @include('layouts.footer')
     @yield('footer')
+
+    <!--/email_off-->
 </div>
 
 <!-- Scripts -->

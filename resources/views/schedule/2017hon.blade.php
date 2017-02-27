@@ -93,7 +93,7 @@
         }
     </style>
 
-    <h2 class="ui pink header">
+a    <h2 class="ui pink header">
         <a href="/hon">本战分组</a>
     </h2>
     <table class="hon">
