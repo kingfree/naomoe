@@ -18,7 +18,7 @@ class Group extends Model
 
     public function options()
     {
-        return $this->hasMany(Option::class)->orderBy('character_id');
+        return $this->hasMany(Option::class)->orderBy('id');
     }
 
     public function rank() {
