@@ -43,12 +43,12 @@
             background-image: url('/images/nao.jpg');
             background-size: cover;
             background-position: 37% 0%;
-            transition: background-image 0.6s linear;
+            transition: background-image 0.6s ease-out;
         }
 
         .flex-center:hover {
             background-image: url('/images/naos.jpg');
-            transition: background-image 0.6s linear;
+            transition: background-image 0.6s ease-in;
         }
 
         .position-ref {
@@ -187,7 +187,7 @@
                 <script src="//s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564"
                         language="JavaScript"></script>
             </div>
-            <div class="item">画师 <a href="http://www.pixiv.net/member.php?id=1562284">@深蓝杰克</a></div>
+            <div class="item">画师 <a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=61616191">@深蓝杰克</a></div>
             <div class="item"><a href="/about">闹萌制作委员会</a></div>
         </div>
     </div>

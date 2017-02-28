@@ -5,7 +5,7 @@
 @section('content')
     <style>
         body {
-            background-image: url('/images/nao.jpg');
+            background-image: url('/images/naob.jpg');
             background-size: cover;
             background-position: 37% 0%;
         }
