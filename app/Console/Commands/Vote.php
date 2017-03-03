@@ -80,10 +80,8 @@ class Vote extends Command
             $tou = 1;
             $options = $group->options->pluck('id');
             $arr = $options->toArray();
-            $rands = array_rand($arr, $tou);
-            foreach ($rands as $index) {
-                $votes[] = $arr[$index];
-            }
+            $index = array_rand($arr, $tou);
+            $votes[] = $arr[$index];
         }
         $votes = array_values(array_diff(array_unique(array_flatten($votes)), $no));
         $body = [
