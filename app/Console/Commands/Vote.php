@@ -77,8 +77,7 @@ class Vote extends Command
         $votes = [];
         $votes[] = $yes;
         foreach ($comp->groups as $group) {
-            $allow = $group->allow;
-            $tou = random_int(2, $allow - 1);
+            $tou = 1;
             $options = $group->options->pluck('id');
             $arr = $options->toArray();
             $rands = array_rand($arr, $tou);
