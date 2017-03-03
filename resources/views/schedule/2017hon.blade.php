@@ -251,16 +251,18 @@
             <td class="i">38</td>
         </tr>
         <tr>
-            <td class="gum">E-3</td>
-            <td class="chara">比叡@舰队Collection</td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-03', '3月3日') !!}</td>
-            <td rowspan="2" class="ni"></td>
+            <td class="gum blue">E-3</td>
+            <td class="chara blue">比叡@舰队Collection</td>
+            <td class="i blue">62</td>
+            <td class="id blue">{!! complink('2017-03-03', '3月3日') !!}<br>比叡</td>
+            <td class="ni"></td>
         </tr>
         <tr>
-            <td class="gum">E-4</td>
-            <td class="chara">汤音@异国迷宫的十字路口</td>
-            <td class="i"></td>
+            <td class="gum blue">E-4</td>
+            <td class="chara blue">汤音@异国迷宫的十字路口</td>
+            <td class="i blue">62</td>
+            <td class="id blue">{!! complink('2017-03-03', '3月3日') !!}<br>汤音</td>
+            <td class="ni"></td>
         </tr>
 
         <tr class="blue">
@@ -284,14 +286,14 @@
         <tr>
             <td class="gum">F-3</td>
             <td class="chara">茨木童子@Fate/Grand Order</td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-03', '3月3日') !!}</td>
+            <td class="i">26</td>
+            <td rowspan="2" class="id purple">{!! complink('2017-03-03', '3月3日') !!}<br>爱宕</td>
             <td rowspan="2" class="ni"></td>
         </tr>
         <tr>
-            <td class="gum">F-4</td>
-            <td class="chara">爱宕@舰队Collection</td>
-            <td class="i"></td>
+            <td class="gum purple">F-4</td>
+            <td class="chara purple">爱宕@舰队Collection</td>
+            <td class="i purple">89</td>
         </tr>
 
         <tr class="purple">
@@ -315,14 +317,14 @@
         <tr>
             <td class="gum">G-3</td>
             <td class="chara">莉瑟罗特·沙尔洛克@TRINITY SEVEN 七人魔法使</td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-03', '3月3日') !!}</td>
+            <td class="i">34</td>
+            <td rowspan="2" class="id pink">{!! complink('2017-03-03', '3月3日') !!}<br>榛名</td>
             <td rowspan="2" class="ni"></td>
         </tr>
         <tr>
-            <td class="gum">G-4</td>
-            <td class="chara">榛名@舰队Collection</td>
-            <td class="i"></td>
+            <td class="gum pink">G-4</td>
+            <td class="chara pink">榛名@舰队Collection</td>
+            <td class="i pink">84</td>
         </tr>
 
         <tr class="pink">
@@ -346,14 +348,14 @@
         <tr>
             <td class="gum">H-3</td>
             <td class="chara">克劳蒂雅·恩菲尔德@学战都市Asterisk</td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-03', '3月3日') !!}</td>
+            <td class="i">48</td>
+            <td rowspan="2" class="id red">{!! complink('2017-03-03', '3月3日') !!}<br>室见立华</td>
             <td rowspan="2" class="ni"></td>
         </tr>
         <tr>
-            <td class="gum">H-4</td>
-            <td class="chara">室见立华@奋斗吧！系统工程师</td>
-            <td class="i"></td>
+            <td class="gum red">H-4</td>
+            <td class="chara red">室见立华@奋斗吧！系统工程师</td>
+            <td class="i red">53</td>
         </tr>
     </table>
 @endsection
