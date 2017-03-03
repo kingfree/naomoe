@@ -77,10 +77,9 @@ class Vote extends Command
         $votes = [];
         $votes[] = $yes;
         foreach ($comp->groups as $group) {
-            $tou = 1;
             $options = $group->options->pluck('id');
             $arr = $options->toArray();
-            $index = array_rand($arr, $tou);
+            $index = array_rand($arr);
             $votes[] = $arr[$index];
         }
         $votes = array_values(array_diff(array_unique(array_flatten($votes)), $no));
