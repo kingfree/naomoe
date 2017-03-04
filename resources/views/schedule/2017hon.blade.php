@@ -97,7 +97,7 @@
 
         table.hon .nid {
             text-align: center;
-            vertical-align: top;
+            vertical-align: middle;
             width: 8em;
         }
     </style>
@@ -113,8 +113,8 @@
             <td class="chara red">中川花音@只有神知道的世界</td>
             <td class="i red">151</td>
             <td rowspan="2" class="id red">{!! complink('2017-02-28', '2月28日') !!}<br>中川花音</td>
-            <td rowspan="2" class="ni"></td>
-            <td rowspan="5" class="nid">{!! complink('2017-03-04', '3月4日') !!}</td>
+            <td rowspan="2" class="ni red">155</td>
+            <td rowspan="5" class="nid red">{!! complink('2017-03-04', '3月4日') !!}<br>中川花音</td>
         </tr>
         <tr>
             <td class="gum">A-2</td>
@@ -126,7 +126,7 @@
             <td class="chara">蕾莱·拉·列娜@GATE 奇幻自卫队</td>
             <td class="i">54</td>
             <td rowspan="3" class="id orange">{!! complink('2017-03-02', '3月2日') !!}<br>绫波</td>
-            <td rowspan="3" class="ni"></td>
+            <td rowspan="3" class="ni orange">70</td>
         </tr>
         <tr>
             <td class="gum orange">A-4</td>
@@ -149,8 +149,8 @@
             <td class="chara">高坂雪穗@LoveLive!</td>
             <td class="i">94</td>
             <td rowspan="2" class="id orange">{!! complink('2017-02-28', '2月28日') !!}<br>雾岛</td>
-            <td rowspan="2" class="ni"></td>
-            <td rowspan="4" class="nid">{!! complink('2017-03-04', '3月4日') !!}</td>
+            <td rowspan="2" class="ni orange">141</td>
+            <td rowspan="4" class="nid yellow">{!! complink('2017-03-04', '3月4日') !!}<br>桐崎千棘</td>
         </tr>
         <tr>
             <td class="gum orange">B-2</td>
@@ -162,7 +162,7 @@
             <td class="chara">阿波罗@只有神知道的世界 女神篇</td>
             <td class="i">35</td>
             <td rowspan="2" class="id yellow">{!! complink('2017-03-02', '3月2日') !!}<br>桐崎千棘</td>
-            <td rowspan="2" class="ni"></td>
+            <td rowspan="2" class="ni yellow">134</td>
         </tr>
         <tr>
             <td class="gum yellow">B-4</td>
@@ -180,8 +180,8 @@
             <td class="chara yellow">由比滨结衣@我的青春恋爱物语果然有问题。</td>
             <td class="i yellow">171</td>
             <td rowspan="2" class="id yellow">{!! complink('2017-02-28', '2月28日') !!}<br>由比滨结衣</td>
-            <td rowspan="2" class="ni"></td>
-            <td rowspan="4" class="nid">{!! complink('2017-03-04', '3月4日') !!}</td>
+            <td rowspan="2" class="ni yellow">204</td>
+            <td rowspan="4" class="nid yellow">{!! complink('2017-03-04', '3月4日') !!}<br>由比滨结衣</td>
         </tr>
         <tr>
             <td class="gum">C-2</td>
@@ -193,7 +193,7 @@
             <td class="chara">萝特@终末的伊泽塔</td>
             <td class="i">52</td>
             <td rowspan="2" class="id green">{!! complink('2017-03-02', '3月2日') !!}<br>白雪</td>
-            <td rowspan="2" class="ni"></td>
+            <td rowspan="2" class="ni green">35</td>
         </tr>
         <tr>
             <td class="gum green">C-4</td>
@@ -211,8 +211,8 @@
             <td class="chara">佐佐木千穗@打工吧！魔王大人</td>
             <td class="i">81</td>
             <td rowspan="2" class="id green">{!! complink('2017-02-28', '2月28日') !!}<br>金刚</td>
-            <td rowspan="2" class="ni"></td>
-            <td rowspan="4" class="nid">{!! complink('2017-03-04', '3月4日') !!}</td>
+            <td rowspan="2" class="ni green">157</td>
+            <td rowspan="4" class="nid green">{!! complink('2017-03-04', '3月4日') !!}<br>金刚</td>
         </tr>
         <tr>
             <td class="gum green">D-2</td>
@@ -224,7 +224,7 @@
             <td class="chara cyan">高雄@舰队Collection</td>
             <td class="i cyan">70</td>
             <td rowspan="2" class="id cyan">{!! complink('2017-03-02', '3月2日') !!}<br>高雄</td>
-            <td rowspan="2" class="ni"></td>
+            <td rowspan="2" class="ni cyan">61 </td>
         </tr>
         <tr>
             <td class="gum">D-4</td>

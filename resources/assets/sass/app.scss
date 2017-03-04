@@ -183,7 +183,7 @@ a:active {
 
 @media (min-width: 992px) and (max-width: 1200px) {
   .ui.two.grid .did .option .content {
-    max-width: 90px;
+    max-width: 94px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -201,7 +201,7 @@ a:active {
 
 @media (min-width: 1201px) and (max-width: 1400px) {
   .ui.two.grid .did .option .content {
-    max-width: 130px;
+    max-width: 133px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -217,9 +217,6 @@ a:active {
 @media (min-width: 1401px) {
   .ui.two.grid .did .option .content {
     max-width: 150px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
   }
   .ui.one.grid .did .option .content {
     max-width: 500px;
