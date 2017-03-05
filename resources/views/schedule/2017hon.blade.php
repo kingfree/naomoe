@@ -181,7 +181,7 @@
             <td class="chara">高坂雪穗@LoveLive!</td>
             <td class="i">94</td>
             <td rowspan="2" class="id yellow light">{!! complink('2017-02-28', '2月28日') !!}<br>雾岛</td>
-            <td rowspan="2" class="ni yellow light">141</td>
+            <td rowspan="2" class="ni yellow light">134</td>
             <td rowspan="4" class="nid yellow">{!! complink('2017-03-04', '3月4日') !!}<br>桐崎千棘</td>
         </tr>
         <tr>
@@ -194,7 +194,7 @@
             <td class="chara">阿波罗@只有神知道的世界 女神篇</td>
             <td class="i">35</td>
             <td rowspan="2" class="id yellow">{!! complink('2017-03-02', '3月2日') !!}<br>桐崎千棘</td>
-            <td rowspan="2" class="ni yellow">134</td>
+            <td rowspan="2" class="ni yellow">141</td>
         </tr>
         <tr>
             <td class="gum yellow">B-4</td>
