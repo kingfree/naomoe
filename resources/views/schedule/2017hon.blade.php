@@ -50,6 +50,38 @@
             background-color: #9fd5dd;
         }
 
+        table.hon tr.pink.light th, table.hon td.pink.light {
+            background-color: #fcdef1;
+        }
+
+        table.hon tr.blue.light th, table.hon td.blue.light {
+            background-color: #d5e9f8;
+        }
+
+        table.hon tr.green.light th, table.hon td.green.light {
+            background-color: #e9f8d5;
+        }
+
+        table.hon tr.orange.light th, table.hon td.orange.light {
+            background-color: #ffeed1;
+        }
+
+        table.hon tr.purple.light th, table.hon td.purple.light {
+            background-color: #f5e3ff;
+        }
+
+        table.hon tr.yellow.light th, table.hon td.yellow.light {
+            background-color: #fff8d3;
+        }
+
+        table.hon tr.red.light th, table.hon td.red.light {
+            background-color: #ffd8d8;
+        }
+
+        table.hon tr.cyan.light th, table.hon td.cyan.light {
+            background-color: #e2f2f4;
+        }
+
         table.hon td {
             border: #fecfa7 1px solid;
             border-radius: 6px;
@@ -103,18 +135,18 @@
     </style>
 
     <table class="hon">
-        <tr class="red">
+        <tr class="pink">
             <th colspan="2" class="gumi">A 组</th>
             <th colspan="2" class="ikai">一回战</th>
             <th colspan="2" class="nikai">二回战</th>
         </tr>
         <tr>
-            <td class="gum red">A-1</td>
-            <td class="chara red">中川花音@只有神知道的世界</td>
-            <td class="i red">151</td>
-            <td rowspan="2" class="id red">{!! complink('2017-02-28', '2月28日') !!}<br>中川花音</td>
-            <td rowspan="2" class="ni red">155</td>
-            <td rowspan="5" class="nid red">{!! complink('2017-03-04', '3月4日') !!}<br>中川花音</td>
+            <td class="gum pink">A-1</td>
+            <td class="chara pink">中川花音@只有神知道的世界</td>
+            <td class="i pink">151</td>
+            <td rowspan="2" class="id pink">{!! complink('2017-02-28', '2月28日') !!}<br>中川花音</td>
+            <td rowspan="2" class="ni pink">155</td>
+            <td rowspan="5" class="nid pink">{!! complink('2017-03-04', '3月4日') !!}<br>中川花音</td>
         </tr>
         <tr>
             <td class="gum">A-2</td>
@@ -125,13 +157,13 @@
             <td class="gum">A-3</td>
             <td class="chara">蕾莱·拉·列娜@GATE 奇幻自卫队</td>
             <td class="i">54</td>
-            <td rowspan="3" class="id orange">{!! complink('2017-03-02', '3月2日') !!}<br>绫波</td>
-            <td rowspan="3" class="ni orange">70</td>
+            <td rowspan="3" class="id pink light">{!! complink('2017-03-02', '3月2日') !!}<br>绫波</td>
+            <td rowspan="3" class="ni pink light">70</td>
         </tr>
         <tr>
-            <td class="gum orange">A-4</td>
-            <td class="chara orange">绫波@舰队Collection</td>
-            <td class="i orange">57</td>
+            <td class="gum pink light">A-4</td>
+            <td class="chara pink light">绫波@舰队Collection</td>
+            <td class="i pink light">57</td>
         </tr>
         <tr>
             <td class="gum">A-5</td>
@@ -139,7 +171,7 @@
             <td class="i">18</td>
         </tr>
 
-        <tr class="orange">
+        <tr class="yellow">
             <th colspan="2" class="gumi">B 组</th>
             <th colspan="2" class="ikai">一回战</th>
             <th colspan="2" class="nikai">二回战</th>
@@ -148,14 +180,14 @@
             <td class="gum">B-1</td>
             <td class="chara">高坂雪穗@LoveLive!</td>
             <td class="i">94</td>
-            <td rowspan="2" class="id orange">{!! complink('2017-02-28', '2月28日') !!}<br>雾岛</td>
-            <td rowspan="2" class="ni orange">141</td>
+            <td rowspan="2" class="id yellow light">{!! complink('2017-02-28', '2月28日') !!}<br>雾岛</td>
+            <td rowspan="2" class="ni yellow light">141</td>
             <td rowspan="4" class="nid yellow">{!! complink('2017-03-04', '3月4日') !!}<br>桐崎千棘</td>
         </tr>
         <tr>
-            <td class="gum orange">B-2</td>
-            <td class="chara orange">雾岛@舰队Collection</td>
-            <td class="i orange">109</td>
+            <td class="gum yellow light">B-2</td>
+            <td class="chara yellow light">雾岛@舰队Collection</td>
+            <td class="i yellow light">109</td>
         </tr>
         <tr>
             <td class="gum">B-3</td>
@@ -170,18 +202,18 @@
             <td class="i yellow">108</td>
         </tr>
 
-        <tr class="yellow">
+        <tr class="orange">
             <th colspan="2" class="gumi">C 组</th>
             <th colspan="2" class="ikai">一回战</th>
             <th colspan="2" class="nikai">二回战</th>
         </tr>
         <tr>
-            <td class="gum yellow">C-1</td>
-            <td class="chara yellow">由比滨结衣@我的青春恋爱物语果然有问题。</td>
-            <td class="i yellow">171</td>
-            <td rowspan="2" class="id yellow">{!! complink('2017-02-28', '2月28日') !!}<br>由比滨结衣</td>
-            <td rowspan="2" class="ni yellow">204</td>
-            <td rowspan="4" class="nid yellow">{!! complink('2017-03-04', '3月4日') !!}<br>由比滨结衣</td>
+            <td class="gum orange">C-1</td>
+            <td class="chara orange">由比滨结衣@我的青春恋爱物语果然有问题。</td>
+            <td class="i orange">171</td>
+            <td rowspan="2" class="id orange">{!! complink('2017-02-28', '2月28日') !!}<br>由比滨结衣</td>
+            <td rowspan="2" class="ni orange">204</td>
+            <td rowspan="4" class="nid orange">{!! complink('2017-03-04', '3月4日') !!}<br>由比滨结衣</td>
         </tr>
         <tr>
             <td class="gum">C-2</td>
@@ -192,13 +224,13 @@
             <td class="gum">C-3</td>
             <td class="chara">萝特@终末的伊泽塔</td>
             <td class="i">52</td>
-            <td rowspan="2" class="id green">{!! complink('2017-03-02', '3月2日') !!}<br>白雪</td>
-            <td rowspan="2" class="ni green">35</td>
+            <td rowspan="2" class="id orange light">{!! complink('2017-03-02', '3月2日') !!}<br>白雪</td>
+            <td rowspan="2" class="ni orange light">35</td>
         </tr>
         <tr>
-            <td class="gum green">C-4</td>
-            <td class="chara green">白雪@魔法少女育成计划</td>
-            <td class="i green">64</td>
+            <td class="gum orange light">C-4</td>
+            <td class="chara orange light">白雪@魔法少女育成计划</td>
+            <td class="i orange light">64</td>
         </tr>
 
         <tr class="green">
@@ -220,11 +252,11 @@
             <td class="i green">139</td>
         </tr>
         <tr>
-            <td class="gum cyan">D-3</td>
-            <td class="chara cyan">高雄@舰队Collection</td>
-            <td class="i cyan">70</td>
-            <td rowspan="2" class="id cyan">{!! complink('2017-03-02', '3月2日') !!}<br>高雄</td>
-            <td rowspan="2" class="ni cyan">61 </td>
+            <td class="gum green light">D-3</td>
+            <td class="chara green light">高雄@舰队Collection</td>
+            <td class="i green light">70</td>
+            <td rowspan="2" class="id green light">{!! complink('2017-03-02', '3月2日') !!}<br>高雄</td>
+            <td rowspan="2" class="ni green light">61 </td>
         </tr>
         <tr>
             <td class="gum">D-4</td>
@@ -232,18 +264,18 @@
             <td class="i">50</td>
         </tr>
 
-        <tr class="cyan">
+        <tr class="purple">
             <th colspan="2" class="gumi">E 组</th>
             <th colspan="2" class="ikai">一回战</th>
             <th colspan="2" class="nikai">二回战</th>
         </tr>
         <tr>
-            <td class="gum cyan">E-1</td>
-            <td class="chara cyan">新子憧@天才麻将少女阿知贺篇</td>
-            <td class="i cyan">114</td>
-            <td rowspan="2" class="id cyan">{!! complink('2017-03-01', '3月1日') !!}<br>新子憧</td>
-            <td rowspan="2" class="ni"></td>
-            <td rowspan="4" class="nid">{!! complink('2017-03-05', '3月5日') !!}</td>
+            <td class="gum purple">E-1</td>
+            <td class="chara purple">新子憧@天才麻将少女阿知贺篇</td>
+            <td class="i purple">114</td>
+            <td rowspan="2" class="id purple">{!! complink('2017-03-01', '3月1日') !!}<br>新子憧</td>
+            <td rowspan="2" class="ni purple">113</td>
+            <td rowspan="4" class="nid purple">{!! complink('2017-03-05', '3月5日') !!}<br>新子憧</td>
         </tr>
         <tr>
             <td class="gum">E-2</td>
@@ -251,18 +283,18 @@
             <td class="i">38</td>
         </tr>
         <tr>
-            <td class="gum blue">E-3</td>
-            <td class="chara blue">比叡@舰队Collection</td>
-            <td class="i blue">62</td>
-            <td class="id blue">{!! complink('2017-03-03', '3月3日') !!}<br>比叡</td>
-            <td class="ni"></td>
+            <td class="gum purple light">E-3</td>
+            <td class="chara purple light">比叡@舰队Collection</td>
+            <td class="i purple light">62</td>
+            <td class="id purple light">{!! complink('2017-03-03', '3月3日') !!}<br>比叡</td>
+            <td class="ni purple light">73</td>
         </tr>
         <tr>
-            <td class="gum blue">E-4</td>
-            <td class="chara blue">汤音@异国迷宫的十字路口</td>
-            <td class="i blue">62</td>
-            <td class="id blue">{!! complink('2017-03-03', '3月3日') !!}<br>汤音</td>
-            <td class="ni"></td>
+            <td class="gum purple light">E-4</td>
+            <td class="chara purple light">汤音@异国迷宫的十字路口</td>
+            <td class="i purple light">62</td>
+            <td class="id purple light">{!! complink('2017-03-03', '3月3日') !!}<br>汤音</td>
+            <td class="ni purple light">41</td>
         </tr>
 
         <tr class="blue">
@@ -275,8 +307,8 @@
             <td class="chara blue">九条可怜@黄金拼图</td>
             <td class="i blue">108</td>
             <td rowspan="2" class="id blue">{!! complink('2017-03-01', '3月1日') !!}<br>九条可怜</td>
-            <td rowspan="2" class="ni"></td>
-            <td rowspan="4" class="nid">{!! complink('2017-03-05', '3月5日') !!}</td>
+            <td rowspan="2" class="ni blue">130</td>
+            <td rowspan="4" class="nid blue">{!! complink('2017-03-05', '3月5日') !!}<br>九条可怜</td>
         </tr>
         <tr>
             <td class="gum">F-2</td>
@@ -287,27 +319,27 @@
             <td class="gum">F-3</td>
             <td class="chara">茨木童子@Fate/Grand Order</td>
             <td class="i">26</td>
-            <td rowspan="2" class="id purple">{!! complink('2017-03-03', '3月3日') !!}<br>爱宕</td>
-            <td rowspan="2" class="ni"></td>
+            <td rowspan="2" class="id blue light">{!! complink('2017-03-03', '3月3日') !!}<br>爱宕</td>
+            <td rowspan="2" class="ni blue light">95</td>
         </tr>
         <tr>
-            <td class="gum purple">F-4</td>
-            <td class="chara purple">爱宕@舰队Collection</td>
-            <td class="i purple">89</td>
+            <td class="gum blue light">F-4</td>
+            <td class="chara blue light">爱宕@舰队Collection</td>
+            <td class="i blue light">89</td>
         </tr>
 
-        <tr class="purple">
+        <tr class="cyan">
             <th colspan="2" class="gumi">G 组</th>
             <th colspan="2" class="ikai">一回战</th>
             <th colspan="2" class="nikai">二回战</th>
         </tr>
         <tr>
-            <td class="gum purple">G-1</td>
-            <td class="chara purple">敷波@舰队Collection</td>
-            <td class="i purple">83</td>
-            <td rowspan="2" class="id purple">{!! complink('2017-03-01', '3月1日') !!}<br>敷波</td>
-            <td rowspan="2" class="ni"></td>
-            <td rowspan="4" class="nid">{!! complink('2017-03-05', '3月5日') !!}</td>
+            <td class="gum cyan light">G-1</td>
+            <td class="chara cyan light">敷波@舰队Collection</td>
+            <td class="i cyan light">83</td>
+            <td rowspan="2" class="id cyan light">{!! complink('2017-03-01', '3月1日') !!}<br>敷波</td>
+            <td rowspan="2" class="ni cyan light">34</td>
+            <td rowspan="4" class="nid cyan">{!! complink('2017-03-05', '3月5日') !!}<br>榛名</td>
         </tr>
         <tr>
             <td class="gum">G-2</td>
@@ -318,16 +350,16 @@
             <td class="gum">G-3</td>
             <td class="chara">莉瑟罗特·沙尔洛克@TRINITY SEVEN 七人魔法使</td>
             <td class="i">34</td>
-            <td rowspan="2" class="id pink">{!! complink('2017-03-03', '3月3日') !!}<br>榛名</td>
-            <td rowspan="2" class="ni"></td>
+            <td rowspan="2" class="id cyan">{!! complink('2017-03-03', '3月3日') !!}<br>榛名</td>
+            <td rowspan="2" class="ni cyan">157</td>
         </tr>
         <tr>
-            <td class="gum pink">G-4</td>
-            <td class="chara pink">榛名@舰队Collection</td>
-            <td class="i pink">84</td>
+            <td class="gum cyan">G-4</td>
+            <td class="chara cyan">榛名@舰队Collection</td>
+            <td class="i cyan">84</td>
         </tr>
 
-        <tr class="pink">
+        <tr class="red">
             <th colspan="2" class="gumi">H 组</th>
             <th colspan="2" class="ikai">一回战</th>
             <th colspan="2" class="nikai">二回战</th>
@@ -336,26 +368,26 @@
             <td class="gum">H-1</td>
             <td class="chara">露莉亚@碧蓝幻想</td>
             <td class="i">52</td>
-            <td rowspan="2" class="id pink">{!! complink('2017-03-01', '3月1日') !!}<br>铃乃木凛</td>
-            <td rowspan="2" class="ni"></td>
-            <td rowspan="4" class="nid">{!! complink('2017-03-05', '3月5日') !!}</td>
+            <td rowspan="2" class="id red">{!! complink('2017-03-01', '3月1日') !!}<br>铃乃木凛</td>
+            <td rowspan="2" class="ni red">84</td>
+            <td rowspan="4" class="nid red">{!! complink('2017-03-05', '3月5日') !!}<br>铃乃木凛</td>
         </tr>
         <tr>
-            <td class="gum pink">H-2</td>
-            <td class="chara pink">铃乃木凛@爆音少女！！</td>
-            <td class="i pink">74</td>
+            <td class="gum red">H-2</td>
+            <td class="chara red">铃乃木凛@爆音少女！！</td>
+            <td class="i red">74</td>
         </tr>
         <tr>
             <td class="gum">H-3</td>
             <td class="chara">克劳蒂雅·恩菲尔德@学战都市Asterisk</td>
             <td class="i">48</td>
-            <td rowspan="2" class="id red">{!! complink('2017-03-03', '3月3日') !!}<br>室见立华</td>
-            <td rowspan="2" class="ni"></td>
+            <td rowspan="2" class="id red light">{!! complink('2017-03-03', '3月3日') !!}<br>室见立华</td>
+            <td rowspan="2" class="ni light">77</td>
         </tr>
         <tr>
-            <td class="gum red">H-4</td>
-            <td class="chara red">室见立华@奋斗吧！系统工程师</td>
-            <td class="i red">53</td>
+            <td class="gum red light">H-4</td>
+            <td class="chara red light">室见立华@奋斗吧！系统工程师</td>
+            <td class="i red light">53</td>
         </tr>
     </table>
 @endsection
