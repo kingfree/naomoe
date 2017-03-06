@@ -133,6 +133,219 @@
             width: 8em;
         }
     </style>
+    <style>
+        table.finale th {
+            border: #fecfa7 2px solid;
+            border-radius: 6px;
+            background-color: #ffffff;
+            color: #e974b6;
+            padding: 4px;
+            text-align: center;
+        }
+
+        table.finale tr.pink th, table.finale td.pink {
+            border-radius: 0;
+            background-color: #f892d2;
+        }
+
+        table.finale tr.blue th, table.finale td.blue {
+            border-radius: 0;
+            background-color: #74b6e9;
+        }
+
+        table.finale tr.green th, table.finale td.green {
+            border-radius: 0;
+            background-color: #b6e974;
+        }
+
+        table.finale tr.orange th, table.finale td.orange {
+            border-radius: 0;
+            background-color: #ffc966;
+        }
+
+        table.finale tr.purple th, table.finale td.purple {
+            border-radius: 0;
+            background-color: #dea3ff;
+        }
+
+        table.finale tr.yellow th, table.finale td.yellow {
+            border-radius: 0;
+            background-color: #ffea6e;
+        }
+
+        table.finale tr.red th, table.finale td.red {
+            border-radius: 0;
+            background-color: #ff7f7f;
+        }
+
+        table.finale tr.cyan th, table.finale td.cyan {
+            border-radius: 0;
+            background-color: #9fd5dd;
+        }
+
+        table.finale tr.pink.light th, table.finale td.pink.light {
+            background-color: #fcdef1;
+        }
+
+        table.finale tr.blue.light th, table.finale td.blue.light {
+            background-color: #d5e9f8;
+        }
+
+        table.finale tr.green.light th, table.finale td.green.light {
+            background-color: #e9f8d5;
+        }
+
+        table.finale tr.orange.light th, table.finale td.orange.light {
+            background-color: #ffeed1;
+        }
+
+        table.finale tr.purple.light th, table.finale td.purple.light {
+            background-color: #f5e3ff;
+        }
+
+        table.finale tr.yellow.light th, table.finale td.yellow.light {
+            background-color: #fff8d3;
+        }
+
+        table.finale tr.red.light th, table.finale td.red.light {
+            background-color: #ffd8d8;
+        }
+
+        table.finale tr.cyan.light th, table.finale td.cyan.light {
+            background-color: #e2f2f4;
+        }
+
+        table.finale td {
+            border: #fecfa7 1px solid;
+            border-radius: 6px;
+            padding: 3px;
+        }
+
+        table.finale .eight {
+            text-align: center;
+        }
+
+        table.finale .four {
+            text-align: center;
+        }
+
+        table.finale .two {
+            text-align: center;
+        }
+
+        table.finale .one {
+            text-align: center;
+        }
+
+        table.finale .gum {
+            text-align: center;
+            width: 2em;
+            text-shadow: 0px 1px 3px pink;
+        }
+
+        table.finale .chara {
+            text-align: left;
+            width: 20em;
+        }
+
+        table.finale .i {
+            text-align: right;
+            width: 5em;
+        }
+
+        table.finale .id {
+            text-align: center;
+            vertical-align: middle;
+            width: 8em;
+        }
+
+        table.finale span.work {
+            display: block;
+            color: white;
+            font-size: 12px;
+        }
+
+    </style>
+
+    <table class="finale">
+        <tr>
+            <th colspan="3" class="eight">八强</th>
+            <th colspan="3" class="four">四强</th>
+        </tr>
+        <tr>
+            <td rowspan="2" class="gum">東</td>
+            <td class="chara purple">新子憧<span class="work">@天才麻将少女阿知贺篇</span></td>
+            <td class="i"></td>
+            <td rowspan="2" class="id">{!! complink('2017-03-07', '3月7日') !!}</td>
+            <td rowspan="2" class="i"></td>
+            <td rowspan="4" class="id">{!! complink('2017-03-09', '3月9日') !!}</td>
+        </tr>
+        <tr>
+            <td class="chara green">金刚<span class="work">@舰队Collection</span></td>
+            <td class="i"></td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="gum">西</td>
+            <td class="chara cyan">榛名<span class="work">@舰队Collection</span></td>
+            <td class="i"></td>
+            <td rowspan="2" class="id">{!! complink('2017-03-08', '3月8日') !!}</td>
+            <td rowspan="2" class="i"></td>
+        </tr>
+        <tr>
+            <td class="chara orange">由比滨结衣<span class="work">@我的青春恋爱物语果然有问题。</span></td>
+            <td class="i"></td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="gum">南</td>
+            <td class="chara red">铃乃木凛<span class="work">@爆音少女！！</span></td>
+            <td class="i"></td>
+            <td rowspan="2" class="id">{!! complink('2017-03-07', '3月7日') !!}</td>
+            <td rowspan="2" class="i"></td>
+            <td rowspan="4" class="id">{!! complink('2017-03-09', '3月9日') !!}</td>
+        </tr>
+        <tr>
+            <td class="chara pink">中川花音<span class="work">@只有神知道的世界</span></td>
+            <td class="i"></td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="gum">北</td>
+            <td class="chara yellow">桐崎千棘<span class="work">@伪恋</span></td>
+            <td class="i"></td>
+            <td rowspan="2" class="id">{!! complink('2017-03-08', '3月8日') !!}</td>
+            <td rowspan="2" class="i"></td>
+        </tr>
+        <tr>
+            <td class="chara blue">九条可怜<span class="work">@黄金拼图</span></td>
+            <td class="i"></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table class="finale" style="display: none;">
+        <tr>
+            <th rowspan="2">萌王战</th>
+            <td class="chara"></td>
+            <td class="i"></td>
+            <td rowspan="2" class="id">{!! complink('2017-03-11', '3月11日') !!}</td>
+        </tr>
+        <tr>
+            <td class="chara"></td>
+            <td class="i"></td>
+        </tr>
+        <tr>
+            <th rowspan="2">三位战</th>
+            <td class="chara"></td>
+            <td class="i"></td>
+            <td rowspan="2" class="id">{!! complink('2017-03-10', '3月10日') !!}</td>
+        </tr>
+        <tr>
+            <td class="chara"></td>
+            <td class="i"></td>
+        </tr>
+    </table>
+
+    <hr>
 
     <table class="hon">
         <tr class="pink">
