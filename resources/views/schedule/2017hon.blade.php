@@ -275,14 +275,14 @@
         <tr>
             <td rowspan="2" class="gum">東</td>
             <td class="chara purple">新子憧<span class="work">@天才麻将少女阿知贺篇</span></td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-07', '3月7日') !!}</td>
+            <td class="i purple">93</td>
+            <td rowspan="2" class="id purple">{!! complink('2017-03-07', '3月7日') !!}<br>新子憧</td>
             <td rowspan="2" class="i"></td>
             <td rowspan="4" class="id">{!! complink('2017-03-09', '3月9日') !!}</td>
         </tr>
         <tr>
             <td class="chara green">金刚<span class="work">@舰队Collection</span></td>
-            <td class="i"></td>
+            <td class="i green">80</td>
         </tr>
         <tr>
             <td rowspan="2" class="gum">西</td>
@@ -298,14 +298,14 @@
         <tr>
             <td rowspan="2" class="gum">南</td>
             <td class="chara red">铃乃木凛<span class="work">@爆音少女！！</span></td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-07', '3月7日') !!}</td>
+            <td class="i red">45</td>
+            <td rowspan="2" class="id pink">{!! complink('2017-03-07', '3月7日') !!}<br>中川花音</td>
             <td rowspan="2" class="i"></td>
             <td rowspan="4" class="id">{!! complink('2017-03-09', '3月9日') !!}</td>
         </tr>
         <tr>
             <td class="chara pink">中川花音<span class="work">@只有神知道的世界</span></td>
-            <td class="i"></td>
+            <td class="i pink">114</td>
         </tr>
         <tr>
             <td rowspan="2" class="gum">北</td>
