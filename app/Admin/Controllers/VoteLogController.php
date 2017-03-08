@@ -13,6 +13,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use BrowserDetect;
 
 class VoteLogController extends Controller
 {
@@ -94,10 +95,11 @@ class VoteLogController extends Controller
                 return $str;
             })->sortable();
             $grid->column('ip', '用户')->display(function ($ip) {
-                return '<strong>' . User::find($this->user_id)->name . '</strong>'
+                $str = '<strong>' . User::find($this->user_id)->name . '</strong>'
                     . '<br>' . $ip
                     . '<br>' . $this->country . $this->province . $this->city
                     . '<hr>' . $this->comment;
+                return $str;
             })->sortable();
 //            $grid->column('header', 'User-Agent')->display(function ($str) {
 //                $header = json_decode($str, true);
@@ -107,6 +109,7 @@ class VoteLogController extends Controller
                 $header = json_decode($value);
                 $str = '<dl class="dl-horizontal">';
                 foreach ($header as $k => $v) {
+                    if (in_array($k, ['user-agent', 'accept-language', 'cf-ray', 'cf-ipcountry']))
                     $str .= '<dt>' . $k . '</dt><dd>' . (is_array($v) ? join(' ', $v) : $v) . '</dd>';
                 }
                 return $str . '</dl>';
