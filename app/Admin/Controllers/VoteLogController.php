@@ -111,7 +111,7 @@ class VoteLogController extends Controller
                 $str = '<dl class="dl-horizontal">';
                 foreach ($header as $k => $v) {
                     if (in_array($k, ['user-agent', 'accept-language', 'cf-ray', 'cf-ipcountry']))
-                    $str .= '<dt>' . $k . '</dt><dd>' . (is_array($v) ? join(' ', $v) : $v) . '</dd>';
+                        $str .= '<dt>' . $k . '</dt><dd>' . (is_array($v) ? join(' ', $v) : $v) . '</dd>';
                 }
                 return $str . '</dl>';
             });
@@ -137,6 +137,7 @@ class VoteLogController extends Controller
                     $query->where('header', 'like', "%{$this->input}%");
                 }, '请求');
                 $filter->is('competition_id', '比赛')->select(Competition::all()->pluck('title', 'id'));
+                $filter->is('valid', '有效')->select(['0' => '无效', '1' => '有效']);
             });
         });
     }
