@@ -49,7 +49,7 @@ function cal($year, $month, $day, $compId = 0)
     }
 }
 
-function calculate($id)
+function calculate($id, $valid = 1)
 {
     $competition = Competition::find($id);
     $votelogs = VoteLog::where('competition_id', $id)->get();
@@ -113,8 +113,8 @@ function calculate($id)
                 continue;
             }
             $option->voted++;
-            $option->valid += $votelog->valid ? 1 : 0;
-            $count += $votelog->valid ? 1 : 0;
+            $option->valid += $votelog->valid ? 1 : $valid;
+            $count += $votelog->valid ? 1 : $valid;
         }
         $location = Ip::find($votelog->ip);
         $votelog->country = $location[0];

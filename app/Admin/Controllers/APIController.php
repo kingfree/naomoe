@@ -55,7 +55,7 @@ class APIController extends Controller
 
     public function calculate($id)
     {
-        calculate($id);
+        calculate($id, 0);
         return redirect()->back();
     }
 

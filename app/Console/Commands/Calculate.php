@@ -40,6 +40,6 @@ class Calculate extends Command
     {
         $comp = Competition::getNewestDoing();
         if (!$comp) Competition::getNewestDid();
-        if ($comp) calculate($comp->id);
+        if ($comp) calculate($comp->id, 1);
     }
 }
