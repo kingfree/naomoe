@@ -124,6 +124,9 @@ class VoteLogController extends Controller
             $grid->filter(function ($filter) {
                 $filter->disableIdFilter();
 
+                $filter->where(function ($query) {
+                    $query->where('header', 'like', "%{$this->input}%");
+                }, '请求');
                 $filter->is('competition_id', '比赛')->select(Competition::all()->pluck('title', 'id'));
             });
         });
