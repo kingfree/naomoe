@@ -287,13 +287,13 @@
         <tr>
             <td rowspan="2" class="gum">🀂</td>
             <td class="chara cyan">榛名<span class="work">@舰队Collection</span></td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-08', '3月8日') !!}</td>
+            <td class="i cyan">157</td>
+            <td rowspan="2" class="id orange">{!! complink('2017-03-08', '3月8日') !!}<br>由比滨结衣</td>
             <td rowspan="2" class="i"></td>
         </tr>
         <tr>
             <td class="chara orange">由比滨结衣<span class="work">@我的青春恋爱物语果然有问题。</span></td>
-            <td class="i"></td>
+            <td class="i orange">390</td>
         </tr>
         <tr>
             <td rowspan="2" class="gum">🀁</td>
@@ -310,13 +310,13 @@
         <tr>
             <td rowspan="2" class="gum">🀃</td>
             <td class="chara yellow">桐崎千棘<span class="work">@伪恋</span></td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-08', '3月8日') !!}</td>
+            <td class="i yellow">296</td>
+            <td rowspan="2" class="id yellow">{!! complink('2017-03-08', '3月8日') !!}<br>桐崎千棘</td>
             <td rowspan="2" class="i"></td>
         </tr>
         <tr>
             <td class="chara blue">九条可怜<span class="work">@黄金拼图</span></td>
-            <td class="i"></td>
+            <td class="i blue">274</td>
         </tr>
     </table>
 
