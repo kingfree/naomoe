@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\Tools\KanPiao;
 use App\Competition;
 use App\Option;
 use App\User;
@@ -13,7 +14,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use BrowserDetect;
+use Illuminate\Support\Facades\Input;
 
 class VoteLogController extends Controller
 {
@@ -121,6 +122,14 @@ class VoteLogController extends Controller
             ];
             $grid->valid('有效票')->switch($states)->sortable();
             $grid->created_at('投票时间')->sortable();
+
+            $grid->tools(function ($tools) {
+                $tools->batch(function ($batch) {
+                    $batch->add('标记为有效票', new KanPiao(1));
+                    $batch->add('标记为无效票', new KanPiao(0));
+                });
+            });
+
             $grid->filter(function ($filter) {
                 $filter->disableIdFilter();
 
@@ -160,5 +169,12 @@ class VoteLogController extends Controller
         });
     }
 
+    public function kanpiao()
+    {
+        foreach (VoteLog::find(Input::get('ids')) as $post) {
+            $post->valid = !!Input::get('action');
+            $post->save();
+        }
+    }
 
 }

@@ -14,6 +14,7 @@ Route::group([
     $router->get('/api/groups', 'APIController@groups');
     $router->get('/api/competitions', 'APIController@competitions');
     $router->get('/api/options', 'APIController@options');
+    $router->post('/api/kanpiao', 'VoteLogController@kanpiao');
 
     $router->get('/import-export', 'APIController@importExport')->name('import-export');
     $router->get('/export/{type}', 'APIController@downloadExcel')->name('export');
