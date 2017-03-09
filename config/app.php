@@ -180,8 +180,10 @@ return [
         Encore\Admin\Providers\AdminServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+//        hisorange\BrowserDetect\Provider\BrowserDetectService::class,
 
-        App\Providers\DuoshuoServiceProvider::class,
+        App\Providers\DuoshuoServiceProvider::class
+
     ],
 
     /*
@@ -234,6 +236,7 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         'Ip'  => Zhuzhichao\IpLocationZh\Ip::class,
+//        'BrowserDetect' => hisorange\BrowserDetect\Facade\Parser::class
 
     ],
 
