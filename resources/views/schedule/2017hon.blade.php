@@ -269,6 +269,31 @@
 
     <table class="finale">
         <tr>
+            <th rowspan="2">萌王战🀙</th>
+            <td class="chara orange">由比滨结衣<span class="work">@我的青春恋爱物语果然有问题。</span></td>
+            <td class="i"></td>
+            <td rowspan="2" class="id">{!! complink('2017-03-11', '3月11日') !!}</td>
+        </tr>
+        <tr>
+            <td class="chara yellow">桐崎千棘<span class="work">@伪恋</span></td>
+            <td class="i"></td>
+        </tr>
+        <tr>
+            <th rowspan="2">三位战🀑</th>
+            <td class="chara purple">新子憧<span class="work">@天才麻将少女阿知贺篇</span></td>
+            <td class="i"></td>
+            <td rowspan="2" class="id">{!! complink('2017-03-10', '3月10日') !!}</td>
+        </tr>
+        <tr>
+            <td class="chara pink">中川花音<span class="work">@只有神知道的世界</span></td>
+            <td class="i"></td>
+        </tr>
+    </table>
+
+    <hr>
+
+    <table class="finale">
+        <tr>
             <th colspan="3" class="eight">八强🀎</th>
             <th colspan="3" class="four">四强🀊</th>
         </tr>
@@ -277,8 +302,8 @@
             <td class="chara purple">新子憧<span class="work">@天才麻将少女阿知贺篇</span></td>
             <td class="i purple">93</td>
             <td rowspan="2" class="id purple">{!! complink('2017-03-07', '3月7日') !!}<br>新子憧</td>
-            <td rowspan="2" class="i"></td>
-            <td rowspan="4" class="id">{!! complink('2017-03-09', '3月9日') !!}</td>
+            <td rowspan="2" class="i purple">175</td>
+            <td rowspan="4" class="id orange">{!! complink('2017-03-09', '3月9日') !!}<br><br>由比滨结衣</td>
         </tr>
         <tr>
             <td class="chara green">金刚<span class="work">@舰队Collection</span></td>
@@ -289,7 +314,7 @@
             <td class="chara cyan">榛名<span class="work">@舰队Collection</span></td>
             <td class="i cyan">157</td>
             <td rowspan="2" class="id orange">{!! complink('2017-03-08', '3月8日') !!}<br>由比滨结衣</td>
-            <td rowspan="2" class="i"></td>
+            <td rowspan="2" class="i orange">261</td>
         </tr>
         <tr>
             <td class="chara orange">由比滨结衣<span class="work">@我的青春恋爱物语果然有问题。</span></td>
@@ -300,8 +325,8 @@
             <td class="chara red">铃乃木凛<span class="work">@爆音少女！！</span></td>
             <td class="i red">45</td>
             <td rowspan="2" class="id pink">{!! complink('2017-03-07', '3月7日') !!}<br>中川花音</td>
-            <td rowspan="2" class="i"></td>
-            <td rowspan="4" class="id">{!! complink('2017-03-09', '3月9日') !!}</td>
+            <td rowspan="2" class="i pink">200</td>
+            <td rowspan="4" class="id yellow">{!! complink('2017-03-09', '3月9日') !!}<br><br>桐崎千棘</td>
         </tr>
         <tr>
             <td class="chara pink">中川花音<span class="work">@只有神知道的世界</span></td>
@@ -312,36 +337,11 @@
             <td class="chara yellow">桐崎千棘<span class="work">@伪恋</span></td>
             <td class="i yellow">296</td>
             <td rowspan="2" class="id yellow">{!! complink('2017-03-08', '3月8日') !!}<br>桐崎千棘</td>
-            <td rowspan="2" class="i"></td>
+            <td rowspan="2" class="i yellow">239</td>
         </tr>
         <tr>
             <td class="chara blue">九条可怜<span class="work">@黄金拼图</span></td>
             <td class="i blue">274</td>
-        </tr>
-    </table>
-
-    <hr>
-
-    <table class="finale" style="display: none;">
-        <tr>
-            <th rowspan="2">萌王战🀙</th>
-            <td class="chara"></td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-11', '3月11日') !!}</td>
-        </tr>
-        <tr>
-            <td class="chara"></td>
-            <td class="i"></td>
-        </tr>
-        <tr>
-            <th rowspan="2">三位战🀑</th>
-            <td class="chara"></td>
-            <td class="i"></td>
-            <td rowspan="2" class="id">{!! complink('2017-03-10', '3月10日') !!}</td>
-        </tr>
-        <tr>
-            <td class="chara"></td>
-            <td class="i"></td>
         </tr>
     </table>
 
