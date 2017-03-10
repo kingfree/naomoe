@@ -59,6 +59,11 @@ class Competition extends Model
         return $this->infos()['icon'] ?? 'upload';
     }
 
+    public function color()
+    {
+        return $this->infos()['color'] ?? 'black';
+    }
+
     public function inTime()
     {
         $now = Carbon::now();

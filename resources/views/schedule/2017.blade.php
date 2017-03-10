@@ -70,7 +70,7 @@
             </div>
             @if ($id and $competition)
                 <div class="ui attached {{$competition->style()}} segment">
-                    <h2 class="ui header competition" data-id="{{ $competition->id }}">
+                    <h2 class="ui header {{$competition->color()}} competition" data-id="{{ $competition->id }}">
                         <i class="{{ $competition->icon() }} icon"></i>
                         <div class="content">
                             {{ $competition->title }}
