@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Competition;
 use App\VoteLog;
 use HttpException;
-use HttpRequest;
 use Illuminate\Console\Command;
 
 class Weibo extends Command
@@ -43,25 +42,33 @@ class Weibo extends Command
     {
         $users = [];
 
-        $request = new HttpRequest();
-        $request->setUrl('http://api.duoshuo.com/users/profile.json');
-        $request->setMethod(HTTP_METH_GET);
-
         VoteLog::whereDate('created_at', '>=', '2017-03-07')->chunk(function ($votes) use ($request, &$users) {
             foreach ($votes as $vote) {
                 $user = $vote->user;
                 if ($user->user_id) {
                     if (!array_key_exists($user->user_id, $users)) {
-                        try {
-                            $request->setQueryData(array(
-                                'user_id' => $user->user_id
-                            ));
-                            $response = $request->send();
+                        $curl = curl_init();
 
-                            $res = json_decode($response->getBody(), true);
+                        curl_setopt_array($curl, array(
+                            CURLOPT_URL => "http://api.duoshuo.com/users/profile.json?user_id=" . $user->user_id,
+                            CURLOPT_RETURNTRANSFER => true,
+                            CURLOPT_ENCODING => "",
+                            CURLOPT_MAXREDIRS => 10,
+                            CURLOPT_TIMEOUT => 30,
+                            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                            CURLOPT_CUSTOMREQUEST => "GET",
+                        ));
+
+                        $response = curl_exec($curl);
+                        $err = curl_error($curl);
+
+                        curl_close($curl);
+
+                        if ($err) {
+                            echo "cURL Error #:" . $err;
+                        } else {
+                            $res = json_decode($response, true);
                             $users[$user->user_id] = $res['response']['connected_services']['weibo'];
-                        } catch (HttpException $ex) {
-                            echo $ex;
                         }
                     }
                 }
