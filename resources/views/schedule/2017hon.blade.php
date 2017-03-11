@@ -287,14 +287,14 @@
     <table class="finale">
         <tr>
             <th rowspan="2">{!! complink('2017-03-11', '3月11日') !!}<br>萌王战</th>
-            <td class="index orange"></td>
+            <td class="index orange">①</td>
             <td class="chara orange">由比滨结衣<span class="work">@我的青春恋爱物语果然有问题。</span></td>
-            <td class="i"></td>
+            <td class="i orange">346</td>
         </tr>
         <tr>
-            <td class="index yellow"></td>
+            <td class="index yellow">②</td>
             <td class="chara yellow">桐崎千棘<span class="work">@伪恋</span></td>
-            <td class="i"></td>
+            <td class="i yellow">274</td>
         </tr>
         <tr>
             <th rowspan="2">{!! complink('2017-03-10', '3月10日') !!}<br>三位战</th>

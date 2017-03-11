@@ -42,7 +42,7 @@ class Weibo extends Command
     {
         $users = [];
 
-        VoteLog::whereDate('created_at', '>=', '2017-03-07')->chunk(function ($votes) use ($request, &$users) {
+        VoteLog::whereDate('created_at', '>=', '2017-03-07')->where('valid', 1)->chunk(function ($votes) use ($request, &$users) {
             foreach ($votes as $vote) {
                 $user = $vote->user;
                 if ($user->user_id) {
