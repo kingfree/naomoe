@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\Calculate;
 use App\Console\Commands\Vote;
+use App\Console\Commands\Weibo;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -16,7 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Calculate::class,
-        Vote::class
+        Vote::class,
+        Weibo::class
     ];
 
     /**
