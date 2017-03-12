@@ -44,9 +44,9 @@ class Weibo extends Command
         $users = [];
 
         VoteLog::whereDate('created_at', '>=', Carbon::createFromFormat('Y-m-d', '2017-03-07'))
-            ->wheroDate('created_at', '<', Carbon::createFromFormat('Y-m-d', '2017-03-12'))
-            ->where('valid', '>', 0)
-            ->chunk(function ($votes) use (&$users) {
+            ->whereDate('created_at', '<', Carbon::createFromFormat('Y-m-d', '2017-03-12'))
+            ->where('valid', '>', 0)->get()
+            ->chunk(100, function ($votes) use (&$users) {
             foreach ($votes as $vote) {
                 $user = $vote->user;
                 if ($user->user_id) {
