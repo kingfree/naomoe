@@ -45,7 +45,7 @@ class Weibo extends Command
 
         VoteLog::whereDate('created_at', '>=', Carbon::createFromFormat('Y-m-d', '2017-03-07'))
             ->whereDate('created_at', '<', Carbon::createFromFormat('Y-m-d', '2017-03-12'))
-            ->where('valid', '>', 0)->get()
+            ->where('valid', '>', 0)
             ->chunk(100, function ($votes) use (&$users) {
             foreach ($votes as $vote) {
                 $user = $vote->user;
@@ -72,7 +72,13 @@ class Weibo extends Command
                             echo "cURL Error #:" . $err;
                         } else {
                             $res = json_decode($response, true);
-                            $users[$user->user_id] = $res['response']['connected_services']['weibo'];
+                            if (array_key_exists('response', $res)) {
+                                if (array_key_exists('connected_services', $res['response'])) {
+                                    if (array_key_exists('weibo', $res['response']['connected_services'])) {
+                                        $users[$user->user_id] = $res['response']['connected_services']['weibo'];
+                                    }
+                                }
+                            }
                         }
                     }
                 }
