@@ -132,13 +132,13 @@
                 </div>
             @else
                 <div class="ui attached segment">
-                    <a href="http://www.pixiv.net/member_illust.php?id=197076" title="ぴょん吉">
-                        <img class="ui fluid image" src="/images/yui.jpg">
-                    </a>
                     <h3 class="ui pink header">
                         2017 @lang('schedule.winner')
                         {{App\Character::find(179)->lname}}
                     </h3>
+                    <a href="http://www.pixiv.net/member_illust.php?id=197076" title="ぴょん吉">
+                        <img class="ui fluid image" src="/images/2017yui.jpg">
+                    </a>
                 </div>
                 <div class="ui attached segment">
                     <a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=61616191" title="深蓝杰克">

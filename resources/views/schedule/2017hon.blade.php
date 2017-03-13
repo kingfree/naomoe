@@ -292,30 +292,30 @@
 
     <table class="finale">
         <tr>
-            <th colspan="3">{!! complink('2017-03-11', '3月11日') !!}<br>萌王战</th>
+            <th colspan="3">{!! complink('2017-03-11', '3月11日') !!}<br>萌王战<br>（決勝）</th>
             <td rowspan="6">
                 <img class="ui fluid image" src="/images/yuis.jpg">
             </td>
         </tr><tr>
         <td class="index orange">①</td>
-            <td class="charas orange">{{App\Character::find(179)->lname}}<span class="work">{{App\Character::find(179)->lwork}}</span></td>
+            <td class="charas orange">{{App\Character::find(179)->lname}}<span class="work">＠{{App\Character::find(179)->lwork}}</span></td>
             <td class="i orange">346</td>
         </tr>
         <tr>
             <td class="index yellow">②</td>
-            <td class="charas yellow">{{App\Character::find(257)->lname}}<span class="work">{{App\Character::find(257)->lwork}}</td>
+            <td class="charas yellow">{{App\Character::find(257)->lname}}<span class="work">＠{{App\Character::find(257)->lwork}}</td>
             <td class="i yellow">274</td>
         </tr>
         <tr>
-            <th colspan="3">{!! complink('2017-03-10', '3月10日') !!}<br>三位战</th>
+            <th colspan="3">{!! complink('2017-03-10', '3月10日') !!}<br>三位战<br>（3位戦）</th>
             </tr><tr>
             <td class="index pink">③</td>
-            <td class="charas pink">{{App\Character::find(254)->lname}}<span class="work">{{App\Character::find(254)->lwork}}</td>
+            <td class="charas pink">{{App\Character::find(254)->lname}}<span class="work">＠{{App\Character::find(254)->lwork}}</td>
             <td class="i pink">83</td>
         </tr>
         <tr>
             <td class="index purple">④</td>
-            <td class="charas purple">{{App\Character::find(255)->lname}}<span class="work">{{App\Character::find(255)->lwork}}</td>
+            <td class="charas purple">{{App\Character::find(255)->lname}}<span class="work">＠{{App\Character::find(255)->lwork}}</td>
             <td class="i purple">63</td>
         </tr>
     </table>
@@ -324,53 +324,53 @@
 
     <table class="finale">
         <tr>
-            <th colspan="3" class="eight">八强</th>
-            <th colspan="3" class="four">四强</th>
+            <th colspan="3" class="eight">八强（ベスト８）</th>
+            <th colspan="3" class="four">四强（ベスト４）</th>
         </tr>
         <tr>
             <td rowspan="2" class="gum">東</td>
-            <td class="chara purple">新子憧<span class="work">@天才麻将少女阿知贺篇</span></td>
+            <td class="chara purple">{{App\Character::find(255)->lname}}<span class="work">＠{{App\Character::find(255)->lwork}}</span></td>
             <td class="i purple">93</td>
-            <td rowspan="2" class="id purple">{!! complink('2017-03-07', '3月7日') !!}<br>新子憧</td>
+            <td rowspan="2" class="id purple">{!! complink('2017-03-07', '3月7日') !!}<br>{{App\Character::find(255)->lname}}</td>
             <td rowspan="2" class="i purple">175</td>
-            <td rowspan="4" class="id orange">{!! complink('2017-03-09', '3月9日') !!}<br><br>由比滨结衣</td>
+            <td rowspan="4" class="id orange">{!! complink('2017-03-09', '3月9日') !!}<br><br>{{App\Character::find(179)->lname}}</td>
         </tr>
         <tr>
-            <td class="chara green">金刚<span class="work">@舰队Collection</span></td>
+            <td class="chara green">{{App\Character::find(280)->lname}}<span class="work">＠{{App\Character::find(280)->lwork}}</span></td>
             <td class="i green">80</td>
         </tr>
         <tr>
             <td rowspan="2" class="gum">西</td>
-            <td class="chara cyan">榛名<span class="work">@舰队Collection</span></td>
+            <td class="chara cyan">{{App\Character::find(221)->lname}}<span class="work">＠{{App\Character::find(280)->lwork}}</span></td>
             <td class="i cyan">157</td>
-            <td rowspan="2" class="id orange">{!! complink('2017-03-08', '3月8日') !!}<br>由比滨结衣</td>
+            <td rowspan="2" class="id orange">{!! complink('2017-03-08', '3月8日') !!}<br>{{App\Character::find(179)->lname}}</td>
             <td rowspan="2" class="i orange">261</td>
         </tr>
         <tr>
-            <td class="chara orange">由比滨结衣<span class="work">@我的青春恋爱物语果然有问题。</span></td>
+            <td class="chara orange">{{App\Character::find(179)->lname}}<span class="work">＠{{App\Character::find(179)->lwork}}</span></td>
             <td class="i orange">390</td>
         </tr>
         <tr>
             <td rowspan="2" class="gum">南</td>
-            <td class="chara red">铃乃木凛<span class="work">@爆音少女！！</span></td>
+            <td class="chara red">{{App\Character::find(314)->lname}}<span class="work">＠{{App\Character::find(314)->lwork}}</span></td>
             <td class="i red">45</td>
-            <td rowspan="2" class="id pink">{!! complink('2017-03-07', '3月7日') !!}<br>中川花音</td>
+            <td rowspan="2" class="id pink">{!! complink('2017-03-07', '3月7日') !!}<br>{{App\Character::find(254)->lname}}</td>
             <td rowspan="2" class="i pink">200</td>
-            <td rowspan="4" class="id yellow">{!! complink('2017-03-09', '3月9日') !!}<br><br>桐崎千棘</td>
+            <td rowspan="4" class="id yellow">{!! complink('2017-03-09', '3月9日') !!}<br><br>{{App\Character::find(257)->lname}}</td>
         </tr>
         <tr>
-            <td class="chara pink">中川花音<span class="work">@只有神知道的世界</span></td>
+            <td class="chara pink">{{App\Character::find(254)->lname}}<span class="work">＠{{App\Character::find(254)->lwork}}</span></td>
             <td class="i pink">114</td>
         </tr>
         <tr>
             <td rowspan="2" class="gum">北</td>
-            <td class="chara yellow">桐崎千棘<span class="work">@伪恋</span></td>
+            <td class="chara yellow">{{App\Character::find(257)->lname}}<span class="work">＠{{App\Character::find(257)->lwork}}</span></td>
             <td class="i yellow">296</td>
-            <td rowspan="2" class="id yellow">{!! complink('2017-03-08', '3月8日') !!}<br>桐崎千棘</td>
+            <td rowspan="2" class="id yellow">{!! complink('2017-03-08', '3月8日') !!}<br>{{App\Character::find(257)->lname}}</td>
             <td rowspan="2" class="i yellow">239</td>
         </tr>
         <tr>
-            <td class="chara blue">九条可怜<span class="work">@黄金拼图</span></td>
+            <td class="chara blue">{{App\Character::find(178)->lname}}<span class="work">＠{{App\Character::find(178)->lwork}}</span></td>
             <td class="i blue">274</td>
         </tr>
     </table>
@@ -385,11 +385,11 @@
         </tr>
         <tr>
             <td class="gum pink">A-1</td>
-            <td class="chara pink">中川花音@只有神知道的世界</td>
+            <td class="chara pink">{{App\Character::find(254)->lname}}＠{{App\Character::find(254)->lwork}}</td>
             <td class="i pink">151</td>
-            <td rowspan="2" class="id pink">{!! complink('2017-02-28', '2月28日') !!}<br>中川花音</td>
+            <td rowspan="2" class="id pink">{!! complink('2017-02-28', '2月28日') !!}<br>{{App\Character::find(254)->lname}}</td>
             <td rowspan="2" class="ni pink">155</td>
-            <td rowspan="5" class="nid pink">{!! complink('2017-03-04', '3月4日') !!}<br>中川花音</td>
+            <td rowspan="5" class="nid pink">{!! complink('2017-03-04', '3月4日') !!}<br>{{App\Character::find(254)->lname}}</td>
         </tr>
         <tr>
             <td class="gum">A-2</td>
@@ -405,7 +405,7 @@
         </tr>
         <tr>
             <td class="gum pink light">A-4</td>
-            <td class="chara pink light">绫波@舰队Collection</td>
+            <td class="chara pink light">绫波＠{{App\Character::find(280)->lwork}}</td>
             <td class="i pink light">57</td>
         </tr>
         <tr>
@@ -425,23 +425,23 @@
             <td class="i">94</td>
             <td rowspan="2" class="id yellow light">{!! complink('2017-02-28', '2月28日') !!}<br>雾岛</td>
             <td rowspan="2" class="ni yellow light">134</td>
-            <td rowspan="4" class="nid yellow">{!! complink('2017-03-04', '3月4日') !!}<br>桐崎千棘</td>
+            <td rowspan="4" class="nid yellow">{!! complink('2017-03-04', '3月4日') !!}<br>{{App\Character::find(257)->lname}}</td>
         </tr>
         <tr>
             <td class="gum yellow light">B-2</td>
-            <td class="chara yellow light">雾岛@舰队Collection</td>
+            <td class="chara yellow light">雾岛＠{{App\Character::find(280)->lwork}}</td>
             <td class="i yellow light">109</td>
         </tr>
         <tr>
             <td class="gum">B-3</td>
-            <td class="chara">阿波罗@只有神知道的世界 女神篇</td>
+            <td class="chara">阿波罗＠{{App\Character::find(254)->lwork}} 女神篇</td>
             <td class="i">35</td>
-            <td rowspan="2" class="id yellow">{!! complink('2017-03-02', '3月2日') !!}<br>桐崎千棘</td>
+            <td rowspan="2" class="id yellow">{!! complink('2017-03-02', '3月2日') !!}<br>{{App\Character::find(257)->lname}}</td>
             <td rowspan="2" class="ni yellow">141</td>
         </tr>
         <tr>
             <td class="gum yellow">B-4</td>
-            <td class="chara yellow">桐崎千棘@伪恋</td>
+            <td class="chara yellow">{{App\Character::find(257)->lname}}＠{{App\Character::find(257)->lwork}}</td>
             <td class="i yellow">108</td>
         </tr>
 
@@ -452,11 +452,11 @@
         </tr>
         <tr>
             <td class="gum orange">C-1</td>
-            <td class="chara orange">由比滨结衣@我的青春恋爱物语果然有问题。</td>
+            <td class="chara orange">{{App\Character::find(179)->lname}}＠{{App\Character::find(179)->lwork}}</td>
             <td class="i orange">171</td>
-            <td rowspan="2" class="id orange">{!! complink('2017-02-28', '2月28日') !!}<br>由比滨结衣</td>
+            <td rowspan="2" class="id orange">{!! complink('2017-02-28', '2月28日') !!}<br>{{App\Character::find(179)->lname}}</td>
             <td rowspan="2" class="ni orange">204</td>
-            <td rowspan="4" class="nid orange">{!! complink('2017-03-04', '3月4日') !!}<br>由比滨结衣</td>
+            <td rowspan="4" class="nid orange">{!! complink('2017-03-04', '3月4日') !!}<br>{{App\Character::find(179)->lname}}</td>
         </tr>
         <tr>
             <td class="gum">C-2</td>
@@ -485,18 +485,18 @@
             <td class="gum">D-1</td>
             <td class="chara">佐佐木千穗@打工吧！魔王大人</td>
             <td class="i">81</td>
-            <td rowspan="2" class="id green">{!! complink('2017-02-28', '2月28日') !!}<br>金刚</td>
+            <td rowspan="2" class="id green">{!! complink('2017-02-28', '2月28日') !!}<br>{{App\Character::find(280)->lname}}</td>
             <td rowspan="2" class="ni green">157</td>
-            <td rowspan="4" class="nid green">{!! complink('2017-03-04', '3月4日') !!}<br>金刚</td>
+            <td rowspan="4" class="nid green">{!! complink('2017-03-04', '3月4日') !!}<br>{{App\Character::find(280)->lname}}</td>
         </tr>
         <tr>
             <td class="gum green">D-2</td>
-            <td class="chara green">金刚@舰队Collection</td>
+            <td class="chara green">{{App\Character::find(280)->lname}}＠{{App\Character::find(280)->lwork}}</td>
             <td class="i green">139</td>
         </tr>
         <tr>
             <td class="gum green light">D-3</td>
-            <td class="chara green light">高雄@舰队Collection</td>
+            <td class="chara green light">高雄＠{{App\Character::find(280)->lwork}}</td>
             <td class="i green light">70</td>
             <td rowspan="2" class="id green light">{!! complink('2017-03-02', '3月2日') !!}<br>高雄</td>
             <td rowspan="2" class="ni green light">61 </td>
@@ -514,11 +514,11 @@
         </tr>
         <tr>
             <td class="gum purple">E-1</td>
-            <td class="chara purple">新子憧@天才麻将少女阿知贺篇</td>
+            <td class="chara purple">{{App\Character::find(255)->lname}}＠{{App\Character::find(255)->lwork}}</td>
             <td class="i purple">114</td>
-            <td rowspan="2" class="id purple">{!! complink('2017-03-01', '3月1日') !!}<br>新子憧</td>
+            <td rowspan="2" class="id purple">{!! complink('2017-03-01', '3月1日') !!}<br>{{App\Character::find(255)->lname}}</td>
             <td rowspan="2" class="ni purple">113</td>
-            <td rowspan="4" class="nid purple">{!! complink('2017-03-05', '3月5日') !!}<br>新子憧</td>
+            <td rowspan="4" class="nid purple">{!! complink('2017-03-05', '3月5日') !!}<br>{{App\Character::find(255)->lname}}</td>
         </tr>
         <tr>
             <td class="gum">E-2</td>
@@ -527,7 +527,7 @@
         </tr>
         <tr>
             <td class="gum purple light">E-3</td>
-            <td class="chara purple light">比叡@舰队Collection</td>
+            <td class="chara purple light">比叡＠{{App\Character::find(280)->lwork}}</td>
             <td class="i purple light">62</td>
             <td class="id purple light">{!! complink('2017-03-03', '3月3日') !!}<br>比叡</td>
             <td class="ni purple light">73</td>
@@ -547,15 +547,15 @@
         </tr>
         <tr>
             <td class="gum blue">F-1</td>
-            <td class="chara blue">九条可怜@黄金拼图</td>
+            <td class="chara blue">{{App\Character::find(178)->lname}}＠{{App\Character::find(178)->lwork}}</td>
             <td class="i blue">108</td>
-            <td rowspan="2" class="id blue">{!! complink('2017-03-01', '3月1日') !!}<br>九条可怜</td>
+            <td rowspan="2" class="id blue">{!! complink('2017-03-01', '3月1日') !!}<br>{{App\Character::find(178)->lname}}</td>
             <td rowspan="2" class="ni blue">130</td>
-            <td rowspan="4" class="nid blue">{!! complink('2017-03-05', '3月5日') !!}<br>九条可怜</td>
+            <td rowspan="4" class="nid blue">{!! complink('2017-03-05', '3月5日') !!}<br>{{App\Character::find(178)->lname}}</td>
         </tr>
         <tr>
             <td class="gum">F-2</td>
-            <td class="chara">摩耶@舰队Collection</td>
+            <td class="chara">摩耶＠{{App\Character::find(280)->lwork}}</td>
             <td class="i">40</td>
         </tr>
         <tr>
@@ -567,7 +567,7 @@
         </tr>
         <tr>
             <td class="gum blue light">F-4</td>
-            <td class="chara blue light">爱宕@舰队Collection</td>
+            <td class="chara blue light">爱宕＠{{App\Character::find(280)->lwork}}</td>
             <td class="i blue light">89</td>
         </tr>
 
@@ -578,11 +578,11 @@
         </tr>
         <tr>
             <td class="gum cyan light">G-1</td>
-            <td class="chara cyan light">敷波@舰队Collection</td>
+            <td class="chara cyan light">敷波＠{{App\Character::find(280)->lwork}}</td>
             <td class="i cyan light">83</td>
             <td rowspan="2" class="id cyan light">{!! complink('2017-03-01', '3月1日') !!}<br>敷波</td>
             <td rowspan="2" class="ni cyan light">34</td>
-            <td rowspan="4" class="nid cyan">{!! complink('2017-03-05', '3月5日') !!}<br>榛名</td>
+            <td rowspan="4" class="nid cyan">{!! complink('2017-03-05', '3月5日') !!}<br>{{App\Character::find(221)->lname}}</td>
         </tr>
         <tr>
             <td class="gum">G-2</td>
@@ -593,12 +593,12 @@
             <td class="gum">G-3</td>
             <td class="chara">莉瑟罗特·沙尔洛克@TRINITY SEVEN 七人魔法使</td>
             <td class="i">34</td>
-            <td rowspan="2" class="id cyan">{!! complink('2017-03-03', '3月3日') !!}<br>榛名</td>
+            <td rowspan="2" class="id cyan">{!! complink('2017-03-03', '3月3日') !!}<br>{{App\Character::find(221)->lname}}</td>
             <td rowspan="2" class="ni cyan">157</td>
         </tr>
         <tr>
             <td class="gum cyan">G-4</td>
-            <td class="chara cyan">榛名@舰队Collection</td>
+            <td class="chara cyan">{{App\Character::find(221)->lname}}＠{{App\Character::find(280)->lwork}}</td>
             <td class="i cyan">84</td>
         </tr>
 
@@ -611,25 +611,25 @@
             <td class="gum">H-1</td>
             <td class="chara">露莉亚@碧蓝幻想</td>
             <td class="i">52</td>
-            <td rowspan="2" class="id red">{!! complink('2017-03-01', '3月1日') !!}<br>铃乃木凛</td>
+            <td rowspan="2" class="id red">{!! complink('2017-03-01', '3月1日') !!}<br>{{App\Character::find(314)->lname}}</td>
             <td rowspan="2" class="ni red">84</td>
-            <td rowspan="4" class="nid red">{!! complink('2017-03-05', '3月5日') !!}<br>铃乃木凛</td>
+            <td rowspan="4" class="nid red">{!! complink('2017-03-05', '3月5日') !!}<br>{{App\Character::find(314)->lname}}</td>
         </tr>
         <tr>
             <td class="gum red">H-2</td>
-            <td class="chara red">铃乃木凛@爆音少女！！</td>
+            <td class="chara red">{{App\Character::find(314)->lname}}＠{{App\Character::find(314)->lwork}}</td>
             <td class="i red">74</td>
         </tr>
         <tr>
             <td class="gum">H-3</td>
             <td class="chara">克劳蒂雅·恩菲尔德@学战都市Asterisk</td>
             <td class="i">48</td>
-            <td rowspan="2" class="id red light">{!! complink('2017-03-03', '3月3日') !!}<br>室见立华</td>
+            <td rowspan="2" class="id red light">{!! complink('2017-03-03', '3月3日') !!}<br>{{App\Character::find(278)->lname}}</td>
             <td rowspan="2" class="ni light">77</td>
         </tr>
         <tr>
             <td class="gum red light">H-4</td>
-            <td class="chara red light">室见立华@奋斗吧！系统工程师</td>
+            <td class="chara red light">{{App\Character::find(278)->lname}}＠{{App\Character::find(278)->lwork}}</td>
             <td class="i red light">53</td>
         </tr>
     </table>
