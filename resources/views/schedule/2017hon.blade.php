@@ -253,6 +253,12 @@
             padding-left: 8px;
         }
 
+        table.finale .charas {
+            text-align: left;
+            width: 10em;
+            padding-left: 8px;
+        }
+
         table.finale .i {
             text-align: right;
             width: 3em;
@@ -286,25 +292,30 @@
 
     <table class="finale">
         <tr>
-            <th rowspan="2">{!! complink('2017-03-11', '3月11日') !!}<br>萌王战</th>
-            <td class="index orange">①</td>
-            <td class="chara orange">由比滨结衣<span class="work">@我的青春恋爱物语果然有问题。</span></td>
+            <th colspan="3">{!! complink('2017-03-11', '3月11日') !!}<br>萌王战</th>
+            <td rowspan="6">
+                <img class="ui fluid image" src="/images/yuis.jpg">
+            </td>
+        </tr><tr>
+        <td class="index orange">①</td>
+            <td class="charas orange">{{App\Character::find(179)->lname}}<span class="work">{{App\Character::find(179)->lwork}}</span></td>
             <td class="i orange">346</td>
         </tr>
         <tr>
             <td class="index yellow">②</td>
-            <td class="chara yellow">桐崎千棘<span class="work">@伪恋</span></td>
+            <td class="charas yellow">{{App\Character::find(257)->lname}}<span class="work">{{App\Character::find(257)->lwork}}</td>
             <td class="i yellow">274</td>
         </tr>
         <tr>
-            <th rowspan="2">{!! complink('2017-03-10', '3月10日') !!}<br>三位战</th>
+            <th colspan="3">{!! complink('2017-03-10', '3月10日') !!}<br>三位战</th>
+            </tr><tr>
             <td class="index pink">③</td>
-            <td class="chara pink">中川花音<span class="work">@只有神知道的世界</span></td>
+            <td class="charas pink">{{App\Character::find(254)->lname}}<span class="work">{{App\Character::find(254)->lwork}}</td>
             <td class="i pink">83</td>
         </tr>
         <tr>
             <td class="index purple">④</td>
-            <td class="chara purple">新子憧<span class="work">@天才麻将少女阿知贺篇</span></td>
+            <td class="charas purple">{{App\Character::find(255)->lname}}<span class="work">{{App\Character::find(255)->lwork}}</td>
             <td class="i purple">63</td>
         </tr>
     </table>

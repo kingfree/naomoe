@@ -9,7 +9,7 @@
                 <i class="calendar icon"></i>
                 <div class="content">
                     <a href="{{route('schedule')}}">@lang('schedule.calendar')</a>
-                    <a href="{{route('hon')}}">本战分组</a>
+                    <a href="{{route('hon')}}">分组</a>
                     <div class="sub header">
                         2017年2月 - 2017年3月
                     </div>
@@ -132,8 +132,18 @@
                 </div>
             @else
                 <div class="ui attached segment">
-                    @include('schedule.2017list')
-                    @yield('list')
+                    <a href="http://www.pixiv.net/member_illust.php?id=197076" title="ぴょん吉">
+                        <img class="ui fluid image" src="/images/yui.jpg">
+                    </a>
+                    <h3 class="ui pink header">
+                        2017 @lang('schedule.winner')
+                        {{App\Character::find(179)->lname}}
+                    </h3>
+                </div>
+                <div class="ui attached segment">
+                    <a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=61616191" title="深蓝杰克">
+                        <img class="ui fluid image" src="/images/naos.jpg">
+                    </a>
                 </div>
             @endif
         </div>

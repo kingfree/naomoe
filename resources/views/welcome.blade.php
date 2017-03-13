@@ -40,14 +40,16 @@
             align-items: center;
             display: flex;
             justify-content: center;
-            background-image: url('/images/nao.jpg');
+            background-image: url('/images/naos.jpg');
             background-size: cover;
             background-position: 37% 0%;
             transition: background-image 0.6s ease-out;
         }
 
         .flex-center:hover {
-            background-image: url('/images/naos.jpg');
+            background-image: url('/images/yui.jpg');
+            background-size: contain;
+            background-position: 0% 0%;
             transition: background-image 0.6s ease-in;
         }
 
@@ -187,6 +189,7 @@
                 <script src="//s4.cnzz.com/z_stat.php?id=1261300564&web_id=1261300564"
                         language="JavaScript"></script>
             </div>
+            <div class="item">イラ <a href="http://www.pixiv.net/member_illust.php?id=197076">@ぴょん吉</a></div>
             <div class="item">画师 <a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=61616191">@深蓝杰克</a></div>
             <div class="item"><a href="/about">闹萌制作委员会</a></div>
         </div>
