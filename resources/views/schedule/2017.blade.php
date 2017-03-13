@@ -137,7 +137,7 @@
                         {{App\Character::find(179)->lname}}
                     </h3>
                     <a href="http://www.pixiv.net/member_illust.php?id=197076" title="ぴょん吉">
-                        <img class="ui fluid image" src="/images/2017yui.jpg">
+                        <img class="ui fluid image" src="/images/yuis.jpg">
                     </a>
                 </div>
                 <div class="ui attached segment">
