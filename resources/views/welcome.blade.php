@@ -47,7 +47,7 @@
         }
 
         .flex-center:hover {
-            background-image: url('/images/yuis.jpg');
+            background-image: url('/upload/image/03dc82eaa35f592837318a58b233c46d.jpeg');
             background-size: contain;
             background-position: 0% 0%;
             transition: background-image 0.6s ease-in;
