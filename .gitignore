@@ -10,3 +10,7 @@ Homestead.yaml
 .env
 *.log
 *.out
+composer.phar
+composer.lock
+package-lock.json
+yarn.lock

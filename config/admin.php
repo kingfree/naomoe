@@ -1,110 +1,108 @@
 <?php
-
 return [
-
     /*
      * Laravel-admin name.
      */
-    'name'      => '闹萌',
-
+    'name' => '闹萌后台',
     /*
      * Logo in admin panel header.
      */
-    'logo'      => '<b>闹萌</b> 后台',
-
+    'logo' => '<b>闹</b>萌后台',
     /*
      * Mini-logo in admin panel header.
      */
     'logo-mini' => '<b>闹</b>',
-
     /*
-     * Laravel-admin url prefix.
+     * Route configuration.
      */
-    'prefix'    => 'admin',
-
+    'route' => [
+        'prefix' => 'admin',
+        'namespace' => 'App\\Admin\\Controllers',
+        'middleware' => ['web', 'admin'],
+    ],
     /*
      * Laravel-admin install directory.
      */
     'directory' => app_path('Admin'),
-
     /*
      * Laravel-admin html title.
      */
-    'title'  => '闹萌后台',
-
+    'title' => '闹萌后台',
+    /*
+     * Use `https`.
+     */
+    'secure' => false,
     /*
      * Laravel-admin auth setting.
      */
     'auth' => [
-        'driver'   => 'session',
-        'provider' => '',
-        'model'    => Encore\Admin\Auth\Database\Administrator::class,
+        'guards' => [
+            'admin' => [
+                'driver' => 'session',
+                'provider' => 'admin',
+            ],
+        ],
+        'providers' => [
+            'admin' => [
+                'driver' => 'eloquent',
+                'model' => Encore\Admin\Auth\Database\Administrator::class,
+            ],
+        ],
     ],
-
     /*
      * Laravel-admin upload setting.
      */
-    'upload'  => [
-
+    'upload' => [
         'disk' => 'admin',
-
-        'directory'  => [
-            'image'  => 'image',
-            'file'   => 'file',
+        'directory' => [
+            'image' => 'images',
+            'file' => 'files',
         ],
-
-        'host' => env('APP_URL', 'http://localhost') . '/upload/',
     ],
-
     /*
      * Laravel-admin database setting.
      */
     'database' => [
-
         // Database connection for following tables.
-        'connection'  => env('DB_CONNECTION', 'mysql'),
-
+        'connection' => '',
         // User tables and model.
         'users_table' => 'admin_users',
         'users_model' => Encore\Admin\Auth\Database\Administrator::class,
-
         // Role table and model.
         'roles_table' => 'admin_roles',
         'roles_model' => Encore\Admin\Auth\Database\Role::class,
-
         // Permission table and model.
         'permissions_table' => 'admin_permissions',
         'permissions_model' => Encore\Admin\Auth\Database\Permission::class,
-
         // Menu table and model.
-        'menu_table'  => 'admin_menu',
-        'menu_model'  => Encore\Admin\Auth\Database\Menu::class,
-
+        'menu_table' => 'admin_menu',
+        'menu_model' => Encore\Admin\Auth\Database\Menu::class,
         // Pivot table for table above.
-        'operation_log_table'    => 'admin_operation_log',
+        'operation_log_table' => 'admin_operation_log',
         'user_permissions_table' => 'admin_user_permissions',
-        'role_users_table'       => 'admin_role_users',
+        'role_users_table' => 'admin_role_users',
         'role_permissions_table' => 'admin_role_permissions',
-        'role_menu_table'        => 'admin_role_menu',
+        'role_menu_table' => 'admin_role_menu',
     ],
-
     /*
      * By setting this option to open or close operation log in laravel-admin.
      */
-    'operation_log'   => true,
-
+    'operation_log' => [
+        'enable' => true,
+        /*
+         * Routes that will not log to database.
+         *
+         * All method to path like: admin/auth/logs
+         * or specific method to path like: get:admin/auth/logs
+         */
+        'except' => [
+            'admin/auth/logs*',
+        ],
+    ],
     /*
-    |---------------------------------------------------------|
-    | SKINS         | skin-blue                               |
-    |               | skin-black                              |
-    |               | skin-purple                             |
-    |               | skin-yellow                             |
-    |               | skin-red                                |
-    |               | skin-green                              |
-    |---------------------------------------------------------|
+     * @see https://adminlte.io/docs/2.4/layout
      */
-    'skin'    => 'skin-yellow-light',
-
+    'skin' => 'skin-blue-light',
     /*
     |---------------------------------------------------------|
     |LAYOUT OPTIONS | fixed                                   |
@@ -114,10 +112,14 @@ return [
     |               | sidebar-mini                            |
     |---------------------------------------------------------|
      */
-    'layout'  => ['sidebar-mini'],
-
+    'layout' => ['sidebar-mini', 'sidebar-collapse'],
     /*
      * Version displayed in footer.
      */
-    'version'   => '1.0',
+    'version' => '1.5.x-dev',
+    /*
+     * Settings for extensions.
+     */
+    'extensions' => [
+    ],
 ];

@@ -2,10 +2,12 @@
 
 use Illuminate\Routing\Router;
 
+Admin::registerAuthRoutes();
+
 Route::group([
-    'prefix'        => config('admin.prefix'),
-    'namespace'     => Admin::controllerNamespace(),
-    'middleware'    => ['web', 'admin'],
+    'prefix' => config('admin.route.prefix'),
+    'namespace' => config('admin.route.namespace'),
+    'middleware' => config('admin.route.middleware'),
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index');
@@ -34,8 +36,7 @@ Route::group([
     $router->resource('pages', PageController::class);
     $router->resource('votelogs', VoteLogController::class);
     $router->resource('schedules', ScheduleController::class);
-
 });
 
-//app('view')->prependNamespace('admin', resource_path('views/admin'));
-app('translator')->addNamespace('admin', resource_path('lang/admin'));
+// app('view')->prependNamespace('admin', resource_path('views/admin'));
+// app('translator')->addNamespace('admin', resource_path('lang/admin'));
