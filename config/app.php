@@ -177,11 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-//        Encore\Admin\Providers\AdminServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-//        hisorange\BrowserDetect\Provider\BrowserDetectService::class,
-
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         App\Providers\DuoshuoServiceProvider::class
 
     ],
@@ -235,9 +233,9 @@ return [
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Ip'  => Zhuzhichao\IpLocationZh\Ip::class,
-//        'BrowserDetect' => hisorange\BrowserDetect\Facade\Parser::class
-
+        'Ip' => Zhuzhichao\IpLocationZh\Ip::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class
     ],
 
 ];
