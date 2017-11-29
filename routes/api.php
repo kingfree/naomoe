@@ -41,7 +41,7 @@ Route::post('login', function (Request $request) {
     $credentials = $request->only('name', 'password');
     try {
         if (!$token = JWTAuth::attempt($credentials)) {
-            return error(-1, "邮箱或者密码错误");
+            return error(-1, "用户名或密码错误");
         }
     } catch (JWTException $e) {
         return error(-3, "token 无法生成");
