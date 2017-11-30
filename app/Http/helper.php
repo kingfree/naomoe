@@ -150,3 +150,21 @@ function calculate($id, $valid = 1)
     }
     return true;
 }
+
+function success($data = [], $info = 'success')
+{
+    return response()->json([
+        'code' => 0,
+        'info' => $info,
+        'data' => $data
+    ]);
+}
+
+function error($code = -1, $info = 'error', $data = [])
+{
+    return response()->json([
+        'code' => $code,
+        'info' => $info,
+        'data' => $data
+    ]);
+}

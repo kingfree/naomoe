@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -14,24 +15,6 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-function success($data = [], $info = 'success')
-{
-    return response()->json([
-        'code' => 0,
-        'info' => $info,
-        'data' => $data
-    ]);
-}
-
-function error($code = -1, $info = 'error', $data = [])
-{
-    return response()->json([
-        'code' => $code,
-        'info' => $info,
-        'data' => $data
-    ]);
-}
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, HEAD, POST, PUT, PATCH, DELETE");
@@ -49,8 +32,15 @@ Route::post('login', function (Request $request) {
     return success(compact('token'));
 });
 
-Route::middleware('auth:api')->group(function () {
-    Route::get('/user', function (Request $request) {
-        return $user = JWTAuth::parseToken()->authenticate();
+Route::middleware('jwt.api.auth')->group(function () {
+    Route::get('/user', function () {
+        $user = Auth::user();
+        return success(compact('user'));
+    });
+    Route::get('/rooms', function () {
+        return success(['hello']);
+    });
+    Route::get('/room/{id}', function ($id) {
+
     });
 });
